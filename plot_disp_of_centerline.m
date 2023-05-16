@@ -1,9 +1,9 @@
-% clc;clear;close all;
-% folder = 'F:\1_learning\work\Colbert\NC';
-% worm = 'NC20230312\w3';
-% file_name = 'NC20230312w3_mcd';
-% file_path = fullfile(folder,worm,file_name);
-% load(file_path);
+clc;clear;close all;
+folder = 'F:\1_learning\research\Colbert\NC';
+worm = 'NC20230312\w3';
+file_name = 'NC20230312w3_mcd';
+file_path = fullfile(folder,worm,file_name);
+load(file_path);
 frame_range = 1:10000;
 center_of_centerline = zeros(length(frame_range),2);
 for i = frame_range
