@@ -12,7 +12,7 @@ for i = frame_range
 end
 
 % Extract x and y coordinates from the data array
-x = center_of_centerline(:, 1)*1.6*10^(-3);
+x = center_of_centerline(:, 1)*1.6*10^(-3); % mm
 y = center_of_centerline(:, 2)*1.6*10^(-3);
 
 % Plot the x and y coordinates

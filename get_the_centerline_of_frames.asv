@@ -18,12 +18,10 @@ load(human_label_file_name)
 len = size(human_label, 1);
 
 for i = start:len
-    close all;
     
     % load mcd
     str = char(human_label{i,1});
-    filename = [str '_mcd'];
-    
+    filename = [str '_mcd'];    
     
     splitIndex = strfind(str, 'w');
     part1 = str(1:splitIndex-1);
@@ -46,7 +44,12 @@ for i = start:len
     if strcmp(part3,'WG')
         part3 = 'Ctl';
     end
-    title_of_fig_1 = [group ' ' part3];
-    pj_code_Yixuan_Li(mcd,filename,title_of_fig_1,run_number,istart,iend)
+    
+    for frame = 1:
+        Centerline = mcd(frame).SegmentedCenterline;
+        Centerline = reshape(Centerline,2,[]);
+        Centerline = Centerline*(1/0.0297)+(mcd(frame).StagePosition)';
+        Centerline = Centerline*0.05/10^3; % 1 pixel = 0.05um = 0.05/10^3 mm
+    end
     
 end
