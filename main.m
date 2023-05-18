@@ -5,7 +5,7 @@ option =1;
 switch option
     case 1
         human_label_file_name = 'human_label_N2.mat';
-        start = 1;
+        start = 2;
         root_dir = 'C:\Users\11097\Nutstore\1\DATA_Wenlab\23.3.10 - N2 taxis Colbert - without rawdata\data';
         group = 'N2';
     case 2

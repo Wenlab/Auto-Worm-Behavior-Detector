@@ -1,4 +1,4 @@
-function pj_code_Yixuan_Li(mcd,filename,title_of_fig_1,run_number,istart,iend)
+function ch = pj_code_Yixuan_Li_return_ch(mcd,~,~,~,istart,iend)
 
 %% choose the clip frames and calculate variables
 % 0-15% head 40-60% body
@@ -74,30 +74,30 @@ timefilter = str2double(answer2{1});
 bodyfilter = str2double(answer2{2});
 
 %% plot the curvature diagram to verify the wave transmission(from head to tail)
-h = fspecial('average', [timefilter bodyfilter]); % The average value of the neighborhood around each pixel was calculated to smooth the data
-curvdatafiltered = imfilter(curvdata*100,  h , 'replicate'); % N-D filtering of multidimensional images
+% h = fspecial('average', [timefilter bodyfilter]); % The average value of the neighborhood around each pixel was calculated to smooth the data
+% curvdatafiltered = imfilter(curvdata*100,  h , 'replicate'); % N-D filtering of multidimensional images
 
-figure(2);
-imagesc(curvdatafiltered(:,:)); % imagesc is MATLAB function
-colormap(cmap);
-colorbar;
-caxis([-10 10]);
+% figure(2);
+% imagesc(curvdatafiltered(:,:)); % imagesc is MATLAB function
+% colormap(cmap);
+% colorbar;
+% caxis([-10 10]);
 
-hold on;
-plot([origin-2*radius,origin+worm_length],[j1,j1],'c-');
-plot([origin-2*radius,origin+worm_length],[j2,j2],'c-');
+% hold on;
+% plot([origin-2*radius,origin+worm_length],[j1,j1],'c-');
+% plot([origin-2*radius,origin+worm_length],[j2,j2],'c-');
 
-title('cuvature diagram');
+% title('cuvature diagram');
 
-set(gca,'XTICK',[1 20 40 60 80 100]);
-set(gca,'XTICKLABEL',[0 0.2 0.4 0.6 0.8 1]);
+% set(gca,'XTICK',[1 20 40 60 80 100]);
+% set(gca,'XTICKLABEL',[0 0.2 0.4 0.6 0.8 1]);
 
 %set(gca,'YTICK',1:2*fps:numframes);
-y_tick=get(gca,'YTICK');
-set(gca,'YTICKLABEL',time(y_tick));
-
-xlabel('fractional distance along the centerline (head=0; tail=1)');
-ylabel('time (s)');
+% y_tick=get(gca,'YTICK');
+% set(gca,'YTICKLABEL',time(y_tick));
+% 
+% xlabel('fractional distance along the centerline (head=0; tail=1)');
+% ylabel('time (s)');
 
 %% extract the curvature of head and body
 for i = 1:5
@@ -112,46 +112,45 @@ answer3 = cell(1,1);
 answer3{1,1} = '1';
 
 %% figure 1
-figure(1)
-x = istart:iend;%statframe endframe
-plot(time,ch,'red',time,cb,'blue')
-xlabel('time (s)')
-ylabel('curvature*L')
-legend('curvature of head','curvature of body')
-title(title_of_fig_1)
-% saveas(gcf,char(name))
-fs = size(curvdata,1)/(time(end)-time(1));
+% figure(1)
+% x = istart:iend;%statframe endframe
+% plot(time,ch,'red',time,cb,'blue')
+% xlabel('time (s)')
+% ylabel('curvature*L')
+% legend('curvature of head','curvature of body')
+% title(title_of_fig_1)
+% % saveas(gcf,char(name))
 
 %% vmd of the head
-[imfv,residualv,infov] = vmd(ch); % Variational mode decomposition
-% plot each imf
-figure(3);
-for i=1:length(imfv(1,:))    
-    subplot(3,2,i);
-    plot(time,imfv(:,i), 'r');
-    title(['IMF_' num2str(i)])
-    xlabel('time (s)');
-    ylabel('curvature*L');
-end
-
-imfhh = imfv(:,2)+imfv(:,3)+imfv(:,4); % 1 is noise, so just 2+3+4
-imfhf = imfv(:,2)+imfv(:,3)+imfv(:,4)+imfv(:,5);
+% [imfv,~,~] = vmd(ch); % Variational mode decomposition
+% % plot each imf
+% figure(3);
+% for i=1:length(imfv(1,:))    
+%     subplot(3,2,i);
+%     plot(time,imfv(:,i), 'r');
+%     title(['IMF_' num2str(i)])
+%     xlabel('time (s)');
+%     ylabel('curvature*L');
+% end
+% 
+% imfhh = imfv(:,2)+imfv(:,3)+imfv(:,4); % 1 is noise, so just 2+3+4
+% imfhf = imfv(:,2)+imfv(:,3)+imfv(:,4)+imfv(:,5);
 
 %% figure 4
-figure(4)
-plot(time,imfv(:,5), 'red',time,cb, 'blue');
-xlabel('time (s)')
-ylabel('curvature*L')
-legend('IMF5','curvature of body')
-title('IMF5 vs curvature of body')
+% figure(4)
+% plot(time,imfv(:,5), 'red',time,cb, 'blue');
+% xlabel('time (s)')
+% ylabel('curvature*L')
+% legend('IMF5','curvature of body')
+% title('IMF5 vs curvature of body')
 
 %% figure 5
-figure(5)
-plot(time,imfv(:,5), 'red',time,imfhh, 'blue');
-xlabel('time (s)')
-ylabel('curvature*L')
-legend('IMF5','IMF2 + IMF3 + IMF4')
-title('IMF2 + IMF3 + IMF4 vs IMF 5')
+% figure(5)
+% plot(time,imfv(:,5), 'red',time,imfhh, 'blue');
+% xlabel('time (s)')
+% ylabel('curvature*L')
+% legend('IMF5','IMF2 + IMF3 + IMF4')
+% title('IMF2 + IMF3 + IMF4 vs IMF 5')
 
 %% plot original signal minus imfs
 % figure(4)
@@ -277,15 +276,15 @@ title('IMF2 + IMF3 + IMF4 vs IMF 5')
 % xlabel('raw data minus 1,2,3,4,5')
 % ylabel('Hausdorff Distance')
 
-folder_name = fullfile('C:\Users\11097\Desktop\figure',filename,['run_' num2str(run_number)]);
-mkdir(folder_name);
-
-for i = [1,2,3,4,5]
-    figure(i);  % 切换到第i个图
-    % 这里是你的绘图代码，确保当前图是你想保存的图
-    file_name_fig = sprintf('fig%d.png', i);  % 指定保存文件的名称
-    full_file_path = fullfile(folder_name, file_name_fig);
-    saveas(gcf, full_file_path);  % 保存当前图为PNG格式文件
-end
+% folder_name = fullfile('C:\Users\11097\Desktop\figure',filename,['run_' num2str(run_number)]);
+% mkdir(folder_name);
+% 
+% for i = [1,2,3,4,5]
+%     figure(i);  % 切换到第i个图
+%     % 这里是你的绘图代码，确保当前图是你想保存的图
+%     file_name_fig = sprintf('fig%d.png', i);  % 指定保存文件的名称
+%     full_file_path = fullfile(folder_name, file_name_fig);
+%     saveas(gcf, full_file_path);  % 保存当前图为PNG格式文件
+% end
 
 end
