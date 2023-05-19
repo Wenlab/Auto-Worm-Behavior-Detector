@@ -4,12 +4,12 @@ clear;clc;close all;
 option =1;
 switch option
     case 1
-        human_label_file_name = 'human_label_N2.mat';
+        human_label_file_name = 'human_label\human_label_N2.mat';
         start = 2;
         root_dir = 'C:\Users\11097\Nutstore\1\DATA_Wenlab\23.3.10 - N2 taxis Colbert - without rawdata\data';
         group = 'N2';
     case 2
-        human_label_file_name = 'human_label_RIA.mat';
+        human_label_file_name = 'human_label\human_label_RIA.mat';
         start = 2;
         root_dir = 'C:\Users\11097\Nutstore\1\DATA_Wenlab\23.5.12 - RIA-twk18 Colbert no gradient - without rawdata\data';
         group = 'RIA-twk18';
