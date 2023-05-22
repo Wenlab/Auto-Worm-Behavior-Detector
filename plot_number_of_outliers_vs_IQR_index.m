@@ -1,11 +1,14 @@
 function table = plot_number_of_outliers_vs_IQR_index(train_feature, IQR_index_max)
-    x = 2:IQR_index_max-1;
+
+    x = [1:0.5:5 6:1:IQR_index_max];
     number_of_outliers = zeros(size(x));
     number_of_up_outliers = zeros(size(x));
     number_of_down_outliers = zeros(size(x));
     
-    for count = 1:numel(x)
-        [number_of_up_outliers(count),number_of_down_outliers(count), ~, ~, ~, ~] = Tukey_test(train_feature, x(count));
+    count = 0;
+    for IQR_index = x
+        count = count + 1;
+        [number_of_up_outliers(count),number_of_down_outliers(count), ~, ~, ~, ~] = Tukey_test(train_feature, IQR_index);
         number_of_outliers(count) = number_of_up_outliers(count) + number_of_down_outliers(count);
     end
     

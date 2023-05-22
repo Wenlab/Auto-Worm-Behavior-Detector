@@ -22,8 +22,7 @@ for i = start:len
     
     % load mcd
     str = char(human_label{i,1});
-    filename = [str '_mcd'];
-    
+    filename = [str '_mcd'];    
     
     splitIndex = strfind(str, 'w');
     part1 = str(1:splitIndex-1);
