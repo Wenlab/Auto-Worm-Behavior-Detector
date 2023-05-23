@@ -1,41 +1,4 @@
-%% input data
-
-% load human label file
-option =1;
-switch option
-    case 1
-        human_label_file_name = 'human_label\human_label_N2.mat';
-        start = 2;
-        root_dir = 'C:\Users\11097\Nutstore\1\DATA_Wenlab\23.3.10 - N2 taxis Colbert - without rawdata\data';
-        group = 'N2';
-    case 2
-        human_label_file_name = 'human_label\human_label_RIA.mat';
-        start = 2;
-        root_dir = 'C:\Users\11097\Nutstore\1\DATA_Wenlab\23.5.12 - RIA-twk18 Colbert no gradient - without rawdata\data';
-        group = 'RIA-twk18';
-end
-load(human_label_file_name)
-len = size(human_label, 1);
-
-% load mcd
-i = 30;
-str = char(human_label{24,1});
-filename = [str '_mcd'];
-
-splitIndex = strfind(str, 'w');
-part1 = str(1:splitIndex-1);
-part2 = str(splitIndex:end);
-if contains(str,'Ctl')
-    part3 = str(1:3);
-else
-    part3 = str(1:2);
-end
-data_filename = [str '_mcd_corred.mat'];
-
-dir = fullfile(root_dir,part3,part1,part2,data_filename);
-load(dir);
-mcd = eval(filename); % cool
-eval(['clear ' filename]);
+function label_rearranged = machine_label(mcd)
 
 %% get centerline
 n_frames = length(mcd);
@@ -63,7 +26,7 @@ end
 data = {length_of_centerline, length_of_Boundary_A, length_of_Boundary_B};
 titles = {'Length of Centerline', 'Length of Boundary A', 'Length of Boundary B'};
 
-for i = 1:length(data)
+for i = 1:1
     figure;
     histogram(data{i});
     xlabel('mm');
@@ -72,14 +35,22 @@ end
 
 %% Tukey test
 IQR_index = 2; % a super parameter % Smaller, stricter
-[number_of_up_outliers, number_of_down_outliers, mask_up, mask_down, up_limit, down_limit] = ...
+[number_of_up_outliers, number_of_down_outliers, mask_up, mask_down,...
+    up_limit, down_limit, upper_bound, lower_bound] = ...
     Tukey_test(length_of_centerline, IQR_index);
 % IQR_index_max = 20;
 % table = plot_number_of_outliers_vs_IQR_index(length_of_centerline, IQR_index_max);
 
+% visulize
+xline(upper_bound,'blue--','75% percentile', 'LineWidth', 2);
+xline(lower_bound,'blue--','25% percentile', 'LineWidth', 2);
+xline(up_limit, 'Color', 'red', 'LineStyle', '--', 'Label', 'up limit','LineWidth', 2);
+xline(down_limit, 'Color', 'red', 'LineStyle', '--', 'Label', 'down limit','LineWidth', 2);
+set(gcf, 'WindowState', 'maximized');
+
 %% label
 label = mask_down + mask_up * 2;
-label_rearranged = rearrange_label(label);
+% label_rearranged = rearrange_label(label);
 
 %% round 2
 mask_2 = label == 0;
@@ -96,15 +67,28 @@ end
 figure;
 histogram(Euclid_distance_between_head_and_tail);
 xlabel('mm');
-title(['Euclid distance between head and tail']);
+title(['f(Euclid distance between head and tail)']);
 
 %% Tukey test
-IQR_index = 3; % a super parameter % Smaller, stricter
+IQR_index = 2; % a super parameter % Smaller, stricter
 [number_of_up_outliers_2, number_of_down_outliers_2, mask_up_2, mask_down_2, up_limit_2, down_limit_2] = ...
     Tukey_test(Euclid_distance_between_head_and_tail, IQR_index);
-IQR_index_max = 20;
-table_2 = plot_number_of_outliers_vs_IQR_index(Euclid_distance_between_head_and_tail, IQR_index_max);
+% IQR_index_max = 20;
+% table_2 = plot_number_of_outliers_vs_IQR_index(Euclid_distance_between_head_and_tail, IQR_index_max);
 
 %% label
-label_2 = mask_down*11;
+label_v2 = label;
+
+label_2 = mask_down_2*1;
 label(indices_2) = label_2;
+label_rearranged = rearrange_label(label);
+
+%% label v2
+label_2_v2 = mask_down_2*11;
+label_v2(indices_2) = label_2_v2;
+label_rearranged_v2 = rearrange_label(label_v2);
+
+full_path_to_saved_csv = 'C:\Users\11097\Desktop\label_v2.csv';
+output_label(label_rearranged_v2, full_path_to_saved_csv)
+
+end

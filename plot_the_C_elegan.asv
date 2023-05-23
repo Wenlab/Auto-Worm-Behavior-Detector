@@ -2,7 +2,7 @@ function plot_the_C_elegan(mcd,start_frame,end_frame)
 
     fold_name = ['from_' num2str(start_frame) '_to_' num2str(end_frame)];
     full_path_to_the_folder = 'F:\1_learning\research\Colbert\fig';
-    fold_name = fullfile(full_path_to_the_folder,fold_name);
+    fold_name = ['fig\' fold_name];
     mkdir(fold_name);    
 
     count = 0;
@@ -28,8 +28,8 @@ function plot_the_C_elegan(mcd,start_frame,end_frame)
         scatter(boundary_B(1,:),boundary_B(2,:),'blue');
         
         file_name = ['frame_' num2str(i) '.png'];
-        full_path_to_the_file = fullfile(fold_name,file_name);
-        saveas(gcf,full_path_to_the_file)
+        file_path = fullfile(fold_name,file_name);
+        saveas(gcf,file_path)
         
         close;
     end

@@ -1,4 +1,6 @@
-function [number_of_up_outliers, number_of_down_outliers, mask_up, mask_down, up_limit, down_limit] = Tukey_test(train_feature, IQR_index)
+function [number_of_up_outliers, number_of_down_outliers, mask_up, mask_down,...
+    up_limit, down_limit, upper_bound, lower_bound] =...
+    Tukey_test(train_feature, IQR_index)
     
     % calculate Inter Quartile Range
     upper_percentile = 75;
