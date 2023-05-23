@@ -45,8 +45,18 @@ IQR_index = 2; % a super parameter % Smaller, stricter
 draw_4_lines(up_limit, down_limit, upper_bound, lower_bound);
 
 %% label
-label = mask_down + mask_up * 2;
-% label_rearranged = rearrange_label(label);
+length_threshold = 0.6; % mm
+t_threshold = 2; % s
+is_passed_2 = double_check_for_length_of_centerline(...
+    length_of_centerline,...
+    length_threshold,...
+    t_threshold);
+
+if is_passed_2
+    label = mask_down + mask_up * 2;
+else
+    label = mask_up * 2;
+end
 
 %% round 2
 mask_2 = label == 0;
@@ -76,19 +86,30 @@ IQR_index = 2; % a super parameter % Smaller, stricter
 % visulize
 draw_4_lines(up_limit_2, down_limit_2, upper_bound_2, lower_bound_2);
 
-%% label
-label_v2 = label;
-
-label_2 = mask_down_2*1;
-label(indices_2) = label_2;
-label_rearranged = rearrange_label(label);
-
 %% label v2
-label_2_v2 = mask_down_2*11;
+label_v2 = label;
+label_number = 11;
+
+label_2_v2 = mask_down_2 * label_number;
 label_v2(indices_2) = label_2_v2;
 label_rearranged_v2 = rearrange_label(label_v2);
 
 full_path_to_saved_csv = 'C:\Users\11097\Desktop\label_v2.csv';
 output_label(label_rearranged_v2, full_path_to_saved_csv)
+
+%% double check
+t_threshold_2 = 0.5; % s
+is_passed_2 = double_check_for_Euclidean_distance_of_head_and_tail(...
+    label_rearranged_v2,...
+    label_number,...
+    t_threshold_2);
+
+% if passed, add the result of  round 2 to label.
+if is_passed_2
+    label_2 = mask_down_2 * 1;
+    label(indices_2) = label_2;
+end
+
+label_rearranged = rearrange_label(label);
 
 end

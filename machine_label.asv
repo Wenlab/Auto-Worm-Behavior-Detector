@@ -42,15 +42,21 @@ IQR_index = 2; % a super parameter % Smaller, stricter
 % table = plot_number_of_outliers_vs_IQR_index(length_of_centerline, IQR_index_max);
 
 % visulize
-xline(upper_bound,'blue--','75% percentile', 'LineWidth', 2);
-xline(lower_bound,'blue--','25% percentile', 'LineWidth', 2);
-xline(up_limit, 'Color', 'red', 'LineStyle', '--', 'Label', 'up limit','LineWidth', 2);
-xline(down_limit, 'Color', 'red', 'LineStyle', '--', 'Label', 'down limit','LineWidth', 2);
-set(gcf, 'WindowState', 'maximized');
+draw_4_lines(up_limit, down_limit, upper_bound, lower_bound);
 
 %% label
-label = mask_down + mask_up * 2;
-% label_rearranged = rearrange_label(label);
+length_threshold = 0.6; % mm
+t_threshold = 2; % s
+is_passed = double_check_for_length_of_centerline(...
+    length_of_centerline,...
+    length_threshold,...
+    t_threshold)
+
+if is_passed
+    label = mask_down + mask_up * 2;
+else
+    label = mask_up * 2;
+end
 
 %% round 2
 mask_2 = label == 0;
@@ -71,10 +77,14 @@ title(['f(Euclid distance between head and tail)']);
 
 %% Tukey test
 IQR_index = 2; % a super parameter % Smaller, stricter
-[number_of_up_outliers_2, number_of_down_outliers_2, mask_up_2, mask_down_2, up_limit_2, down_limit_2] = ...
+[number_of_up_outliers_2, number_of_down_outliers_2, mask_up_2, mask_down_2,...
+    up_limit_2, down_limit_2, upper_bound_2, lower_bound_2] = ...
     Tukey_test(Euclid_distance_between_head_and_tail, IQR_index);
 % IQR_index_max = 20;
 % table_2 = plot_number_of_outliers_vs_IQR_index(Euclid_distance_between_head_and_tail, IQR_index_max);
+
+% visulize
+draw_4_lines(up_limit_2, down_limit_2, upper_bound_2, lower_bound_2);
 
 %% label
 label_v2 = label;
