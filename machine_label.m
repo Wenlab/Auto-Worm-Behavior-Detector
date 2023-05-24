@@ -207,4 +207,6 @@ for i = 2:length(label_rearranged)-1
 end
 label_rearranged = re_rearrange_label(label_rearranged);
 
+label_rearranged = integrate_into_reorientation_and_eliminate_short_reversal(label_rearranged);
+
 end
