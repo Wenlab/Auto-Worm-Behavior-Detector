@@ -23,6 +23,4 @@ function result = re_rearrange_label(label_rearranged_v4)
     % 将最后一行添加到结果中
     result = [result; currentRow];
 
-    disp(result);
-
 end
