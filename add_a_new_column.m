@@ -14,7 +14,7 @@ function [str,mask] = from_number_to_str(output,label_number)
     mask = logical([0 [output{2:end, 3}] == label_number]);
     switch label_number
         case 0
-            str = 'unlabeled';
+            str = 'unlabelled';
         case {1, 11}
             str = 'turn';
         case 2
