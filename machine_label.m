@@ -34,6 +34,13 @@ for i = 1:1
     title(['f(' titles{i} ')']);
 end
 
+%% process NaN
+label_number_outlier = 100;
+mask = isnan(length_of_centerline);
+label = zeros(n_frames,1);
+label(mask) = label_number_outlier;
+length_of_centerline = length_of_centerline(~mask);
+
 %% label turn: round 1, using length of the centerline
 % Tukey test
 
@@ -58,11 +65,11 @@ is_passed_2 = double_check_for_length_of_centerline(...
     length_of_centerline,...
     length_threshold,...
     t_threshold);
-label_number_outlier = 100;
+
 if is_passed_2
-    label = mask_down + mask_up * label_number_outlier;
+    label(~mask) = mask_down + mask_up * label_number_outlier;
 else
-    label = mask_up * label_number_outlier;
+    label(~mask) = mask_up * label_number_outlier;
 end
 
 %% label turn: round 2, using Euclidean distance between head and tail
@@ -200,27 +207,6 @@ for i = 2:length(label_rearranged)-1
 end
 label_rearranged = re_rearrange_label(label_rearranged);
 
-%% integrate turn and reversal into reorientation
-mask = label_rearranged(:,3) == 1 | label_rearranged(:,3) == 3;
-label_rearranged(mask,3) = 200;
-label_rearranged = re_rearrange_label(label_rearranged);
-t_threshold_run = 5; % s
-for i = 2:length(label_rearranged) - 1
-    if label_rearranged(i,3) == 2 &&...
-            label_rearranged(i,2) - label_rearranged(i,1) <= t_threshold_run*s2frame
-        label_rearranged(i,3) = 200;
-    end
-end
-label_rearranged = re_rearrange_label(label_rearranged);
-
-%% eliminate short reversal
-t_threshold_reorientation = 1; % s
-for i = 2:length(label_rearranged) - 1
-    if label_rearranged(i,3) == 200 &&...
-            label_rearranged(i,2) - label_rearranged(i,1) <= t_threshold_reorientation*s2frame
-        label_rearranged(i,3) = 2;
-    end
-end
-label_rearranged = re_rearrange_label(label_rearranged);
+label_rearranged = integrate_into_reorientation_and_eliminate_short_reversal(label_rearranged);
 
 end

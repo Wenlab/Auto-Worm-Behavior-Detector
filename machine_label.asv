@@ -34,6 +34,10 @@ for i = 1:1
     title(['f(' titles{i} ')']);
 end
 
+%% process NaN
+mask_1 = isnan(length_of_centerline);
+label = zeros(n
+
 %% label turn: round 1, using length of the centerline
 % Tukey test
 
@@ -200,19 +204,6 @@ for i = 2:length(label_rearranged)-1
 end
 label_rearranged = re_rearrange_label(label_rearranged);
 
-%% integrate turn and reversal into reorientation
-mask = label_rearranged(:,3) == 1 | label_rearranged(:,3) == 3;
-label_rearranged(mask,3) = 200;
-label_rearranged = re_rearrange_label(label_rearranged);
-t_threshold_run = 5;
-for i = 2:length(label_rearranged) - 1
-    if label_rearranged(i,3) == 2 &&...
-            label_rearranged(i,2) - label_rearranged(i,1) <= t_threshold_run*s2frame
-        label_rearranged(i,3) = 200;
-    end
-end
-label_rearranged = re_rearrange_label(label_rearranged);
-
-%%
+label_rearranged = integrate_into_reorientation_and_eliminate_short_reversal(label_rearranged);
 
 end
