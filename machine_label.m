@@ -34,6 +34,13 @@ for i = 1:1
     title(['f(' titles{i} ')']);
 end
 
+%% process NaN
+label_number_outlier = 100;
+mask = isnan(length_of_centerline);
+label = zeros(n_frames,1);
+label(mask) = label_number_outlier;
+length_of_centerline = length_of_centerline(~mask);
+
 %% label turn: round 1, using length of the centerline
 % Tukey test
 
@@ -58,11 +65,11 @@ is_passed_2 = double_check_for_length_of_centerline(...
     length_of_centerline,...
     length_threshold,...
     t_threshold);
-label_number_outlier = 100;
+
 if is_passed_2
-    label = mask_down + mask_up * label_number_outlier;
+    label(~mask) = mask_down + mask_up * label_number_outlier;
 else
-    label = mask_up * label_number_outlier;
+    label(~mask) = mask_up * label_number_outlier;
 end
 
 %% label turn: round 2, using Euclidean distance between head and tail
