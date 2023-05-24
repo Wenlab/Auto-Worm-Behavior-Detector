@@ -7,10 +7,8 @@ length_of_centerline = zeros(n_frames,1);
 length_of_Boundary_A = zeros(n_frames,1);
 length_of_Boundary_B = zeros(n_frames,1);
 centerline_all = cell(n_frames,1);
-count = 0;
 
 for i = 1:n_frames
-    count = count + 1;
     
     centerline = convertCoordinates(mcd(i).SegmentedCenterline, mcd(i).StagePosition);
     boundary_A = convertCoordinates(mcd(i).BoundaryA, mcd(i).StagePosition);
@@ -207,6 +205,7 @@ for i = 2:length(label_rearranged)-1
 end
 label_rearranged = re_rearrange_label(label_rearranged);
 
-label_rearranged = integrate_into_reorientation_and_eliminate_short_reversal(label_rearranged);
+% for taxis
+% label_rearranged = integrate_into_reorientation_and_eliminate_short_reversal(label_rearranged);
 
 end
