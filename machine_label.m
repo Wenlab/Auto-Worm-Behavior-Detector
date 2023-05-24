@@ -44,7 +44,7 @@ IQR_index = 2; % a super parameter % Smaller, stricter
 % visulize
 draw_4_lines(up_limit, down_limit, upper_bound, lower_bound);
 
-%% label
+%% double check
 length_threshold = 0.6; % mm
 t_threshold = 2; % s
 is_passed_2 = double_check_for_length_of_centerline(...
@@ -52,10 +52,11 @@ is_passed_2 = double_check_for_length_of_centerline(...
     length_threshold,...
     t_threshold);
 
+label_number_outlier = 100;
 if is_passed_2
-    label = mask_down + mask_up * 2;
+    label = mask_down + mask_up * label_number_outlier;
 else
-    label = mask_up * 2;
+    label = mask_up * label_number_outlier;
 end
 
 %% round 2

@@ -6,6 +6,9 @@ header = {'start frame', 'end frame', 'label'};
 % Combine the header row and result array
 output = [header; num2cell(label_rearranged)];
 
+% add an explanation for each number of label
+output = add_a_new_column(output);
+
 % Save the output to a CSV file
 writecell(output, full_path_to_saved_csv, 'Delimiter', ',');
 
