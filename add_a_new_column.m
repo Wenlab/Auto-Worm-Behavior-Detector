@@ -1,7 +1,7 @@
 function output = add_a_new_column(output)
 
     output(:, 4) = output(:, 3);
-    label_number = [0,1,11,100];
+    label_number = [0,1,11,2,3,100];
     for i = 1:numel(label_number)
         [str,mask] = from_number_to_str(output, label_number(i));
         output(mask, 4) = {str};
