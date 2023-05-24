@@ -13,7 +13,7 @@ spline_p = 0.0005; % [0,1], 0 is linear fit (using Least Square), 1 is smooth co
 n_frames = iend-istart+1; % number of frames
 n_curvpts = 100; % number of curve points, also number of the points of the centerline
 
-curvature_data = zeros(n_frames,n_curvpts);
+curvature_of_centerline_all = zeros(n_frames,n_curvpts);
 angle_data = zeros(n_frames,n_curvpts+1);
 time = zeros(n_frames,1);
 
@@ -53,7 +53,7 @@ for j = 1:n_frames
     
     % use unwrap to get the delta theta
     curv = unwrap(diff(theta,1));
-    curvature_data(j,:) = curv';    
+    curvature_of_centerline_all(j,:) = curv';    
     
 end
 
@@ -76,7 +76,7 @@ bodyfilter = str2double(answer2{2});
 
 %% plot the curvature diagram to verify the wave transmission(from head to tail)
 h = fspecial('average', [timefilter bodyfilter]); % The average value of the neighborhood around each pixel was calculated to smooth the data
-curvdatafiltered = imfilter(curvature_data*100,  h , 'replicate'); % N-D filtering of multidimensional images
+curvdatafiltered = imfilter(curvature_of_centerline_all*100,  h , 'replicate'); % N-D filtering of multidimensional images
 
 figure(2);
 imagesc(curvdatafiltered(:,:)); % imagesc is MATLAB function
@@ -85,27 +85,20 @@ colorbar;
 caxis([-10 10]);
 
 hold on;
-% plot([origin-2*radius,origin+worm_length],[j1,j1],'c-');
-% plot([origin-2*radius,origin+worm_length],[j2,j2],'c-');
-
 title('cuvature diagram');
-
 set(gca,'XTICK',[1 20 40 60 80 100]);
 set(gca,'XTICKLABEL',[0 0.2 0.4 0.6 0.8 1]);
-
-%set(gca,'YTICK',1:2*fps:numframes);
 y_tick=get(gca,'YTICK');
 set(gca,'YTICKLABEL',time(y_tick));
-
 xlabel('fractional distance along the centerline (head=0; tail=1)');
 ylabel('time (s)');
 
 %% extract the curvature of head and body
 for i = 1:5
-    CH(:,i) = mean(curvature_data(:,i:i+9),2); % 0-15% head; curvature_data is N*100, which means N samples and 100 features; dim = 2 is mean for each row
+    CH(:,i) = mean(curvature_of_centerline_all(:,i:i+9),2); % 0-15% head; curvature_data is N*100, which means N samples and 100 features; dim = 2 is mean for each row
 end
 ch = mean(CH,2).*100; % head; why * 100?
-cb = mean(curvature_data(:,40:60),2).*100; % 40-60% head
+cb = mean(curvature_of_centerline_all(:,40:60),2).*100; % 40-60% head
 
 %% mark which clip sequence you're analyzing and plot curvature
 % answer3 = inputdlg('Enter clip sequence:');
@@ -121,7 +114,7 @@ ylabel('curvature*L')
 legend('curvature of head','curvature of body')
 title(title_of_fig_1)
 % saveas(gcf,char(name))
-fs = size(curvature_data,1)/(time(end)-time(1));
+fs = size(curvature_of_centerline_all,1)/(time(end)-time(1));
 
 %% vmd of the head
 [imfv,residualv,infov] = vmd(ch); % Variational mode decomposition

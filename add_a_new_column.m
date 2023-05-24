@@ -17,6 +17,10 @@ function [str,mask] = from_number_to_str(output,label_number)
             str = 'unlabeled';
         case {1, 11}
             str = 'turn';
+        case 2
+            str = 'forward';
+        case 3
+            str = 'reversal';
         case 100
             str = 'outlier';
     end
