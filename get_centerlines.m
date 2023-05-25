@@ -1,3 +1,4 @@
+% get centerlines after unit conversion
 function [centerline_all,boundary_A_all,boundary_B_all] = get_centerlines(mcd,start_frame,end_frame)
     
     n_frames = end_frame - start_frame + 1;

@@ -11,7 +11,7 @@ label = zeros(n_frames,1);
 [label,length_of_centerline] = process_nan(label,length_of_centerline);
 
 %%
-label = beyond_the_edge(mcd,label);
+label = beyond_the_edge(mcd,label);t
 
 %% label turn: round 1, using length of the centerline
 label = Tukey_test_of_length_of_centerline(label,length_of_centerline);

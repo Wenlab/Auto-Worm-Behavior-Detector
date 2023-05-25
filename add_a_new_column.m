@@ -6,6 +6,13 @@ function output = add_a_new_column(output)
         [str,mask] = from_number_to_str(output, label_number(i));
         output(mask, 4) = {str};
     end
+    output(:, 3) = [];
+    
+    global s2frame
+    output{1,4} = 'time (s)';
+    for i = 2:size(output,1)
+        output{i,4} = round((output{i,2} - output{i,1})/s2frame,2);
+    end
 
 end
 
