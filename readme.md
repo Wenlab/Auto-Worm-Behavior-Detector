@@ -26,6 +26,8 @@ basic principle for machine label:
 details
 
 * process nan: mark nan as outlier
+* detect head tail human flip.
+* detect beyond the edge.
 * label turn, using Tukey test of the length of the centerline.
   * double check for Tukey test: I need frames below median*0.75 > 132
 * label turn, using Tukey test of the Euclidean distance between the head and tail.
@@ -50,7 +52,21 @@ Performance measure of the algorithm
 
 ---
 
-tomorrow
+future
 
-* beyond edge
-* 杂质
+* impurity
+
+---
+
+User Guide
+
+* machine_label.csv给出了 machine label
+
+* beyond_the_edge.csv给出了线虫不在框里的帧数
+* head_tail_human_flip.csv 给出了头尾人工翻转的帧数
+* figure1.png给出了Tukey test for the length of the centerline
+* figure2.png给出了Tukey test for the Euclidean distance between the head and tail
+* tips
+  * 如果实验时的虫子较大，beyond_the_edge出现会更频繁
+  * 时间<1s的turn很可能时beyond_the_edge，请人工检查
+  * 在这一帧之前的一段时间的machine label很可能是错的，请人工检查

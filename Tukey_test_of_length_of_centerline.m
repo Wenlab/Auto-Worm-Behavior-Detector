@@ -5,6 +5,12 @@ global label_number_outlier
 mask = label == 0; % only label the unlabelled
 length_of_centerline = length_of_centerline(mask);
 
+% histogram
+figure;
+histogram(length_of_centerline);
+xlabel('mm');
+title('f(Length of Centerline)');
+
 % adjust IQR_index
 % IQR_index_max = 20;
 % table = plot_number_of_outliers_vs_IQR_index(length_of_centerline, IQR_index_max);
