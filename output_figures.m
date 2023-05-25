@@ -1,4 +1,4 @@
-function output_figures(full_path_to_saved_csv)
+function output_figures(folder_of_saved_files)
 
 % Get the handles of all open figures
 figHandles = findall(0, 'Type', 'figure');
@@ -13,7 +13,7 @@ for i = numel(figHandles) - 1:-1:1
     figure(figHandles(i));
     
     % Save the figure
-    saveas(figHandles(i), fullfile(full_path_to_saved_csv, fileName));
+    saveas(figHandles(i), fullfile(folder_of_saved_files, fileName));
     
 end
 

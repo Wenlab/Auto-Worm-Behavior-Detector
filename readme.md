@@ -38,3 +38,19 @@ details
 * process neighbor of turns
   * last neighbor should not be short forward
   * next neighbor should not be short reversal
+
+---
+
+Performance measure of the algorithm
+
+* accuracy: depending on definition of forward, reversal and turn.
+* precision （查准率） and recall （查全率）: recall is more important than precision in this task and this algorithm has high recall.
+* temporal resolution
+  * Theoretically, 1 frame for turn and 10 frames for forward and reversal.
+
+---
+
+tomorrow
+
+* beyond edge
+* 杂质

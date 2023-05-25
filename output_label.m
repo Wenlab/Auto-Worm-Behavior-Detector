@@ -1,4 +1,4 @@
-function output_label(label_rearranged, full_path_to_saved_csv)
+function output_label(label_rearranged, folder_of_saved_files, filename)
 
 % Define the header row
 header = {'start frame', 'end frame', 'label'};
@@ -10,7 +10,8 @@ output = [header; num2cell(label_rearranged)];
 output = add_a_new_column(output);
 
 % Save the output to a CSV file
-writecell(output, full_path_to_saved_csv, 'Delimiter', ',');
+full_path = fullfile(folder_of_saved_files,filename);
+writecell(output, full_path, 'Delimiter', ',');
 
 disp('CSV file saved successfully.');
 

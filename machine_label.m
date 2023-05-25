@@ -8,10 +8,13 @@ label = zeros(n_frames,1);
 [length_of_centerline,centerline_all] = get_data_needed(mcd);
 
 %% process NaN
-[label,length_of_centerline] = process_nan(label,length_of_centerline);
+label = process_nan(label,length_of_centerline);
 
-%%
-label = beyond_the_edge(mcd,label);
+%% bonus: label head-tail-human-flip
+head_tail_human_flip(mcd, label);
+
+%% protect beyond the edge when labelling turn
+label = beyond_the_edge(mcd, label);
 
 %% label turn: round 1, using length of the centerline
 label = Tukey_test_of_length_of_centerline(label,length_of_centerline);
@@ -20,6 +23,8 @@ label = Tukey_test_of_length_of_centerline(label,length_of_centerline);
 label = Tukey_test_of_distance_between_head_and_tail(label,centerline_all);
 
 %% label forward and reversal, using phase trajectory
+global label_number_beyond_edge
+label(label == label_number_beyond_edge) = 0; % end protection
 frame_window = 10; % number of frames in each window
 label = use_phase_trajectory_to_label_forward_and_reversal(mcd,label,frame_window);
 label_rearranged = rearrange_label(label);

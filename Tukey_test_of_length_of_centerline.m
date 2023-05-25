@@ -2,6 +2,9 @@ function label = Tukey_test_of_length_of_centerline(label,length_of_centerline)
 
 global label_number_outlier
 
+mask = label == 0; % only label the unlabelled
+length_of_centerline = length_of_centerline(mask);
+
 % adjust IQR_index
 % IQR_index_max = 20;
 % table = plot_number_of_outliers_vs_IQR_index(length_of_centerline, IQR_index_max);
@@ -25,7 +28,6 @@ is_passed_2 = double_check_for_length_of_centerline(...
     length_threshold,...
     t_threshold);
 
-mask = label == 0; % only label the unlabelled
 if is_passed_2
     label(mask) = mask_down + mask_up * label_number_outlier;
 else
