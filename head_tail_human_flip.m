@@ -12,14 +12,15 @@ mask = label == 0; % only label the unlabelled
 label_flip_temp = zeros(sum(mask),1);
 centerline_all = centerline_all(mask);
 
-for i = 1:numel(label_flip_temp)-1
+for i = 2:numel(label_flip_temp)-1
     head_x = centerline_all{i,1}(1,1);
     head_y = centerline_all{i,1}(2,1);
     tail_next_x = centerline_all{i+1,1}(1,100);
     tail_next_y = centerline_all{i+1,1}(2,100);
     pixel_threshold = 5;
     if abs(head_x - tail_next_x) <= pixel_threshold && abs(head_y - tail_next_y) <= pixel_threshold
-        label_flip_temp(i) = label_number_human_flip; % virtual Dub starts from frame 0.
+        label_flip_temp(i - 1) = label_number_human_flip; % virtual Dub starts from frame 0.
+        label_flip_temp(i) = label_number_human_flip;
     end
 end
 
