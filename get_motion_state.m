@@ -16,7 +16,7 @@ function state = get_motion_state(curvature_of_centerline_all, eigen_basis, fram
     dphase = gradient(phase_unwrap_sm, 0.01);
     state = zeros(floor(L / frame_window) + 1, 1);
     
-    for i = 1:numel(state)
+    for i = 1:numel(state) % Here, the algorithm is serial, so it can be designed for online label of behaviors.
         start_idx = (i - 1) * frame_window + 1;
         end_idx = min(i * frame_window, L);
         mean_ps = mean(dphase(start_idx:end_idx));
