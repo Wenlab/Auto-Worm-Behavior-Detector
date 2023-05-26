@@ -75,8 +75,8 @@ Shortly speaking, the success of this algorithm lies on 2 things
 
 If the beyond edge situation is rare, the histogram will look like:
 
-![figure1_NC_w1](D:\Public_repository\code_of_Colbert_Yixuan_Li\markdown figs\figure1_NC_w1.png)
+<img src = "/markdown figs/figure1_NC_w1.png" width=100% align="center">
 
 If the beyond edge situation is common, the histogram will look like:
 
-![figure1_WG_w1](D:\Public_repository\code_of_Colbert_Yixuan_Li\markdown figs\figure1_WG_w1.png)
+<img src = "/markdown figs/figure1_WG_w1.png" width=100% align="center">
