@@ -1,5 +1,7 @@
 # User Guide
 
+This repository is an algorithm to label the behaviours of C.elegans under [the CoLBeRT system](https://github.com/samuellab/mindcontrol).
+
 The input of the algorithm is mcd.m, which can be obtained from .yaml file.
 
 The output of the algorithm are 5 files:
