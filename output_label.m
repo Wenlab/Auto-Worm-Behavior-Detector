@@ -13,6 +13,6 @@ output = add_a_new_column(output);
 full_path = fullfile(folder_of_saved_files,filename);
 writecell(output, full_path, 'Delimiter', ',');
 
-disp('CSV file saved successfully.');
+disp('csv file saved successfully.');
 
 end
