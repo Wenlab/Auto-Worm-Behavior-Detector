@@ -15,8 +15,8 @@ end
 % histogram
 figure;
 histogram(Euclid_distance_between_head_and_tail);
-xlabel('mm');
-title('f(Euclid distance between head and tail)');
+xlabel('Euclidean distance between the head and the tail (mm)');
+title('f(Euclidean distance between the head and the tail)');
 
 %% Tukey test
 

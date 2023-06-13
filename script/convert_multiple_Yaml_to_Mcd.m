@@ -5,12 +5,12 @@ clear;clc;close all;
 cdpath = mfilename('fullpath');
 cdpath = fileparts(cdpath);
 cd(cdpath);% enter .m filepath
-addpath(genpath('..\'));
+addpath(genpath('..\')); % add path to use classes
 
-%chose the folder to analyze
+% chose the folder to analyze
 path=uigetdir('..\data');
 
-%get .yaml file location
+% get .yaml file location
 list = GetAllSubfolderFilename(path,'*.yaml');
 
 [indx,tf] = listdlg('ListString',list,'ListSize',[500,200],...

@@ -8,8 +8,8 @@ length_of_centerline = length_of_centerline(mask);
 % histogram
 figure;
 histogram(length_of_centerline);
-xlabel('mm');
-title('f(Length of Centerline)');
+xlabel('Length of the centerline (mm)');
+title('f(Length of the centerline)');
 
 % adjust IQR_index
 % IQR_index_max = 20;

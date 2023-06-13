@@ -4,7 +4,7 @@ function output_figures(folder_of_saved_files)
 figHandles = findall(0, 'Type', 'figure');
 
 % Loop through each figure and save it
-for i = numel(figHandles) - 1:-1:1
+for i = numel(figHandles) - 1:-1:1 % the app will be recognized as a fig, so from end to start
     
     % Generate a unique file name for each figure
     fileName = sprintf('figure%d.png', numel(figHandles) - i);
