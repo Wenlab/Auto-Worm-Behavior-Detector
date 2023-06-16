@@ -47,7 +47,7 @@ for i = start:len
     title_of_fig_1 = [group ' ' part3];
     
     count = 0;
-    curvature_of_head = pj_code_Yixuan_Li_return_ch(mcd,filename,title_of_fig_1,run_number,istart,iend);
+    curvature_of_head = pj_code_Yixuan_Li_modified_return_ch(mcd,filename,title_of_fig_1,run_number,istart,iend);
     human_label{i,6} = curvature_of_head;
     
 end

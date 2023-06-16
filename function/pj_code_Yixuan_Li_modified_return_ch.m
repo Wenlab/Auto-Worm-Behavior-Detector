@@ -1,59 +1,58 @@
-function pj_code_Yixuan_Li(mcd,filename,title_of_fig_1,run_number,istart,iend)
+function ch = pj_code_Yixuan_Li_modified_return_ch(mcd,~,~,~,istart,iend)
 
 %% choose the clip frames and calculate variables
 % 0-15% head 40-60% body
 
-spline_p = 0.0005; % [0,1], 0 is linear fit (using Least Square), 1 is smooth connecting
-
 % answer1 = inputdlg({'Start frame', 'End frame'}, '', 1);
 % istart = str2num(answer1{1});
 % iend = str2num(answer1{2});
+spline_p = 0.0005;%[0,1] 越靠近0越接近数据点，越接近1越接近自然三次样条插值
 % flip = str2num(answer{4}); %头尾翻转，不需要
 
-n_frames = iend-istart+1; % number of frames
-n_curvpts = 100; % number of curve points, also number of the points of the centerline
+numframes=iend-istart+1; % number of frames
+numcurvpts=100; % number of curve points, also number of the points of the centerline
+% proximity = 50; %useless var
 
-curvature_of_centerline_all = zeros(n_frames,n_curvpts);
-angle_data = zeros(n_frames,n_curvpts+1);
-time = zeros(n_frames,1);
+curvdata=zeros(numframes,numcurvpts);
+angle_data = zeros(numframes,numcurvpts+1);
+time=zeros(numframes,1);
 
-Head_position = mcd(istart).Head;
-Tail_position = mcd(istart).Tail;
+Head_position=mcd(istart).Head;
+Tail_position=mcd(istart).Tail;
 
 worm_length=0; % body length in terms of pixels
 
 j1=0;
 j2=0;
 
-for j = 1:n_frames
+% Centerline=zeros(numframes,100,2);%useless var
+
+for j = 1:numframes
     
-    % basic
     i = istart+j-1;
-    centerline = reshape(mcd(i).SegmentedCenterline,2,[]);
+    centerline=reshape(mcd(i).SegmentedCenterline,2,[]);%分装x轴和y轴坐标
+    %     Centerline(j,:,1)=centerline(1,:);
+    %     Centerline(j,:,2)=centerline(2,:);
     time(j)=mcd(i).TimeElapsed; % time of this frame
     
-    % calculate d of the centerline
-    df = diff(centerline,1,2); % Y = diff(X,n,dim) dim = 2 means  by rows
-    d = cumsum([0, sqrt([1 1]*(df.^2))]);
-    worm_length = worm_length + d(end);
+    df = diff(centerline,1,2); % diff求差分 Y = diff(X,n,dim) dim=2,by rows
+    t = cumsum([0, sqrt([1 1]*(df.*df))]);%here [0,[1:100]] adds one column by the head, thus the matrix becomes [0:101]
+    worm_length=worm_length+t(end); % calculate worm length.
     
-    % use csaps to do interpolation of the centerline, cubic spline interpolation
-    f = csaps(d,centerline,spline_p); % Cubic smoothing spline
-    centerline_2 = fnval(f, d);
-    df_2 = diff(centerline_2,1,2);
-    d_2 = cumsum([0, sqrt([1 1]*(df_2.^2))]);
+    f = csaps(t,centerline,spline_p); % Cubic smoothing spline; usually, spline_p = 0.0005;
+    cv2 = fnval(f, t)'; % Evaluate spline function: provides the value f(t) at the points in t of the spline function f
+    df2 = diff(cv2,1,1);
+    df2p = df2';
     
-    % use interp1 to do interpolation of the centerline, linear interpolation
-    centerline_3 = interp1(d_2+.00001*[0:length(d_2)-1], centerline_2', [0:(d_2(end)-1)/(n_curvpts+1):(d_2(end)-1)]);
-    df_3 = diff(centerline_3,1,1); 
+    splen = cumsum([0, sqrt([1 1]*(df2p.*df2p))]);
+    cv2i = interp1(splen+.00001*[0:length(splen)-1],cv2, [0:(splen(end)-1)/(numcurvpts+1):(splen(end)-1)]);%作插值?
     
-    % use atan2 and unwrap to get the angle
-    theta = unwrap(atan2(-df_3(:,2), df_3(:,1))); % Why there is a '-' ??? ; and here should be no unwrap; if you only want d theta, the '-'brings no mistake 
-    angle_data(j,:) = theta';
+    df2 = diff(cv2i,1,1);
+    atdf2 = unwrap(atan2(-df2(:,2), df2(:,1)));%unwrap 相位解卷绕（解决跨360问题） atan2 四象限反正切，输出角度[-π, π]
+    angle_data(j,:) = atdf2';
     
-    % use unwrap to get the delta theta
-    curv = unwrap(diff(theta,1));
-    curvature_of_centerline_all(j,:) = curv';    
+    curv = unwrap(diff(atdf2,1));
+    curvdata(j,:) = curv';%figure(1) key var
     
 end
 
@@ -63,7 +62,7 @@ cmap(:,2)=0;
 origin=10;
 radius=8;
 
-worm_length = worm_length/n_frames; % average
+worm_length=worm_length/numframes;
 
 % for filter
 % answer2 = inputdlg({'time filter', 'body coord filter', 'mean=0, median=1'}, '', 1, {num2str(5), num2str(10), '0'});
@@ -75,30 +74,37 @@ timefilter = str2double(answer2{1});
 bodyfilter = str2double(answer2{2});
 
 %% plot the curvature diagram to verify the wave transmission(from head to tail)
-h = fspecial('average', [timefilter bodyfilter]); % The average value of the neighborhood around each pixel was calculated to smooth the data
-curvdatafiltered = imfilter(curvature_of_centerline_all*100,  h , 'replicate'); % N-D filtering of multidimensional images
+% h = fspecial('average', [timefilter bodyfilter]); % The average value of the neighborhood around each pixel was calculated to smooth the data
+% curvdatafiltered = imfilter(curvdata*100,  h , 'replicate'); % N-D filtering of multidimensional images
 
-figure(2);
-imagesc(curvdatafiltered(:,:)); % imagesc is MATLAB function
-colormap(cmap);
-colorbar;
-caxis([-10 10]);
+% figure(2);
+% imagesc(curvdatafiltered(:,:)); % imagesc is MATLAB function
+% colormap(cmap);
+% colorbar;
+% caxis([-10 10]);
 
-hold on;
-title('cuvature diagram');
-set(gca,'XTICK',[1 20 40 60 80 100]);
-set(gca,'XTICKLABEL',[0 0.2 0.4 0.6 0.8 1]);
-y_tick=get(gca,'YTICK');
-set(gca,'YTICKLABEL',time(y_tick));
-xlabel('fractional distance along the centerline (head=0; tail=1)');
-ylabel('time (s)');
+% hold on;
+% plot([origin-2*radius,origin+worm_length],[j1,j1],'c-');
+% plot([origin-2*radius,origin+worm_length],[j2,j2],'c-');
+
+% title('cuvature diagram');
+
+% set(gca,'XTICK',[1 20 40 60 80 100]);
+% set(gca,'XTICKLABEL',[0 0.2 0.4 0.6 0.8 1]);
+
+%set(gca,'YTICK',1:2*fps:numframes);
+% y_tick=get(gca,'YTICK');
+% set(gca,'YTICKLABEL',time(y_tick));
+% 
+% xlabel('fractional distance along the centerline (head=0; tail=1)');
+% ylabel('time (s)');
 
 %% extract the curvature of head and body
 for i = 1:5
-    CH(:,i) = mean(curvature_of_centerline_all(:,i:i+9),2); % 0-15% head; curvature_data is N*100, which means N samples and 100 features; dim = 2 is mean for each row
+    CH(:,i) = mean(curvdata(:,i:i+9),2); % 0-15% head
 end
-ch = mean(CH,2).*100; % head; why * 100?
-cb = mean(curvature_of_centerline_all(:,40:60),2).*100; % 40-60% head
+ch = mean(CH,2).*100; % head
+cb = mean(curvdata(:,40:60),2).*100; % 40-60% head
 
 %% mark which clip sequence you're analyzing and plot curvature
 % answer3 = inputdlg('Enter clip sequence:');
@@ -106,46 +112,45 @@ answer3 = cell(1,1);
 answer3{1,1} = '1';
 
 %% figure 1
-figure(1)
-x = istart:iend;%statframe endframe
-plot(time,ch,'red',time,cb,'blue')
-xlabel('time (s)')
-ylabel('curvature*L')
-legend('curvature of head','curvature of body')
-title(title_of_fig_1)
-% saveas(gcf,char(name))
-fs = size(curvature_of_centerline_all,1)/(time(end)-time(1));
+% figure(1)
+% x = istart:iend;%statframe endframe
+% plot(time,ch,'red',time,cb,'blue')
+% xlabel('time (s)')
+% ylabel('curvature*L')
+% legend('curvature of head','curvature of body')
+% title(title_of_fig_1)
+% % saveas(gcf,char(name))
 
 %% vmd of the head
-[imfv,residualv,infov] = vmd(ch); % Variational mode decomposition
-% plot each imf
-figure(3);
-for i=1:length(imfv(1,:))    
-    subplot(3,2,i);
-    plot(time,imfv(:,i), 'r');
-    title(['IMF_' num2str(i)])
-    xlabel('time (s)');
-    ylabel('curvature*L');
-end
-
-imfhh = imfv(:,2)+imfv(:,3)+imfv(:,4); % 1 is noise, so just 2+3+4
-imfhf = imfv(:,2)+imfv(:,3)+imfv(:,4)+imfv(:,5);
+% [imfv,~,~] = vmd(ch); % Variational mode decomposition
+% % plot each imf
+% figure(3);
+% for i=1:length(imfv(1,:))    
+%     subplot(3,2,i);
+%     plot(time,imfv(:,i), 'r');
+%     title(['IMF_' num2str(i)])
+%     xlabel('time (s)');
+%     ylabel('curvature*L');
+% end
+% 
+% imfhh = imfv(:,2)+imfv(:,3)+imfv(:,4); % 1 is noise, so just 2+3+4
+% imfhf = imfv(:,2)+imfv(:,3)+imfv(:,4)+imfv(:,5);
 
 %% figure 4
-figure(4)
-plot(time,imfv(:,5), 'red',time,cb, 'blue');
-xlabel('time (s)')
-ylabel('curvature*L')
-legend('IMF5','curvature of body')
-title('IMF5 vs curvature of body')
+% figure(4)
+% plot(time,imfv(:,5), 'red',time,cb, 'blue');
+% xlabel('time (s)')
+% ylabel('curvature*L')
+% legend('IMF5','curvature of body')
+% title('IMF5 vs curvature of body')
 
 %% figure 5
-figure(5)
-plot(time,imfv(:,5), 'red',time,imfhh, 'blue');
-xlabel('time (s)')
-ylabel('curvature*L')
-legend('IMF5','IMF2 + IMF3 + IMF4')
-title('IMF2 + IMF3 + IMF4 vs IMF 5')
+% figure(5)
+% plot(time,imfv(:,5), 'red',time,imfhh, 'blue');
+% xlabel('time (s)')
+% ylabel('curvature*L')
+% legend('IMF5','IMF2 + IMF3 + IMF4')
+% title('IMF2 + IMF3 + IMF4 vs IMF 5')
 
 %% plot original signal minus imfs
 % figure(4)
@@ -271,15 +276,15 @@ title('IMF2 + IMF3 + IMF4 vs IMF 5')
 % xlabel('raw data minus 1,2,3,4,5')
 % ylabel('Hausdorff Distance')
 
-folder_name = fullfile('C:\Users\11097\Desktop\figure',filename,['run_' num2str(run_number)]);
-mkdir(folder_name);
-
-for i = [1,2,3,4,5]
-    figure(i);  % 切换到第i个图
-    % 这里是你的绘图代码，确保当前图是你想保存的图
-    file_name_fig = sprintf('fig%d.png', i);  % 指定保存文件的名称
-    full_file_path = fullfile(folder_name, file_name_fig);
-    saveas(gcf, full_file_path);  % 保存当前图为PNG格式文件
-end
+% folder_name = fullfile('C:\Users\11097\Desktop\figure',filename,['run_' num2str(run_number)]);
+% mkdir(folder_name);
+% 
+% for i = [1,2,3,4,5]
+%     figure(i);  % 切换到第i个图
+%     % 这里是你的绘图代码，确保当前图是你想保存的图
+%     file_name_fig = sprintf('fig%d.png', i);  % 指定保存文件的名称
+%     full_file_path = fullfile(folder_name, file_name_fig);
+%     saveas(gcf, full_file_path);  % 保存当前图为PNG格式文件
+% end
 
 end

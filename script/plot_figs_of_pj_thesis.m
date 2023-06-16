@@ -6,12 +6,12 @@ switch option
     case 1
         human_label_file_name = 'human_label\human_label_N2.mat';
         start = 2;
-        root_dir = 'C:\Users\11097\Nutstore\1\DATA_Wenlab\23.3.10 - N2 taxis Colbert - without rawdata\data';
+        root_dir = 'C:\Users\11097\Nutstore\1\DATA_Wenlab\23.3.10 - N2 taxis Colbert - wo rawdata\data';
         group = 'N2';
     case 2
         human_label_file_name = 'human_label\human_label_RIA.mat';
         start = 2;
-        root_dir = 'C:\Users\11097\Nutstore\1\DATA_Wenlab\23.5.12 - RIA-twk18 Colbert no gradient - without rawdata\data';
+        root_dir = 'C:\Users\11097\Nutstore\1\DATA_Wenlab\23.5.12 - RIA-twk18 Colbert no gradient - wo rawdata\data';
         group = 'RIA-twk18';
 end
 load(human_label_file_name)
@@ -46,6 +46,6 @@ for i = start:len
         part3 = 'Ctl';
     end
     title_of_fig_1 = [group ' ' part3];
-    pj_code_Yixuan_Li(mcd,filename,title_of_fig_1,run_number,start_frame,end_frame)
+    pj_code_Yixuan_Li_modified(mcd,filename,title_of_fig_1,run_number,start_frame,end_frame)
     
 end
