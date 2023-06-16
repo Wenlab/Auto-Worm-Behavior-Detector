@@ -2,12 +2,6 @@ clear;clc;close all;
 
 global folder_of_saved_files
 
-% loading filepath of the code.m
-cdpath = mfilename('fullpath');
-cdpath = fileparts(cdpath);
-cd(cdpath);% enter .m filepath
-addpath(genpath('..\')); % add path to use classes
-
 % chose the folder of files
 path = uigetdir;
 

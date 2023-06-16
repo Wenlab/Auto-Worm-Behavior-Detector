@@ -25,12 +25,12 @@ label = Tukey_test_of_distance_between_head_and_tail(label,centerline_all);
 %% label forward and reversal, using phase trajectory
 global label_number_beyond_edge
 label(label == label_number_beyond_edge) = 0; % end protection
-frame_window = 10; % number of frames in each window
+global frame_window
 label = use_phase_trajectory_to_label_forward_and_reversal(mcd,label,frame_window);
 label_rearranged = rearrange_label(label);
 
 %% smooth to eliminate fluctuations
-label_rearranged = smooth_to_eliminate_fluctuation(label_rearranged,frame_window);
+label_rearranged = check_unlabelled(label_rearranged,frame_window);
 
 %% check neighbor of turns
 label_rearranged = check_neighbor_of_turn(label_rearranged);

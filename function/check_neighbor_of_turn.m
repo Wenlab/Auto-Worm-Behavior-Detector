@@ -2,7 +2,7 @@ function label_rearranged = check_neighbor_of_turn(label_rearranged)
 
 global s2frame
 t_threshold_forward = 1.5; % s
-t_threshold_reversal = 1;
+t_threshold_reversal = 1; % s
 for i = 2:length(label_rearranged)-1    
     if label_rearranged(i,3) == 1
         

@@ -13,18 +13,22 @@ The output of the algorithm are 5 files:
 * figure1.png gives Tukey test for the length of the centerline.
 * figure2.png gives Tukey test for the Euclidean distance between the head and the tail.
 
-tips
+flow diagram:
+
+<img src = "/markdown figs/flow diagram.png" width=100% align="center">
+
+The parameters
+
+* frame window: if the frame window is $x$, then the temporal resolution is $x$ frames.
+
+
+
+# tips
 
 * **A turn less than 1 second is likely to be tail beyond edge situation**. Please check carefully.
 * **Machine labels of a certain period of time before the frames of flipping head and tail are likely to be incorrect**. Please check carefully.
 * If the C.elegans used in the experiment are larger than typical young adult, occurrences of tail beyond edge situation will be more frequent. Therefore, it is advisable to select worms smaller than or equal to typical young adult to perform the experiment to mitigate this phenomenon~
 * The algorithm demonstrates remarkable sensitivity, boasting a temporal resolution of 10 frames. This level of sensitivity enables the detection of forward and reverse movements as brief as 1/6s, which may not be shorter than the desired level of the distinction. You can integrate short periods of the machine label manually~
-
-flow diagram:
-
-<img src = "/markdown figs/flow diagram.png" width=100% align="center">
-
-
 
 # Basic principle of the algorithm
 
