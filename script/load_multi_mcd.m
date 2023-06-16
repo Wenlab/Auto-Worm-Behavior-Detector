@@ -6,7 +6,7 @@ global folder_of_saved_files
 path = uigetdir;
 
 % get full path of files
-list = GetAllSubfolderFilename(path,'*mcd_corred.mat');
+list = GetAllSubfolderFilename(path,'*mcd*.mat');
 
 % choose files
 [indx,tf] = listdlg('ListString',list,'ListSize',[500,200],...
