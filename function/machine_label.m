@@ -1,18 +1,13 @@
 function label_rearranged = machine_label(mcd)
 
-%% prepare
-n_frames = length(mcd);
-label = zeros(n_frames,1);
-
 %% get centerlines
 all_centerline = get_all_centerline(mcd);
 lengths_of_centerlines = get_lengths(all_centerline);
+n_frames = length(all_centerline);
+label = zeros(n_frames,1);
 
 %% handle outliers: label NaN as outliers
 label = process_nan(label,lengths_of_centerlines);
-
-%% label head-tail-human-flip
-head_tail_human_flip(mcd, label);
 
 %% protect beyond edge situation when labelling turn
 label = beyond_the_edge(mcd, label);

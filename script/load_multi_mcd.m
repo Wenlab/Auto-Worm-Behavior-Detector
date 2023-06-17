@@ -27,6 +27,9 @@ if tf==1
             mkdir(folder_of_saved_files);
         end
 
+        % label head-tail-human-flip
+        head_tail_human_flip(mcd);
+
         % machine label
         label_rearranged = machine_label(mcd);
 

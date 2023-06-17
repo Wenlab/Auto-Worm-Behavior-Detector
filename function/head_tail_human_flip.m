@@ -1,8 +1,14 @@
-function head_tail_human_flip(mcd, label)
+function head_tail_human_flip(mcd)
 
-global label_number_human_flip
+% handle outliers: label NaN as outliers
+all_centerline = get_all_centerline(mcd);
+lengths_of_centerlines = get_lengths(all_centerline);
+n_frames = length(all_centerline);
+label = zeros(n_frames,1);
+label = process_nan(label,lengths_of_centerlines);
 
 % get centerline before unit conversion
+global label_number_human_flip
 n_frames = numel(mcd);
 start_frame = 1;
 end_frame = n_frames;
