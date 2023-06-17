@@ -2,15 +2,7 @@
 
 This repository is an algorithm to label the behaviours of C.elegans under [the CoLBeRT system](https://github.com/samuellab/mindcontrol).
 
-## flow diagram
-
-<img src = "/markdown figs/flow diagram.png" width=100% align="center" style="zoom: 33%;" >
-
-## input
-
-The input of the algorithm is .yaml file.
-
-## output
+The input of the algorithm is mcd.m, which can be obtained from .yaml file.
 
 The output of the algorithm are 5 files:
 
@@ -21,24 +13,37 @@ The output of the algorithm are 5 files:
 * figure1.png gives Tukey test for the length of the centerline.
 * figure2.png gives Tukey test for the Euclidean distance between the head and the tail.
 
+flow diagram:
 
+<img src = "/markdown figs/flow diagram.png" width=100% align="center">
 
-## The parameters
+The parameters
 
 * frame window: if the frame window is $x$, then the temporal resolution is $x$ frames.
 
 
 
-## tips
+# tips
 
 * **A turn less than 1 second is likely to be tail beyond edge situation**. Please check carefully.
 * **Machine labels of a certain period of time before the frames of flipping head and tail are likely to be incorrect**. Please check carefully.
+* If the C.elegans used in the experiment are larger than typical young adult, occurrences of tail beyond edge situation will be more frequent. Therefore, it is advisable to select worms smaller than or equal to typical young adult to perform the experiment to mitigate this phenomenon~
+* The algorithm demonstrates remarkable sensitivity, boasting a temporal resolution of 10 frames. This level of sensitivity enables the detection of forward and reverse movements as brief as 1/6s, which may not be shorter than the desired level of the distinction. You can integrate short periods of the machine label manually~
+
+# Basic principle of the algorithm
+
+* Turn
+  - When there is body contact, the recognition of centerline will fail (excluding the case where the worm reaches the edge, the fail of the centerline recognition is equivalent to body contact and is a subset of a turn).
+    - I **observed** that the length of the centerline becomes shorter in this case.
+    - Tukey test.
+  - After excluding the previous case, the identification of the centerline is **nearly always** correct.
+    - I **observed** that the Euclidean distance between the head and tail is shorter during a turn.
+    - Tukey test.
+* Forward and Reversal
+  - Heng **observed** the phase trajectory in the a_2 a_1 phase space and found that during forward movement, the trajectory rotates counter-clockwise, while during reversal, the trajectory rotates clockwise.
+  - Use 10 as frames window.
 
 
-
-# Dive Deeper
-
-## Basic principle of the algorithm
 
 Shortly speaking, the success of this algorithm lies on 2 things
 
@@ -47,16 +52,7 @@ Shortly speaking, the success of this algorithm lies on 2 things
 
 
 
-## Shortcoming
-
-* 我本想用mcd->centerline->saved files，但是遇到了一个问题
-  * 我若想解决Colbert中线虫尾巴超出视频的情况，必须把mcd传进去，而不是只传centerline
-  * 目前我们实验室只需要用识别Colbert视频，因此我暂时搁置这件事
-  * 未来，如果有其它视频需要处理，我可以再写一个GUI，也可以利用nargin。
-
-
-
-## Details of the algorithm
+# Details of the algorithm
 
 * process nan: mark nan as outlier
 * detect head tail human flip.
@@ -76,20 +72,16 @@ Shortly speaking, the success of this algorithm lies on 2 things
 
 
 
-## Performance of the algorithm
+# Performance of the algorithm
 
-* accuracy: depending on definition of forward, reversal and turn. 
-  * This algorithm can detect very short (see temporal resolution) forward and reversal, which may not be what the human want to distinguish.
-
-* precision and recall: depending on definition of forward, reversal and turn. 
-  * this algorithm has high recall.
-
+* accuracy: depending on definition of forward, reversal and turn. This algorithm can detect very short (see temporal resolution) forward and reversal, which may not be what the human want to distinguish.
+* precision and recall: recall is more important than precision in this task and this algorithm has high recall.
 * temporal resolution
-  * Theoretically, 1 frame for turn and $frame\_window$ frames for forward and reversal.
+  * Theoretically, 1 frame for turn and 10 frames for forward and reversal.
 
 
 
-## Details of the beyond edge situation
+# Details of the beyond edge situation
 
 If the beyond edge situation is rare, the histogram will look like:
 
