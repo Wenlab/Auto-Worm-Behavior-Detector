@@ -2,7 +2,8 @@ function output = add_a_new_column(output)
 
     global label_number_outlier label_number_beyond_edge label_number_human_flip
     output(:, 4) = output(:, 3);
-    label_number = [0,1,11,2,3,200,label_number_outlier,label_number_beyond_edge,label_number_human_flip];
+    label_number = [0,1,11,2,3,200,...
+        label_number_outlier,label_number_beyond_edge,label_number_human_flip];
     for i = 1:numel(label_number)
         [str,mask] = from_number_to_str(output, label_number(i));
         output(mask, 4) = {str};
