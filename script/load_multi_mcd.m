@@ -1,7 +1,5 @@
 clear;clc;close all;
 
-global folder_of_saved_files
-
 % chose the folder of files
 path = uigetdir;
 
@@ -16,16 +14,20 @@ list = GetAllSubfolderFilename(path,'*mcd*.mat');
 if tf==1
 
     for i = indx
-
+        
+        % input
         full_path = list{i};
+        mcd = input_data(full_path);
+
+        % save folder
+        global folder_of_saved_files
         folder_of_saved_files = fileparts(full_path);
         folder_of_saved_files = fullfile(folder_of_saved_files, 'machine_label');
         if ~isfolder(folder_of_saved_files)
             mkdir(folder_of_saved_files);
         end
 
-        mcd = input_data(full_path);
-        all_centerline = get_all_centerline(mcd);
+        % machine label
         label_rearranged = machine_label(mcd);
 
         % output
@@ -34,6 +36,7 @@ if tf==1
         % for taxis
         integrate_into_reorientation_and_eliminate_short_reversal(label_rearranged);
 
+        % disp
         disp('Machine Label Finished!');
 
     end
