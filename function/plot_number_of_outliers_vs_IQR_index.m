@@ -8,7 +8,7 @@ function table = plot_number_of_outliers_vs_IQR_index(train_feature, IQR_index_m
     count = 0;
     for IQR_index = x
         count = count + 1;
-        [number_of_up_outliers(count),number_of_down_outliers(count), ~, ~, ~, ~] = Tukey_test(train_feature, IQR_index);
+        [number_of_up_outliers(count),number_of_down_outliers(count)] = Tukey_test(train_feature, IQR_index);
         number_of_outliers(count) = number_of_up_outliers(count) + number_of_down_outliers(count);
     end
     
