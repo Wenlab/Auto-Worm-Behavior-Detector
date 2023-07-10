@@ -1,30 +1,36 @@
 function plot_the_C_elegan(mcd,start_frame,end_frame)
 
-    fold_name = ['from_' num2str(start_frame) '_to_' num2str(end_frame)];
-    full_path_to_the_folder = 'F:\1_learning\research\Colbert\fig';
-    fold_name = fullfile(full_path_to_the_folder,fold_name);
-    mkdir(fold_name);    
+global pixel2um unit2um
+pixel2um = 1.6835;
+unit2um = 0.05;
 
-    count = 0;
-    for i = start_frame:end_frame
-        count = count + 1; 
-        
-        centerline = convertCoordinates(mcd(i).SegmentedCenterline, mcd(i).StagePosition);
-        boundary_A = convertCoordinates(mcd(i).BoundaryA, mcd(i).StagePosition);
-        boundary_B = convertCoordinates(mcd(i).BoundaryB, mcd(i).StagePosition);
+root_folder_path = 'F:\1_learning\research\Colbert\fig';
+child_folder_name = ['from_' num2str(start_frame) '_to_' num2str(end_frame)];
+child_folder_path = fullfile(root_folder_path,child_folder_name);
+if ~isfolder(child_folder_path)
+    mkdir(child_folder_path);
+end
 
-        figure(count)
-        scatter(centerline(1,:),centerline(2,:),'black');
-        axis equal
-        hold on
-        scatter(boundary_A(1,:),boundary_A(2,:),'red');
-        scatter(boundary_B(1,:),boundary_B(2,:),'blue');
-        
-        file_name = ['frame_' num2str(i) '.png'];
-        full_path_to_the_file = fullfile(fold_name,file_name);
-        saveas(gcf,full_path_to_the_file)
-        
-        close;
-    end
+count = 0;
+for i = start_frame:end_frame
+    count = count + 1;
+    
+    centerline = convertCoordinates(mcd(i).SegmentedCenterline, mcd(i).StagePosition);
+    boundary_A = convertCoordinates(mcd(i).BoundaryA, mcd(i).StagePosition);
+    boundary_B = convertCoordinates(mcd(i).BoundaryB, mcd(i).StagePosition);
+    
+    figure(count)
+    scatter(centerline(1,:),centerline(2,:),'black');
+    axis equal
+    hold on
+    scatter(boundary_A(1,:),boundary_A(2,:),'red');
+    scatter(boundary_B(1,:),boundary_B(2,:),'blue');
+    
+    file_name = ['frame_' num2str(i) '.png'];
+    file_path = fullfile(child_folder_path,file_name);
+    saveas(gcf,file_path)
+    
+    close;
+end
 
 end
