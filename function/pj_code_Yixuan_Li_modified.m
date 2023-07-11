@@ -38,7 +38,7 @@ for j = 1:n_frames
     worm_length = worm_length + d(end);
     
     % use csaps to do interpolation of the centerline, cubic spline interpolation
-    f = csaps(d,centerline,spline_p); % Cubic smoothing spline
+    f = csaps(d,centerline,spline_p);
     centerline_2 = fnval(f, d);
     df_2 = diff(centerline_2,1,2);
     d_2 = cumsum([0, sqrt([1 1]*(df_2.^2))]);
