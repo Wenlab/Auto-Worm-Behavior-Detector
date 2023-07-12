@@ -24,12 +24,11 @@ classdef Mcd_Frame
         StagePosition = [NaN NaN];
         StageFeedbackTarget = [NaN NaN];
     end
-    
+
     methods (Static)
         mcdf_arr = yaml2matlab(fname);
         mcdf = readOneFrame(fid);
         success = seekToFirstFrame(fid);
     end
-        
+
 end
-    

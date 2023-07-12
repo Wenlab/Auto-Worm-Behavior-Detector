@@ -4,7 +4,7 @@ clear;clc;close all;
 path = uigetdir;
 
 % get full path of files
-list = GetAllSubfolderFilename(path,'*mcd*.mat');
+list = GetAllSubfolderFilename(path,'*mcd_corr*.mat');
 
 % choose files
 [indx,tf] = listdlg('ListString',list,'ListSize',[500,200],...
