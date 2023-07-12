@@ -1,3 +1,4 @@
+% add stagePosition
 function coordinates = convertCoordinates(centerline, stagePosition)
     global pixel2um unit2um
     coordinates = reshape(centerline, 2, 100);
