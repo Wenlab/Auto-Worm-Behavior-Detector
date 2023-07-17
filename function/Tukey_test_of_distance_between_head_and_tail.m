@@ -19,11 +19,6 @@ xlabel('Euclidean distance between the head and the tail (mm)');
 title('f(Euclidean distance between the head and the tail)');
 
 %% Tukey test
-
-% adjust IQR_index
-% IQR_index_max = 20;
-% table_2 = plot_number_of_outliers_vs_IQR_index(Euclid_distance_between_head_and_tail, IQR_index_max);
-
 IQR_index = 3; % a super parameter
 [~, ~, ~, mask_down,...
     up_limit, down_limit, upper_bound, lower_bound] = ...
@@ -38,9 +33,7 @@ label_number = 11;
 
 label_2_v2 = mask_down * label_number;
 label_v2(indices) = label_2_v2;
-label_rearranged_v2 = rearrange_label(label_v2);
-
-% here, you can output label_v2 to check if a turn is labelled by round 1 or round 2
+label_rearranged_v2 = rearrange_label(label_v2); % here, you can output label_v2 to check if a turn is labelled by round 1 or round 2
 
 %% double check
 t_threshold_2 = 0.5; % s
@@ -53,4 +46,10 @@ if is_passed_2
     label(indices) = label_2; % if passed, add the result of round 2 to label.
 end
 
+end
+
+function adjust_IQR_index(Euclid_distance_between_head_and_tail)
+% adjust IQR_index
+IQR_index_max = 20;
+plot_number_of_outliers_vs_IQR_index(Euclid_distance_between_head_and_tail, IQR_index_max);
 end

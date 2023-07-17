@@ -20,6 +20,8 @@ flow diagram:
 The parameters
 
 * frame window: if the frame window is $x$, then the temporal resolution is $x$ frames.
+  * I recommend 30 frame window for machine_label.csv and 10 frame window for machine_label_v2.csv
+
 
 
 
