@@ -2,7 +2,8 @@ function label = use_phase_trajectory_to_label_forward_and_reversal(mcd,label,fr
 
 eigen_basis = readmatrix('eigen_basis.csv'); % these 4 eigen vectors are calculated from T*100 matrix, where T is ~10^5
 label_rearranged = rearrange_label(label);
-for i = 1:length(label_rearranged)
+for i = 1:size(label_rearranged,1)
+    dbstop if error
     if ~label_rearranged(i,3)
         start_frame = label_rearranged(i,1);
         end_frame = label_rearranged(i,2);
