@@ -1,7 +1,7 @@
 function output_label(label_rearranged, folder_of_saved_files, filename)
 
 % Define the header row
-header = {'start frame', 'end frame', 'label'};
+header = {'start_frame', 'end_frame', 'label'};
 
 % Combine the header row and result array
 label_rearranged = [header; num2cell(label_rearranged)];

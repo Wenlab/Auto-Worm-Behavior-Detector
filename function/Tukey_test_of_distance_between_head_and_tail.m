@@ -24,7 +24,7 @@ title('f(Euclidean distance between the head and the tail)');
 % IQR_index_max = 20;
 % table_2 = plot_number_of_outliers_vs_IQR_index(Euclid_distance_between_head_and_tail, IQR_index_max);
 
-IQR_index = 2; % a super parameter
+IQR_index = 3; % a super parameter
 [~, ~, ~, mask_down,...
     up_limit, down_limit, upper_bound, lower_bound] = ...
     Tukey_test(Euclid_distance_between_head_and_tail, IQR_index);

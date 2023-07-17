@@ -36,6 +36,6 @@ label_rearranged = rearrange_label(label);
 label_rearranged = check_unlabelled(label_rearranged,frame_window);
 
 %% check neighbor of turns
-label_rearranged = check_neighbor_of_turn(label_rearranged);
+% label_rearranged = check_neighbor_of_turn(label_rearranged);
 
 end

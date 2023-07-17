@@ -11,7 +11,7 @@ function output = add_a_new_column(output)
     output(:, 3) = [];
     
     global s2frame
-    output{1,4} = 'time (s)';
+    output{1,4} = 'time_s';
     for i = 2:size(output,1)
         output{i,4} = round((output{i,2} - output{i,1})/s2frame,2);
     end

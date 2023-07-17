@@ -62,13 +62,10 @@ Shortly speaking, the success of this algorithm lies on 2 things
 * label turn, using Tukey test of the Euclidean distance between the head and tail.
   * double check for Tukey test: I need max continuous frames > 33 
 * label Forward and Reversal, using phase trajectory.
-  * smooth
-    * <= frame_window, same as last.
-    * for the unlabelled < t_threshold, if 2 neighbours are the same, let it be the same as its neighbor
-    * for the unlabelled < t_threshold, if a neighbor is 1 or 3, let it be the same as it. PS: 1's priority is higher than 3's
-* process neighbor of turns
-  * last neighbor should not be short forward
-  * next neighbor should not be short reversal
+* smooth
+  * <= frame_window, same as last.
+  * for the unlabelled < t_threshold, if 2 neighbours are the same, let it be the same as its neighbor
+  * for the unlabelled < t_threshold, if a neighbor is 1 or 3, let it be the same as it. PS: 1's priority is higher than 3's
 
 
 

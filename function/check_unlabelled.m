@@ -2,7 +2,7 @@ function label_rearranged = check_unlabelled(label_rearranged,frame_window)
 
 global s2frame
 
-t_threshold = 10; % s
+t_threshold = 5; % s % super-parameter
 
 %% <= frame_window
 for i = 2:length(label_rearranged) 
