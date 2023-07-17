@@ -30,8 +30,8 @@ end
 label_rearranged = re_rearrange_label(label_rearranged);
 
 %% save
-global folder_of_saved_files
-file_name = 'machine_label_v2.csv';
+global folder_of_saved_files frame_window
+file_name = ['machine_label_v2_frame_window_' num2str(frame_window) '.csv'];
 output_label(label_rearranged, folder_of_saved_files, file_name)
 
 end

@@ -1,5 +1,4 @@
 % load multi mcd.mat and do machine label
-
 clear;clc;close all;
 
 % add path
@@ -41,7 +40,9 @@ if path ~= 0
             label_rearranged = machine_label(mcd);
     
             % output
-            output_label(label_rearranged, folder_of_saved_files, 'machine_label.csv');
+            global frame_window
+            file_name = ['machine_label_frame_window_' num2str(frame_window) '.csv'];
+            output_label(label_rearranged, folder_of_saved_files, file_name);
     
             % for taxis
             integrate_into_reorientation_and_eliminate_short_reversal(label_rearranged);

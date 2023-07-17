@@ -16,7 +16,7 @@ title('f(Length of the centerline)');
 % table = plot_number_of_outliers_vs_IQR_index(length_of_centerline, IQR_index_max);
 
 % perform Tukey test
-IQR_index = 2; % a super parameter % Smaller, stricter
+IQR_index = 3; % a super parameter % bigger, stricter
 [~, ~, mask_up, mask_down,...
     up_limit, down_limit, upper_bound, lower_bound] = ...
     Tukey_test(length_of_centerline, IQR_index);
@@ -28,7 +28,7 @@ draw_lines(up_limit, down_limit, upper_bound, lower_bound, median_of_data);
 % double check
 percentile_threshold = 0.75;
 length_threshold = median_of_data * percentile_threshold; % mm
-t_threshold = 2; % smask_down
+t_threshold = 2; % s
 is_passed_2 = double_check_for_length_of_centerline(...
     length_of_centerline,...
     length_threshold,...
