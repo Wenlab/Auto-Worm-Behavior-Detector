@@ -12,10 +12,10 @@ path = uigetdir;
 if path ~= 0
 
     % get full paths of files
-    list = get_all_files_of_a_certain_type_in_a_rootpath(path,'machine_label_v2_frame_window_10.csv');
+    list = get_all_files_of_a_certain_type_in_a_rootpath(path,'machine_label*.csv');
 
     % choose files
-    [indx,tf] = listdlg('ListString',list,'ListSize',[800,600],'Name','Chose files to convert');
+    [indx,tf] = listdlg('ListString',list,'ListSize',[800,600],'Name','Chose files');
 
     % if at least 1 file is choosed
     if tf==1
