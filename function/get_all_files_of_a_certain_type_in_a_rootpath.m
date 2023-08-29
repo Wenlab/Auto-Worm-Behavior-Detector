@@ -1,7 +1,7 @@
 function list = get_all_files_of_a_certain_type_in_a_rootpath(rootpath, filetype)
 
 % Obtain all the subfolders recursively
-folders = string(split(genpath(rootpath), ';'));
+folders = string(split(genpath(rootpath), pathsep));
 folders = folders(1:length(folders)-1);
 
 % Initialize an empty cell array to hold filenames
