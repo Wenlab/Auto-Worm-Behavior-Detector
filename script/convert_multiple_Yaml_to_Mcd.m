@@ -8,11 +8,11 @@ my_add_path
 % chose the folder to analyze
 path = uigetdir;
 
-% if at least 1 file is choosed
+% if the user choose a folder
 if path ~= 0
 
     % get full paths of files
-    list = GetAllSubfolderFilename(path,'*.yaml');
+    list = get_all_files_of_a_certain_type_in_a_rootpath(path,'*.yaml');
     
     % choose files
     [indx,tf] = listdlg('ListString',list,'ListSize',[800,600],...
