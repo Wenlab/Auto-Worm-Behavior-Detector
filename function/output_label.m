@@ -1,4 +1,4 @@
-function output_label(label_rearranged, folder_of_saved_files, filename)
+function output_label(label_rearranged, folder_of_saved_files, file_name, mcd)
 
 % Define the header row
 header = {'start_frame', 'end_frame', 'label'};
@@ -7,10 +7,10 @@ header = {'start_frame', 'end_frame', 'label'};
 label_rearranged = [header; num2cell(label_rearranged)];
 
 % add an explanation column for each number of label
-label_rearranged = add_a_new_column(label_rearranged);
+label_rearranged = add_a_new_column(label_rearranged, mcd);
 
 % Save the output to a CSV file
-full_path = fullfile(folder_of_saved_files,filename);
+full_path = fullfile(folder_of_saved_files,file_name);
 writecell(label_rearranged, full_path, 'Delimiter', ',');
 
 % disp

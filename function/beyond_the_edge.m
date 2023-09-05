@@ -21,7 +21,7 @@ label_beyond_edge = remain_rows(label_beyond_edge,label_number_beyond_edge);
 
 % save
 global folder_of_saved_files
-filename = 'beyond_the_edge.csv';
-output_label(label_beyond_edge, folder_of_saved_files, filename)
+file_name = 'beyond_the_edge.csv';
+output_label(label_beyond_edge, folder_of_saved_files, file_name, mcd)
 
 end

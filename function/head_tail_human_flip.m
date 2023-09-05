@@ -37,7 +37,7 @@ label_flip = remain_rows(label_flip,label_number_human_flip);
 
 % save
 global folder_of_saved_files
-filename = 'head_tail_human_flip.csv';
-output_label(label_flip, folder_of_saved_files, filename)
+file_name = 'head_tail_human_flip.csv';
+output_label(label_flip, folder_of_saved_files, file_name, mcd)
 
 end
