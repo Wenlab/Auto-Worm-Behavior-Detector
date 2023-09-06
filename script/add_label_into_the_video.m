@@ -23,7 +23,7 @@ if path ~= 0
 
             % Load the csv file
             full_path_to_csv = list{i};
-            T = readtable(full_path_to_csv);
+            label_table = readtable(full_path_to_csv);
 
             % get the root folder
             root_folder = fileparts(fileparts(full_path_to_csv));
@@ -45,21 +45,21 @@ if path ~= 0
             open(vw);
 
             % write
-            current_motion_index = 1; % Index of the motion we're currently processing
+            count_motion_state = 1; % Index of the motion we're currently processing
             while hasFrame(v)
 
                 % Read the frame
                 frame = readFrame(v);
                 n_frame_now = v.CurrentTime*v.FrameRate;
 
-                % Check if we've reached the start of the next motion
-                if current_motion_index <= size(T, 1) - 1 && n_frame_now >= T.start_frame(current_motion_index + 1)
-                    current_motion_index = current_motion_index + 1;
+                % Check if we've reached the start of the next motion state
+                if count_motion_state <= size(label_table, 1) - 1 && n_frame_now >= label_table.start_frame(count_motion_state + 1)
+                    count_motion_state = count_motion_state + 1;
                 end
 
                 % Check if this frame is within the start and end frame of any of the motions in the csv
-                if T.start_frame(current_motion_index) <= n_frame_now && n_frame_now <= T.end_frame(current_motion_index)
-                    label_str = string(T.label{int32(current_motion_index)});
+                if label_table.start_frame(count_motion_state) <= n_frame_now && n_frame_now <= label_table.end_frame(count_motion_state)
+                    label_str = string(label_table.label{int32(count_motion_state)});
                     frame = add_label_into_a_frame(frame, label_str);
                 end
 

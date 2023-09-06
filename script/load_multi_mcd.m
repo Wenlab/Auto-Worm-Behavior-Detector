@@ -1,8 +1,10 @@
 % load multi mcd.mat and do machine label
+
+% clear
 clear;clc;close all;
 
 % add path
-my_add_path
+my_add_path;
 
 % chose the folder of files
 path = uigetdir;
@@ -11,23 +13,22 @@ path = uigetdir;
 if path ~= 0
 
     % get full paths of files
-    list = get_all_files_of_a_certain_type_in_a_rootpath(path,'*mcd_corr*.mat');
+    list_mcd = get_all_files_of_a_certain_type_in_a_rootpath(path,'*mcd_corr*.mat');
     
     % choose files
-    [indx,tf] = listdlg('ListString',list,'ListSize',[800,600],...
-        'Name','Chose files to convert');
+    [indx,tf] = listdlg('ListString',list_mcd,'ListSize',[800,600],'Name','Chose files to convert');
     
     % if at least 1 file is choosed
     if tf==1
         for i = indx
             
             % load
-            full_path = list{i};
-            mcd = load_mcd(full_path);
+            full_path_to_mcd = list_mcd{i};
+            mcd = load_mcd(full_path_to_mcd);
     
             % save folder
             global folder_of_saved_files
-            folder_of_saved_files = fileparts(full_path);
+            folder_of_saved_files = fileparts(full_path_to_mcd);
             folder_of_saved_files = fullfile(folder_of_saved_files, 'machine_label');
             if ~isfolder(folder_of_saved_files)
                 mkdir(folder_of_saved_files);
