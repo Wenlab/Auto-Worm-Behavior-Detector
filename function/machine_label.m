@@ -23,12 +23,15 @@ label = Tukey_test_of_distance_between_head_and_tail(label,all_centerline);
 global folder_of_saved_files
 output_figures(folder_of_saved_files);
 
+% round 3, using a_3
+global frame_window
+% label = use_a_3_to_label_turn(mcd,label,frame_window);
+
 % end protection of beyond edge situation
 global label_number_beyond_edge
 label(label == label_number_beyond_edge) = 0;
 
 %% label forward and reversal
-global frame_window
 label = use_phase_trajectory_to_label_forward_and_reversal(mcd,label,frame_window);
 label_rearranged = rearrange_label(label);
 

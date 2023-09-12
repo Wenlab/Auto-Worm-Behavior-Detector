@@ -1,5 +1,6 @@
 function label = beyond_the_edge(mcd,label)
 
+%% get mask
 n_frames = numel(mcd);
 start_frame = 1;
 end_frame = n_frames;
@@ -14,12 +15,13 @@ mask_x = abs(x_tail - x_max) < pixel_threshold | abs(x_tail - x_min) < pixel_thr
 mask_y = abs(y_tail - y_max) < pixel_threshold | abs(y_tail - y_min) < pixel_threshold;
 mask_all = mask_x | mask_y;
 
+%% label
 global label_number_beyond_edge
 label(mask) = mask_all * label_number_beyond_edge;
 label_beyond_edge = rearrange_label(label);
 label_beyond_edge = remain_rows(label_beyond_edge,label_number_beyond_edge);
 
-% save
+%% save
 global folder_of_saved_files
 file_name = 'beyond_the_edge.csv';
 output_label(label_beyond_edge, folder_of_saved_files, file_name, mcd)
