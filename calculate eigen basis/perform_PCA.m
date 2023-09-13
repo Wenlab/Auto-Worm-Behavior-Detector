@@ -28,6 +28,7 @@ end
 %% Perform PCA by hand
 X_covariance = X_centerlized' * X_centerlized;
 [V, D] = eig(X_covariance);
+% [V, D] = eig(EigenWorms);
 
 % Extract the eigenvalues from the diagonal matrix D
 eigenvalues = diag(D);
@@ -56,6 +57,9 @@ bar(cumulative_fraction_of_eigenvalue(1:10));
 xlabel('PC');
 ylabel('cumulative fraction of eigenvalue');
 
+% from Heng
+eigenvectors = EigenWorms;
+
 % plot first 4
 for i = 1:4
     subplot(2, 2, i);
@@ -63,6 +67,16 @@ for i = 1:4
     xlabel('segment');
     ylabel(['a_' num2str(i)]);
 end
+
+% plot first 4 in one figure
+figure;
+hold on;
+for i = 1:4
+    plot(eigenvectors(:, i));
+end
+xlabel('segment');
+ylabel(['a_' num2str(i)]);
+legend('1','2','3','4');
 
 % plot r
 figure;

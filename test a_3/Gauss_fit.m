@@ -1,5 +1,5 @@
 % Generate or load your data for eigenworm_a_3
-% eigenworm_a_3 = ...
+eigenworm_a_3 = a_3;
 
 % Calculate histogram data
 [histCounts, histEdges] = histcounts(eigenworm_a_3, 'Normalization', 'probability');
