@@ -1,4 +1,4 @@
-% add label into the video
+% Add label into the video
 
 clc;clear;close all;
 

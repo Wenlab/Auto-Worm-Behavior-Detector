@@ -1,5 +1,5 @@
-% find when the user stop and start
-% must for the same worm!
+% Find frames when users do stop-start.
+% Each video must contain only 1 worm!
 
 % clear
 clear;clc;close all;
@@ -29,6 +29,13 @@ if path ~= 0
             
             %% find the frame of stop-start
             frames_stop_start = find_frames_of_stop_start(mcd);
+
+            %% if nan
+            if numel(frames_stop_start) == 0
+                disp("There is no stop-start situation in your mcd.mat!");
+                return;
+                % error("There is no stop-start situation in your mcd.mat!");
+            end
             
             %% add frames of stop-start into the csv file
             folder_path_of_mcd = fileparts(full_path_to_mcd);

@@ -1,4 +1,4 @@
-% load multi mcd.mat and do machine label
+% Load multiple mcd.mat and perform machine label 1 by 1
 
 % clear
 clear;clc;close all;

@@ -1,8 +1,8 @@
-% Fix the problem of coordinates
-% In .yaml file, there are 2 problems
+% Fix the problem of coordinates.
+% In .yaml file, there are 2 problems:
 % For the mcd.SegmentedCenterline, the y-axis is reversed.
 % For the mcd.StagePosition, the x-axis is reversed.
-% This script fix these 2 problems
+% This script fix these 2 problems.
 
 clear;clc;close all;
 

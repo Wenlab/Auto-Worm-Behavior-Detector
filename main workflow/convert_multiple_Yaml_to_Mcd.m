@@ -1,4 +1,4 @@
-% convert .yaml to mcd.mat
+% Convert multiple .yaml to mcd.mat at 1 time
 
 clear;clc;close all;
 
