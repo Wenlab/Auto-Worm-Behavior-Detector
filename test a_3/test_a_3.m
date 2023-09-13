@@ -24,7 +24,7 @@ ylabel('a_1^2 + a_2^2');
 
 % hist
 figure;
-histogram(eigenworm_a_3,'Normalization','probability');
+histogram(eigenworm_a_3,'Normalization','pdf');
 xlabel('a_3');
 ylabel('pdf');
 title('distribution of a_3');
