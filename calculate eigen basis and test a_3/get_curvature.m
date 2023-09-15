@@ -67,7 +67,7 @@ if path ~= 0
             a_3 = curvature_of_centerline * EigenWorms(:,3);
             
             % process outliers
-            fprintf('Number of Outliers: %d\n', sum(abs(a_3) > 1));
+            fprintf('Number of Outliers: %d\n', sum(abs(a_3) > 1)); % fprintf is better than disp!
             a_3(abs(a_3) > 1) = 0;
             
             % Gauss fit
@@ -84,7 +84,7 @@ if path ~= 0
                 Tukey_test(a_3, IQR_index);
             
             % label
-            test = label_idx(mask_up);
+            test = label_idx(mask_up | mask_down);
             label(test) = 111;
             label_rearranged_v2 = rearrange_label(label);
         end
