@@ -52,3 +52,12 @@ The only super parameter that you need to change is `frame window`.
 The meaning of `frame window`: if the frame window is $x$, then the temporal resolution is $x$ frames.
 
 It is recommended that 30 for `machine_label.csv` and 10 for `machine_label_v2.csv`.
+
+
+
+# Tips for Human Double Check
+
+It is recommended to have a human-double-check, and here are some tips:
+
+* A turn less than 1 second is likely to be incorrect.
+* Machine labels of a certain period of time before the frames of flipping head and tail are likely to be incorrect. 
