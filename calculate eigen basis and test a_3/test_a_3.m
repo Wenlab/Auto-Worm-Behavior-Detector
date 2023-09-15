@@ -1,3 +1,4 @@
+% get curvature
 start_frame = 1;
 end_frame = length(mcd);
 [curvature_of_centerline_all, ~] = get_the_curvature_of_a_period(mcd,start_frame,end_frame);
