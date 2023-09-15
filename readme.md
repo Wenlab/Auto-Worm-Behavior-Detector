@@ -8,11 +8,11 @@
 
 * Open `interactive.mlapp` to use the GUI.
 
-<img src = "/markdown figs/GUI.png" width=50% align="center">
+<img src = "/markdown_figs/GUI.png" width=50% align="center">
 
 * workflow
 
-<img src = "/markdown figs/workflow.png" width=90% align="center">
+<img src = "/markdown_figs/workflow.png" width=90% align="center">
 
 * all outputs
   * `machine_label.csv` gives frames of the forward, reversal and turn.
