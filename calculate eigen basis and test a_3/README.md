@@ -43,5 +43,4 @@ In general, recall is more important than precision. Because human double check 
 * smooth
   * <= frame_window, same as last.
   * for the unlabelled < t_threshold, if 2 neighbours are the same, let it be the same as its neighbor
-  * for the unlabelled < t_threshold, if a neighbor is 1 or 3, let it be the same as it. PS: 1's priority is higher than 3's
-
+  * for the unlabelled < t_threshold, if a neighbor is 1 or 3, let it be the same as it. PS: 1's priority is higher than 3's.
