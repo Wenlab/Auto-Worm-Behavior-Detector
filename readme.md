@@ -61,3 +61,9 @@ It is recommended to have a human-double-check, and here are some tips:
 
 * A turn less than 1 second is likely to be incorrect.
 * Machine labels of a certain period of time before the frames of flipping head and tail are likely to be incorrect. 
+
+
+
+# $\Omega$ turn vs shallow turn
+
+This algorithm will label all $\Omega$ turn and some shallow turn as turn.

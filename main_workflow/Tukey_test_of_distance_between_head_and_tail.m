@@ -20,6 +20,7 @@ end
 figure;
 histogram(Euclid_distance_between_head_and_tail);
 xlabel('Euclidean distance between the head and the tail (mm)');
+ylabel('number of frames');
 title('f(Euclidean distance between the head and the tail)');
 
 % perform Tukey test

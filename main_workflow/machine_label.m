@@ -21,8 +21,7 @@ label = Tukey_test_of_length_of_centerline(label,lengths_of_centerlines);
 label = Tukey_test_of_distance_between_head_and_tail(label,all_centerline);
 
 % round 3, using a_3
-global frame_window
-% label = use_a_3_to_label_turn(mcd,label,frame_window);
+label = use_a_3_to_label_turn(mcd,label);
 
 % output figs for human-double-check
 global folder_of_saved_files
@@ -33,10 +32,14 @@ global label_number_beyond_edge
 label(label == label_number_beyond_edge) = 0;
 
 %% label forward and reversal
+global frame_window
 label = use_phase_trajectory_to_label_forward_and_reversal(mcd,label,frame_window);
 label_rearranged = rearrange_label(label);
 
 %% smooth to eliminate fluctuations
-label_rearranged = check_unlabelled(label_rearranged,frame_window);
+label_rearranged = my_smooth(label_rearranged);
+
+%% check the unlatbelled
+label_rearranged = process_the_unlabelled(label_rearranged);
 
 end

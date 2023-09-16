@@ -10,6 +10,7 @@ length_of_centerline = length_of_centerline(mask);
 figure;
 histogram(length_of_centerline);
 xlabel('Length of the centerline (mm)');
+ylabel('number of frames');
 title('f(Length of the centerline)');
 
 % perform Tukey test
