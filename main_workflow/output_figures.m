@@ -1,7 +1,7 @@
 function output_figures(folder_of_saved_files)
 
 % Loop through each figure and save it
-n_figs = 3;
+n_figs = 4;
 for i = 1:n_figs
     
     % Generate a unique file name for each figure

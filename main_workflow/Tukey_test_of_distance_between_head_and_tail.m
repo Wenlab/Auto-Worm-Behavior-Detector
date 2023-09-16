@@ -31,6 +31,9 @@ IQR_index = 3; % super parameter % bigger, stricter
     up_limit, down_limit, upper_bound, lower_bound] = ...
     Tukey_test(Euclid_distance_between_head_and_tail, IQR_index);
 
+% add annotation to the histogram
+annotation('textbox', [0.8, 0.8, 0.1, 0.1], 'String', sprintf('IQR index = %0.1f',IQR_index));
+
 % visulize
 draw_lines(up_limit, down_limit, upper_bound, lower_bound);
 

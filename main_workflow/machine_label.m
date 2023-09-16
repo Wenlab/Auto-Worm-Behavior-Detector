@@ -23,13 +23,16 @@ label = Tukey_test_of_distance_between_head_and_tail(label,all_centerline);
 % round 3, using a_3
 label = use_a_3_to_label_turn(mcd,label);
 
-% output figs for human-double-check
-global folder_of_saved_files
-output_figures(folder_of_saved_files);
-
 % end protection of beyond edge situation
 global label_number_beyond_edge
 label(label == label_number_beyond_edge) = 0;
+
+% new function 
+Tukey_test_of_phase_speed(mcd,label);
+
+% output figs for human-double-check
+global folder_of_saved_files
+output_figures(folder_of_saved_files);
 
 %% label forward and reversal
 global frame_window

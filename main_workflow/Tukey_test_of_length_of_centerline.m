@@ -21,6 +21,9 @@ IQR_index = 3; % super parameter % bigger, stricter
     up_limit, down_limit, upper_bound, lower_bound] = ...
     Tukey_test(length_of_centerline, IQR_index);
 
+% add annotation to the histogram
+annotation('textbox', [0.8, 0.8, 0.1, 0.1], 'String', sprintf('IQR index = %0.1f',IQR_index));
+
 % visulize
 median_of_data = prctile(length_of_centerline, 50);
 draw_lines(up_limit, down_limit, upper_bound, lower_bound, median_of_data);
