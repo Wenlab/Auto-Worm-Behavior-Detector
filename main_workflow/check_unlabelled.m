@@ -13,6 +13,7 @@ end
 label_rearranged = re_rearrange_label(label_rearranged);
 
 %% for the unlabeled < t_threshold, if 2 neighbors are the same,
+
 % let it be the same as its neighbor
 for i = 2:length(label_rearranged)-1
     if label_rearranged(i,3) == 0 &&...
@@ -24,6 +25,7 @@ end
 label_rearranged = re_rearrange_label(label_rearranged);
 
 %% for the unlabeled < t_threshold, if a neighbor is 1 or 3
+
 % let it be the same as it. Priority: 1 > 3 > 2
 for i = 2:length(label_rearranged)-1
     

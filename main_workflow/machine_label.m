@@ -20,13 +20,13 @@ label = Tukey_test_of_length_of_centerline(label,lengths_of_centerlines);
 % round 2, using Euclidean distance between head and tail
 label = Tukey_test_of_distance_between_head_and_tail(label,all_centerline);
 
-% output figs to check the labelling of turn
-global folder_of_saved_files
-output_figures(folder_of_saved_files);
-
 % round 3, using a_3
 global frame_window
 % label = use_a_3_to_label_turn(mcd,label,frame_window);
+
+% output figs for human-double-check
+global folder_of_saved_files
+output_figures(folder_of_saved_files);
 
 % end protection of beyond edge situation
 global label_number_beyond_edge
@@ -38,8 +38,5 @@ label_rearranged = rearrange_label(label);
 
 %% smooth to eliminate fluctuations
 label_rearranged = check_unlabelled(label_rearranged,frame_window);
-
-%% check neighbor of turns
-% label_rearranged = check_neighbor_of_turn(label_rearranged);
 
 end

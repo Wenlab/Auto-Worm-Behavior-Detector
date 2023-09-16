@@ -40,10 +40,12 @@ In general, recall is more important than precision. Because human double check 
     * double check for Tukey test: I need frames below median*0.75 > 132 (2s)
   * round 2: label turn, using Tukey test of the Euclidean distance between the head and tail.
 * label Forward and Reversal, using phase trajectory.
+  * smooth: if the motion state of a window' pre and post are the same, then let it be that motion state.
+
 * smooth
   * <= frame_window, same as last.
-  * for the unlabelled < t_threshold, if 2 neighbours are the same, let it be the same as its neighbor
-  * for the unlabelled < t_threshold, if a neighbor is 1 or 3, let it be the same as it. PS: 1's priority is higher than 3's.
+  * for the unlabelled < t_threshold (5 s), if 2 neighbours are the same, let it be the same as its neighbor
+  * for the unlabelled < t_threshold (5 s), if a neighbor is 1 or 3, let it be the same as it. PS: 1's priority is higher than 3's.
 
 
 
