@@ -4,11 +4,13 @@ function label = Tukey_test_of_distance_between_head_and_tail(label,centerline_a
 
 % only label the unlabelled
 mask = label == 0;
+
+% get indices for the unlabelled
 indices = find(mask);
-n_frames_2 = length(indices);
+n_frames = length(indices);
 
 % calculate Euclidean distance between head and tail
-Euclid_distance_between_head_and_tail = zeros(n_frames_2,1);
+Euclid_distance_between_head_and_tail = zeros(n_frames,1);
 count = 0;
 for i = indices'
     count = count + 1;
@@ -34,6 +36,6 @@ draw_lines(up_limit, down_limit, upper_bound, lower_bound);
 
 %% add label
 global label_number_outlier
-label(indices) = mask_down * 1 + mask_up * label_number_outlier;
+label(mask) = mask_down * 1 + mask_up * label_number_outlier;
 
 end

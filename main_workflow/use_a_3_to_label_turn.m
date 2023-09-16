@@ -1,5 +1,8 @@
 function label = use_a_3_to_label_turn(mcd,label)
 
+% only label the unlabelled
+mask = label == 0;
+
 % read eigen basis
 eigen_basis = readmatrix('eigen_basis.csv');
 
@@ -8,7 +11,6 @@ label_rearranged = rearrange_label(label);
 
 % loop to process each state
 curvature_of_centerline = [];
-label_idx = [];
 for i = 1:size(label_rearranged,1)
     if ~label_rearranged(i,3)
         
@@ -20,7 +22,6 @@ for i = 1:size(label_rearranged,1)
         
         % vertcat
         curvature_of_centerline = vertcat(curvature_of_centerline,curvature_of_centerline_new);
-        label_idx = vertcat(label_idx,(start_frame:end_frame)');
         
     end
 end
@@ -44,5 +45,8 @@ IQR_index = 2; % super parameter % bigger, stricter
 
 % visulize
 draw_lines(up_limit, down_limit, upper_bound, lower_bound);
+
+% add label
+label(mask) = mask_down * 1 + mask_up * 1;
 
 end

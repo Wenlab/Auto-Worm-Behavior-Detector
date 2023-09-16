@@ -4,6 +4,8 @@ function label = Tukey_test_of_length_of_centerline(label,length_of_centerline)
 
 % only label the unlabelled
 mask = label == 0;
+
+% get length of centerline for the unlabelled
 length_of_centerline = length_of_centerline(mask);
 
 % histogram

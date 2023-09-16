@@ -59,3 +59,12 @@ delete Outlier: centerline is wrong in below circumstances
 * when the head touch the body **(This is the reason why we can't get the correct a_3)**
 
 use `isnan` can figure out situation 1 and use Tukey test for the distance between the head and the tail can figure out situation 2, 3, 4.
+
+
+
+# The super-parameters
+
+* When labelling turn, IQR_index = 3, 3, 2
+  * goal: if make them smaller, the Tukey test will label forward as turn, which is unacceptable
+* When processing the unlabelled, t_threshold = 5
+  * goal: I want the forward to be stricter, which will benefit our analysis in taxis exps.
