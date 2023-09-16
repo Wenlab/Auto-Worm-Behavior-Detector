@@ -33,7 +33,7 @@ if path ~= 0
             %% if nan
             if numel(frames_stop_start) == 0
                 disp("There is no stop-start situation in your mcd.mat!");
-                return;
+                continue;
                 % error("There is no stop-start situation in your mcd.mat!");
             end
             
