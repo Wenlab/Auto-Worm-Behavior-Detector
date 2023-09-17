@@ -27,12 +27,13 @@ label = use_a_3_to_label_turn(mcd,label);
 global label_number_beyond_edge
 label(label == label_number_beyond_edge) = 0;
 
-% new function 
+% new function: Tukey test of phase speed
 Tukey_test_of_phase_speed(mcd,label);
 
 % output figs for human-double-check
 global folder_of_saved_files
-output_figures(folder_of_saved_files);
+n_figs = 4;
+output_figures(folder_of_saved_files, n_figs);
 
 %% label forward and reversal
 global frame_window
@@ -44,5 +45,7 @@ label_rearranged = my_smooth(label_rearranged);
 
 %% check the unlatbelled
 label_rearranged = process_the_unlabelled(label_rearranged);
+
+%% label roaming
 
 end
