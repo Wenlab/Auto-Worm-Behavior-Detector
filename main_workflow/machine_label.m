@@ -47,5 +47,6 @@ label_rearranged = my_smooth(label_rearranged);
 label_rearranged = process_the_unlabelled(label_rearranged);
 
 %% label roaming
+add_roaming(mcd,label_rearranged);
 
 end

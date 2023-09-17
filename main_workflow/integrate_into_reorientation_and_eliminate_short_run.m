@@ -1,4 +1,4 @@
-function integrate_into_reorientation_and_eliminate_short_reversal(label_rearranged, mcd)
+function integrate_into_reorientation_and_eliminate_short_run(label_rearranged, mcd)
 
 %% integrate turn and reversal into reorientation
 global s2frame
@@ -9,6 +9,7 @@ label_rearranged(mask,3) = 200;
 label_rearranged = re_rearrange_label(label_rearranged);
 
 %% eliminate runs shorter than threshold
+
 % label as reorientation
 t_threshold_run = 5; % s
 for i = 2:length(label_rearranged) - 1
