@@ -43,7 +43,7 @@ label_rearranged = rearrange_label(label);
 %% smooth to eliminate fluctuations
 label_rearranged = my_smooth(label_rearranged);
 
-%% check the unlatbelled
+%% check the unlabelled
 label_rearranged = process_the_unlabelled(label_rearranged);
 
 %% label roaming
