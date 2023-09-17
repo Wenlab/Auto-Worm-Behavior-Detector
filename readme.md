@@ -1,4 +1,10 @@
-# 
+# Update Log
+
+* 2023-05-24: first release
+* 2023-07-16: now you can add labels to the video!
+* 2023-09-16: version 1.1.0, add the use of $a_3$ when labelling turn.
+
+
 
 # User Guide
 
