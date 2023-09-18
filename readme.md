@@ -5,7 +5,13 @@
 * 2023-09-16: version 1.1.0, add the use of $a_3$ when labelling turn.
 * 2023-09-18: version 1.2.0, add roaming.
 
+# Demo
 
+![Demo GIF](/markdown_figs/demo.gif)
+
+This GIF is from N2-Ctl20230317-W1, an experiment done by Runhui Li, my partner. Thanks her very much.
+
+See [full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experiment on YouTube!
 
 # User Guide
 
