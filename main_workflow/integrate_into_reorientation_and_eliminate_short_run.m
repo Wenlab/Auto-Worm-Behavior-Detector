@@ -2,7 +2,7 @@ function integrate_into_reorientation_and_eliminate_short_run(label_rearranged, 
 
 %% integrate turn and reversal into reorientation
 global s2frame
-mask = label_rearranged(:,3) == 1 | label_rearranged(:,3) == 3;
+mask = label_rearranged(:,3) == 1 | label_rearranged(:,3) == 3 | label_rearranged(:,3) == 4;
 label_rearranged(mask,3) = 200;
 
 % rearrange
