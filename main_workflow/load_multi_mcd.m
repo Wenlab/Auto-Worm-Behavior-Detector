@@ -42,11 +42,11 @@ if path ~= 0
     
             % output
             global frame_window
-            file_name = ['machine_label_frame_window_' num2str(frame_window) '_with_a_3.csv'];
+            file_name = ['machine_label_frame_window_' num2str(frame_window) '_with_roaming.csv'];
             output_label(label_rearranged, folder_of_saved_files, file_name, mcd);
     
             % for taxis
-            integrate_into_reorientation_and_eliminate_short_reversal(label_rearranged, mcd);
+            integrate_into_reorientation_and_eliminate_short_run(label_rearranged, mcd);
     
             % disp
             disp('Machine Label Finished!');

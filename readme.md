@@ -1,10 +1,19 @@
+# Update Log
+
+* 2023-05-24: first release
+* 2023-07-16: now you can add labels to the video!
+* 2023-09-16: version 1.1.0, add the use of $a_3$ when labelling turn.
+* 2023-09-18: version 1.2.0, add roaming.
+
+
+
 # User Guide
 
 * Purpose: this repository is an algorithm to label the behaviours of C.elegans under [the CoLBeRT system](https://github.com/samuellab/mindcontrol).
 
 * Input and output
   * The input of the algorithm is a `.yaml` file, which is obtained when photographing the worms.
-  * The output of the algorithm is a `.csv` file, which contains the machine label.
+  * The main output of the algorithm is a `.csv` file, which contains the machine label. See below for all outputs.
 
 * Open `interactive.mlapp` to use the GUI.
 
@@ -15,14 +24,17 @@
 <img src = "/markdown_figs/workflow.png" width=90% align="center">
 
 * all outputs
-  * `machine_label.csv` gives frames of the forward, reversal and turn.
+  * `machine_label.csv` gives frames of the forward, reversal, turn and roaming.
 
-  * `machine_label_v2.csv` gives frames of the forward and reorientation.
+  * `machine_label_v2.csv` gives frames of the forward and reorientation, where the reorientation contains the reversal, turn and roaming.
 
   * `beyond_the_edge.csv` gives the frames when the tail of the C.elegans is beyond the edge of the camera.
   * `head_tail_human_flip.csv` gives the frames when the human flips the head and the tail of the C.elegans.
   * `figure1.png` shows Tukey test for the length of the centerline.
   * `figure2.png` shows Tukey test for the Euclidean distance between the head and the tail.
+  * `figure3.png` shows Tukey test for $a_3$.
+  * `figure4.png` shows Tukey test for the phase speed in the phase space of $a_1$ and $a_2$.
+  * `figure5.png` shows Tukey test for the path length of the worm in the absolute coordinate system.
 
 
 

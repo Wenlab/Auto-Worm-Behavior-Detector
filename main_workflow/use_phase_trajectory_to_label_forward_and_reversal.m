@@ -6,7 +6,7 @@ eigen_basis = readmatrix('eigen_basis.csv');
 % rearrange label
 label_rearranged = rearrange_label(label);
 
-% loop to process each state
+% loop to process each motion state
 for i = 1:size(label_rearranged,1)
     if ~label_rearranged(i,3)
         

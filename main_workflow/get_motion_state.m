@@ -13,9 +13,9 @@ eigenworm = curvature_of_centerline_all * eigen_basis(:, 1:2);
 
 % calculate dphase
 phase = atan2(eigenworm(:, 2), eigenworm(:, 1));
-phase_unwrap = unwrap(phase); % use unwrap to handle 2 pi problem
-phase_unwrap_sm = conv(phase_unwrap, ones(1, 15) / 15, 'same'); % smooth
-dphase = gradient(phase_unwrap_sm, 0.01);
+phase_unwraped = unwrap(phase); % use unwrap to handle 2 pi problem
+phase_unwrap_smoothed = conv(phase_unwraped, ones(1, 15) / 15, 'same'); % smooth by mean
+dphase = gradient(phase_unwrap_smoothed); % calculate finite difference (rad/frame)
 
 % initial state
 L = size(curvature_of_centerline_all, 1); % number of samples/frames
