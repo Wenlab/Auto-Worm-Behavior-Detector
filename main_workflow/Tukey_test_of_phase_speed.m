@@ -46,13 +46,13 @@ dphase_abs_sum_all(dphase_abs_sum_all > up_limit) = median(dphase_abs_sum_all);
 % histogram
 figure;
 histogram(dphase_abs_sum_all);
-xlabel('$\Delta \theta$ (deg per frame window)', 'Interpreter', 'latex');
+xlabel(sprintf('$\\Delta \\theta$ (deg per %d frames)',frame_window), 'Interpreter', 'latex');
 ylabel('counts');
 title('$f(\Delta \theta)$', 'Interpreter', 'latex');
 
 % perform Tukey test
 IQR_index = 1.5; % super parameter % bigger, stricter
-[~, ~, mask_up, mask_down,...
+[~, ~, ~, ~,...
     up_limit, down_limit, upper_bound, lower_bound] = ...
     Tukey_test(dphase_abs_sum_all, IQR_index);
 

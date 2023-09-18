@@ -30,23 +30,26 @@ label(label == label_number_beyond_edge) = 0;
 % new function: Tukey test of phase speed
 Tukey_test_of_phase_speed(mcd,label);
 
-% output figs for human-double-check
-global folder_of_saved_files
-n_figs = 4;
-output_figures(folder_of_saved_files, n_figs);
-
 %% label forward and reversal
 global frame_window
 label = use_phase_trajectory_to_label_forward_and_reversal(mcd,label,frame_window);
 label_rearranged = rearrange_label(label);
 
-%% smooth to eliminate fluctuations
-label_rearranged = my_smooth(label_rearranged);
+%% smooth the under frame window motion states
+label_rearranged = smooth_under_frame_window(label_rearranged);
 
-%% check the unlabelled
+%% process the unlabelled
 label_rearranged = process_the_unlabelled(label_rearranged);
 
+%% smooth forward
+label_rearranged = smooth_forward(label_rearranged);
+
 %% label roaming
-add_roaming(mcd,label_rearranged);
+label_rearranged = add_roaming(mcd,label_rearranged);
+
+%% output figs for human-double-check
+global folder_of_saved_files
+n_figs = 5;
+output_figures(folder_of_saved_files, n_figs);
 
 end

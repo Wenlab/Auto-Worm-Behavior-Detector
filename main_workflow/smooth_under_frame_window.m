@@ -4,7 +4,7 @@
 % 2023-09-16 Yixuan Li
 %
 
-function label_rearranged = my_smooth(label_rearranged)
+function label_rearranged = smooth_under_frame_window(label_rearranged)
 
 global frame_window
 
