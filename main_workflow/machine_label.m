@@ -42,7 +42,7 @@ label_rearranged = smooth_under_frame_window(label_rearranged);
 label_rearranged = process_the_unlabelled(label_rearranged);
 
 %% smooth forward
-label_rearranged = smooth_forward(label_rearranged);
+% label_rearranged = smooth_forward(label_rearranged);
 
 %% label roaming
 label_rearranged = add_roaming(mcd,label_rearranged);
