@@ -31,8 +31,8 @@ if path ~= 0
             save_folder_name = fileparts(full_path_to_yaml);
             save_full_path = fullfile(save_folder_name, 'mcd.mat');
             save(save_full_path, 'mcd');
-            disp('mcd file saved successfully!');
-            
+            disp('mcd.mat saved successfully!');
+
         end
     end
 end
