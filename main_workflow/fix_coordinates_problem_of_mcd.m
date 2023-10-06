@@ -42,10 +42,11 @@ if path ~= 0
             end
     
             % save
-            [folder_path_save,~,~] = fileparts(full_path_to_mcd);
-            file_name_save = 'mcd_corrected.mat';
-            full_path_save = fullfile(folder_path_save,file_name_save);
-            save(full_path_save,'mcd');
+            [save_folder_path,save_file_name,~] = fileparts(full_path_to_mcd);
+            save_file_name = strrep(save_file_name,'_mcd','_mcd_corrected');
+            save_file_name = strcat(save_file_name,'.mat');
+            save_full_path = fullfile(save_folder_path,save_file_name);
+            save(save_full_path,'mcd');
             disp('mcd_corrected.mat saved successfully.');
     
         end

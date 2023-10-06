@@ -28,8 +28,9 @@ if path ~= 0
             mcd = mcd.yaml2matlab(full_path_to_yaml); % most time-consuming step
 
             % save
-            save_folder_name = fileparts(full_path_to_yaml);
-            save_full_path = fullfile(save_folder_name, 'mcd.mat');
+            [save_folder_path, save_file_name] = fileparts(full_path_to_yaml);
+            save_file_name = strcat(save_file_name,'_mcd.mat');
+            save_full_path = fullfile(save_folder_path, save_file_name);
             save(save_full_path, 'mcd');
             disp('mcd.mat saved successfully!');
 
