@@ -21,13 +21,19 @@ if path ~= 0
     % if at least 1 file is choosed
     if tf==1
         for i = indx
+
+            % load and convert
             full_path_to_yaml = list{i};
             mcd = Mcd_Frame;
             mcd = mcd.yaml2matlab(full_path_to_yaml); % most time-consuming step
-            folder_of_saved_mcd = fileparts(full_path_to_yaml);
-            savepath = fullfile(folder_of_saved_mcd, 'mcd.mat');
-            save(savepath, 'mcd');
-            disp('mcd file saved successfully!');
+
+            % save
+            [save_folder_path, save_file_name] = fileparts(full_path_to_yaml);
+            save_file_name = strcat(save_file_name,'_mcd.mat');
+            save_full_path = fullfile(save_folder_path, save_file_name);
+            save(save_full_path, 'mcd');
+            disp('mcd.mat saved successfully!');
+
         end
     end
 end

@@ -28,7 +28,7 @@ if path ~= 0
     
             % save folder
             global folder_of_saved_files
-            folder_of_saved_files = fileparts(full_path_to_mcd);
+            [folder_of_saved_files,~,~] = fileparts(full_path_to_mcd);
             folder_of_saved_files = fullfile(folder_of_saved_files, 'machine_label');
             if ~isfolder(folder_of_saved_files)
                 mkdir(folder_of_saved_files);
@@ -44,7 +44,7 @@ if path ~= 0
             global frame_window
             file_name = ['machine_label_frame_window_' num2str(frame_window) '.csv'];
             output_label(label_rearranged, folder_of_saved_files, file_name, mcd);
-    
+
             % for taxis
             integrate_into_reorientation_and_eliminate_short_run(label_rearranged, mcd);
     
