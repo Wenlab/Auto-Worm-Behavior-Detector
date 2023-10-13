@@ -1,4 +1,4 @@
-% from label_rearranged, reconstruct label
+% From label_rearranged, reconstruct label
 %
 % 2023-09-18 Yixuan Li
 %

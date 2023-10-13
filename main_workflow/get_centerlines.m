@@ -1,4 +1,4 @@
-% get centerlines after unit conversion and add stage position
+% Get centerlines after unit conversion and add stage position
 %
 % 2023-10-13, Yixuan Li
 %

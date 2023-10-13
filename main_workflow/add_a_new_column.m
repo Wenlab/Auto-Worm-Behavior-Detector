@@ -1,4 +1,4 @@
-% add a new column into the .csv file
+% Add a new column into the .csv file.
 %
 % 2023-10-13, Yixuan Li
 %

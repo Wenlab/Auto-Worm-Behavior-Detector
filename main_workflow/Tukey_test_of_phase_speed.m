@@ -43,7 +43,7 @@ for i = 1:size(label_rearranged,1)
 end
 
 % let the outliers to be the median
-up_limit = 60;
+up_limit = 60; % deg
 dphase_abs_sum_all(dphase_abs_sum_all > up_limit) = median(dphase_abs_sum_all);
 
 %% plot

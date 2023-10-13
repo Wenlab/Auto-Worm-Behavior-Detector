@@ -1,4 +1,8 @@
-% return the x_max x_min y_max y_min of this video
+% Return the x_max x_min y_max y_min of this video
+%
+% 2023-10-13, Yixuan Li
+%
+
 function [x_max,x_min,y_max,y_min] = detect_edge(centerline_all)
 
     x_max_temp = zeros(numel(centerline_all),1);

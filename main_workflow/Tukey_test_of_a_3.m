@@ -15,7 +15,7 @@ eigen_basis = readmatrix('eigen_basis.csv');
 label_rearranged = rearrange_label(label);
 
 % loop to process each state
-curvature_of_centerline = [];
+curvature_of_centerline_all = [];
 for i = 1:size(label_rearranged,1)
     if ~label_rearranged(i,3)
         
@@ -26,13 +26,13 @@ for i = 1:size(label_rearranged,1)
             start_frame,end_frame);
         
         % vertcat
-        curvature_of_centerline = vertcat(curvature_of_centerline,curvature_of_centerline_new);
+        curvature_of_centerline_all = vertcat(curvature_of_centerline_all,curvature_of_centerline_new);
         
     end
 end
 
 % calculate a_3
-a_3 = curvature_of_centerline * eigen_basis(:, 3);
+a_3 = curvature_of_centerline_all * eigen_basis(:, 3);
 
 % histogram
 figure;

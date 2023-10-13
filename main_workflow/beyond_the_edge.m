@@ -1,4 +1,4 @@
-% protect beyond edge situation when labelling turn
+% Protect beyond edge situation when labelling turn
 %
 % 2023-10-13, Yixuan Li
 %

@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function Tukey_test_of_speed(path_length_sum_all, t_threshold, down_threshold)
+function Tukey_test_of_speed(path_length_sum_all, t_threshold, speed_threshold)
 
 % histogram
 figure;
@@ -25,6 +25,6 @@ annotation('textbox', [0.8, 0.8, 0.1, 0.1], 'String', sprintf('IQR index = %0.1f
 draw_lines(up_limit, down_limit, upper_bound, lower_bound);
 
 % add line
-xline(down_threshold,'green--', 'Label', sprintf('%0.2f mm',down_threshold), 'LineWidth', 2);
+xline(speed_threshold,'green--', 'Label', sprintf('%0.2f mm',speed_threshold), 'LineWidth', 2);
 
 end

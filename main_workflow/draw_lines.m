@@ -1,3 +1,8 @@
+% Draw 4 lines
+%
+% 2023-09-15 Yixuan Li
+%
+
 function draw_lines(up_limit, down_limit, upper_bound, lower_bound, median_of_data)
 
 % draw 4 lines
