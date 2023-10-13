@@ -1,4 +1,4 @@
-% arrange label from n_frame*1 to n_motion_state*3
+% Arrange label from n_frame*1 to n_motion_state*3
 %
 % 2023-10-13, Yixuan Li
 %

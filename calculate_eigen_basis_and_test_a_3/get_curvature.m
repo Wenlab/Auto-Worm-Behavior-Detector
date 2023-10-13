@@ -32,17 +32,17 @@ if path ~= 0
             n_frames = length(all_centerline);
             label = zeros(n_frames,1);
             label = process_nan(label,lengths_of_centerlines);
-            % label_rearranged = rearrange_label(label);
             
             % delete beyond the edge
             label = beyond_the_edge(mcd, label);
-            % label_rearranged = rearrange_label(label);
             
             % delete head touch body and too long
             label = Tukey_test_of_length_of_centerline(label,lengths_of_centerlines);
+
+            % rearrange label
             label_rearranged = rearrange_label(label);
             
-            % get curvature
+            % get the curvature of the unlabelled
             curvature_of_centerline = [];
             label_idx = [];
             for i = 1:size(label_rearranged,1)
@@ -66,7 +66,7 @@ if path ~= 0
             % calculate a_3
             a_3 = curvature_of_centerline * EigenWorms(:,3);
             
-            % process outliers
+            %    outliers
             fprintf('Number of Outliers: %d\n', sum(abs(a_3) > 1)); % fprintf is better than disp!
             a_3(abs(a_3) > 1) = 0;
             

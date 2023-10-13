@@ -1,3 +1,8 @@
+% Get the coordinates of the tail
+%
+% 2023-10-13, Yixuan Li
+%
+
 function [x_tail,y_tail] = get_tail_coord(centerline_all)
 
 x_tail = zeros(numel(centerline_all),1);

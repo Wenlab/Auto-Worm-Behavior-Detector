@@ -1,3 +1,8 @@
+% Find the frame of head-tail-human-flip, then output them in a .csv file.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function head_tail_human_flip(mcd)
 
 % handle outliers: label NaN as outliers

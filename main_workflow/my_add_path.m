@@ -1,3 +1,8 @@
+% Add path of this function.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function my_add_path
 cdpath = mfilename('fullpath');
 cdpath = fileparts(cdpath);

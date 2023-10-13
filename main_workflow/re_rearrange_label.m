@@ -1,4 +1,4 @@
-% merge neighbors which have the same motion state in label_rearranged
+% Merge neighbors with the same motion state in label_rearranged.
 %
 % 2023-10-13, Yixuan Li
 %

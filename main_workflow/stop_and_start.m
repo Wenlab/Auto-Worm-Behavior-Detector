@@ -103,9 +103,16 @@ disp('<<<END>>>');
 
 function frames_stop_start = find_frames_of_stop_start(mcd)
 
+% If 2 adjacent frames' time difference is longer than t_threshold,
+% consider them to be stop-start situation
+%
+% 2023-10-13, Yixuan Li
+%
+
 frames_stop_start = [];
+t_threshold = 1; % s
 for j = 1:length(mcd) - 1
-    if mcd(j + 1).TimeElapsed - mcd(j).TimeElapsed > 1 % s
+    if mcd(j + 1).TimeElapsed - mcd(j).TimeElapsed > t_threshold
         frames_stop_start(end + 1) = j;
     end
 end
@@ -114,7 +121,10 @@ end
 
 function label_table = insert_a_new_row(label_table, new_row, i)
 
-% insert a new row after i-th row
+% Insert a new row after i-th row
+%
+% 2023-10-13, Yixuan Li
+%
 
 before_row = label_table(1:i, :);
 after_row = label_table((i+1):end, :);

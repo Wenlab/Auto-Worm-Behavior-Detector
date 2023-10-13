@@ -1,4 +1,5 @@
 %% Prepare data
+
 % Create some example data (n_samples x n_features)
 X = curvature_of_centerline_all;
 

@@ -1,3 +1,8 @@
+% Save label_rearranged to a .csv file.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function output_label(label_rearranged, folder_of_saved_files, file_name, mcd)
 
 % Define the header row
