@@ -8,7 +8,7 @@ function ret =seekToFirstFrame(fid)
 % leifer@fas.harvard.edu
 % 2 November 2010
 
-disp('Seeking to first frame of YAML file.');
+disp('Seeking to the first frame of YAML file.');
 %Find Where the Frames Begin
 k=1;
 while 1 %unless otherwise
@@ -27,7 +27,7 @@ while 1 %unless otherwise
      
      %If we Found the line with the frames marker
      if regexp(tline,'^[ \t\r\n\v\f]*Frames:[ \t\r\n\v\f]*$')
-         disp('Found beginning of frames');
+         disp('Found the beginning of frames');
          tline = fgets(fid); 
          if regexp(tline,'^[ \t\r\n\v\f]*-[ \t\r\n\v\f]*$')
              ret=1;
