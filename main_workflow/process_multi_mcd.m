@@ -1,4 +1,7 @@
-% Load multiple mcd.mat and perform machine label 1 by 1
+% Load multiple mcd.mat and perform machine label one by one
+%
+% 2023-10-13, Yixuan Li
+%
 
 % clear
 clear;clc;close all;
@@ -28,8 +31,10 @@ if path ~= 0
     
             % save folder
             global folder_of_saved_files
-            [folder_of_saved_files,~,~] = fileparts(full_path_to_mcd);
-            folder_of_saved_files = fullfile(folder_of_saved_files, 'machine_label');
+            [folder_of_saved_files,save_file_name,~] = fileparts(full_path_to_mcd);
+            save_file_name = strrep(save_file_name,'_mcd_corrected','');
+            new_folder_name = strcat(save_file_name,'_machine_label');
+            folder_of_saved_files = fullfile(folder_of_saved_files, new_folder_name);
             if ~isfolder(folder_of_saved_files)
                 mkdir(folder_of_saved_files);
             end
