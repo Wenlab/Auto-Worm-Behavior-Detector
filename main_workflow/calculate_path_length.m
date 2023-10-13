@@ -1,3 +1,8 @@
+% Calculate path length from points.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function path_length_sum = calculate_path_length(points)
 
 disp_vectors = (points(:, 2:end) - points(:, 1:end - 1));

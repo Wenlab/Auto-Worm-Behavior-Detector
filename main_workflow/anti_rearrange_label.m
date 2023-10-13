@@ -3,7 +3,7 @@
 % 2023-09-18 Yixuan Li
 %
 
-function label = anti_rearrange(label_rearranged)
+function label = anti_rearrange_label(label_rearranged)
 
 n_frames = label_rearranged(size(label_rearranged,1),2);
 label = nan(n_frames,1);

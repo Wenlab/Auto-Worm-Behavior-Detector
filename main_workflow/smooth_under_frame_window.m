@@ -1,5 +1,5 @@
-% for motion states which are shorter than frame_window, make it be the same
-% as the pre motion state.
+% For motion states which are shorter than the frame window, make it be the
+% same as the pre motion state.
 %
 % 2023-09-16 Yixuan Li
 %

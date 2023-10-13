@@ -1,25 +1,37 @@
-function label_rearranged = add_roaming(mcd,label_rearranged)
+% Label roaming by the path length of a time window 
+%
+% 2023-10-13, Yixuan Li
+%
+
+function label_rearranged = label_roaming(mcd,label_rearranged)
+
+global s2frame
+global label_number_forward_reversal
 
 % reconstruct
-label = anti_rearrange(label_rearranged);
+label = anti_rearrange_label(label_rearranged);
 
 % integrate forward and reversal
 label_rearranged = integrate_forward_and_reversal(label_rearranged);
 label_rearranged = re_rearrange_label(label_rearranged);
 
 % get mask
-global label_number_forward_reversal
 mask = label_rearranged(:,3) == label_number_forward_reversal;
 indices = find(mask);
 
 % get disps
 disps_of_forward_reversal = get_disps_for_certain_motion_state(mcd, label_rearranged, label_number_forward_reversal);
 
-% histogram of mean speed in a frame-window
-global s2frame
+% set super-parameter
 t_threshold = 1; % s
+
+% s2frame
 frame_threshold = t_threshold * s2frame;
+
+% init
 path_length_sum_all = [];
+
+% loop to process each frame window
 for i = 1:size(disps_of_forward_reversal,1)
     start_frame = label_rearranged(indices(i),1);
     disp = disps_of_forward_reversal{i,1};
@@ -45,28 +57,7 @@ end
 % rearrange label
 label_rearranged = rearrange_label(label);
 
-%% Tukey test
-% histogram
-figure;
-histogram(path_length_sum_all);
-xlabel(sprintf('path length of %d second (mm)',t_threshold));
-ylabel('counts');
-title(sprintf('f(path length of %d second)',t_threshold));
-
-% perform Tukey test
-IQR_index = 1.5; % super parameter % bigger, stricter
-[~, ~, ~, ~,...
-    up_limit, down_limit, upper_bound, lower_bound] = ...
-    Tukey_test(path_length_sum_all, IQR_index);
-
-% add annotation to the histogram
-annotation('textbox', [0.8, 0.8, 0.1, 0.1], 'String', sprintf('IQR index = %0.1f',IQR_index));
-
-% visulize
-draw_lines(up_limit, down_limit, upper_bound, lower_bound);
-
-% add line
-xline(down_threshold,'green--', 'Label', sprintf('%0.2f mm',down_threshold), 'LineWidth', 2);
-xline(0.10,'green--', 'Label', '0.10 mm', 'LineWidth', 2);
+% show Tukey test
+Tukey_test_of_speed(path_length_sum_all, t_threshold, down_threshold);
 
 end

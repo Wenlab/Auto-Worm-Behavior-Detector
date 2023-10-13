@@ -1,3 +1,8 @@
+% Tukey test of the phase speed in the 2D space of a_1 and a_2.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function Tukey_test_of_phase_speed(mcd,label)
 
 % read eigen basis

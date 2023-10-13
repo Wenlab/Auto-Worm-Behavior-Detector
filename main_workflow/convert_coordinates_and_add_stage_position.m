@@ -1,4 +1,11 @@
-% coordinates_new is (mm) and is the coordinate of absolute reference frame
+% Add stagePosition to centerline and convert to mm.
+%
+% In other words, centerline is in the relative reference frame while 
+% coordinates_new is in the absolute reference frame
+%
+% 2023-10-13, Yixuan Li
+%
+
 function coordinates_new = convert_coordinates_and_add_stage_position(centerline, stage_position)
     global pixel2um unit2um
     coordinates_in_the_video = reshape(centerline, 2, 100);

@@ -1,4 +1,11 @@
+% Tukey test of the Euclidean distance between the head and the tail.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function label = Tukey_test_of_distance_between_head_and_tail(label,centerline_all)
+
+global label_number_outlier
 
 %% Tukey test
 
@@ -38,7 +45,6 @@ annotation('textbox', [0.8, 0.8, 0.1, 0.1], 'String', sprintf('IQR index = %0.1f
 draw_lines(up_limit, down_limit, upper_bound, lower_bound);
 
 %% add label
-global label_number_outlier
 label(mask) = mask_down * 1 + mask_up * label_number_outlier;
 
 end

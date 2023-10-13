@@ -1,3 +1,8 @@
+% add a new column into the .csv file
+%
+% 2023-10-13, Yixuan Li
+%
+
 function label_rearranged = add_a_new_column(label_rearranged, mcd)
 
 %% change label str from number to nature language

@@ -1,4 +1,9 @@
-function label = use_a_3_to_label_turn(mcd,label)
+% Tukey test of the Euclidean distance between the head and the tail.
+%
+% 2023-10-13, Yixuan Li
+%
+
+function label = Tukey_test_of_a_3(mcd,label)
 
 % only label the unlabelled
 mask = label == 0;

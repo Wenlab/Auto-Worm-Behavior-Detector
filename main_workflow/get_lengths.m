@@ -1,3 +1,8 @@
+% Get lengths of all centerline of a single mcd.mat.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function lengths_of_centerlines = get_lengths(all_centerline)
 n_frames = length(all_centerline);
 lengths_of_centerlines = zeros(n_frames,1);

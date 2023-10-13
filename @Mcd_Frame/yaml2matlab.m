@@ -12,7 +12,7 @@ fid = fopen(file);
 
 Mcd_Frame.seekToFirstFrame(fid);
 k=1;
-fprintf('%d frames completed\n',k);
+fprintf('Processing...\n');
 while(~feof(fid))
     mcdf(k)=Mcd_Frame.readOneFrame(fid); %#ok<AGROW>
     k=k+1;

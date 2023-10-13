@@ -1,3 +1,9 @@
+% Use the phase trajectory in the 2D space of a_1 and a_2 to label forward 
+% and reversal.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function label = use_phase_trajectory_to_label_forward_and_reversal(mcd,label,frame_window)
 
 % read eigen basis

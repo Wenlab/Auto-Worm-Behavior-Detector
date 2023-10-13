@@ -1,3 +1,8 @@
+% arrange label from n_frame*1 to n_motion_state*3
+%
+% 2023-10-13, Yixuan Li
+%
+
 function label_rearranged = rearrange_label(label)
 
 % Find the indices where the labels change

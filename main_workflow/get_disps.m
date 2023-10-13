@@ -1,5 +1,7 @@
-% get disp(mm) in the absolute reference frame from start frame to end
-% frame. start_frame, end_frame are n*1 array
+% Get disp (mm) in the absolute reference frame from start frame to end
+% frame.
+% 
+% start_frame, end_frame are n*1 array
 %
 % 2023-09-17, Yixuan Li
 %

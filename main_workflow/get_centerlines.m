@@ -1,4 +1,8 @@
-% get centerlines after unit conversion
+% get centerlines after unit conversion and add stage position
+%
+% 2023-10-13, Yixuan Li
+%
+
 function [centerline_all,boundary_A_all,boundary_B_all] = get_centerlines(mcd,start_frame,end_frame)
     
     n_frames = end_frame - start_frame + 1;
@@ -8,9 +12,9 @@ function [centerline_all,boundary_A_all,boundary_B_all] = get_centerlines(mcd,st
     count = 0;
     for i = start_frame:end_frame
         count = count + 1;
-        centerline_all{count,1} = convertCoordinates(mcd(i).SegmentedCenterline, mcd(i).StagePosition);
-        boundary_A_all{count,1} = convertCoordinates(mcd(i).BoundaryA, mcd(i).StagePosition);
-        boundary_B_all{count,1} = convertCoordinates(mcd(i).BoundaryB, mcd(i).StagePosition);
+        centerline_all{count,1} = convert_coordinates_and_add_stage_position(mcd(i).SegmentedCenterline, mcd(i).StagePosition);
+        boundary_A_all{count,1} = convert_coordinates_and_add_stage_position(mcd(i).BoundaryA, mcd(i).StagePosition);
+        boundary_B_all{count,1} = convert_coordinates_and_add_stage_position(mcd(i).BoundaryB, mcd(i).StagePosition);
     end
 
 end

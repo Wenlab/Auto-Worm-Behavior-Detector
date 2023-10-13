@@ -1,4 +1,8 @@
-% get centerlines before unit conversion
+% get centerlines before unit conversion and add stage position
+%
+% 2023-10-13, Yixuan Li
+%
+
 function [centerline_all,boundary_A_all,boundary_B_all] = get_centerlines_v2(mcd,start_frame,end_frame)
     
     n_frames = end_frame - start_frame + 1;
