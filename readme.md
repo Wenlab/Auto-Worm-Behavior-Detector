@@ -65,11 +65,30 @@ The structure of the data folder should be organized as below:
 
 # Super Parameters
 
+## need to change
+
 The only super parameter that you need to change is `frame window`.
 
 The meaning of `frame window`: if the frame window is $x$, then the temporal resolution is $x$ frames.
 
-It is recommended that 30 for `machine_label.csv` and 10 for `machine_label_v2.csv`.
+In simple term: smaller, more accurate.
+
+It is recommended that
+
+* 30 for `machine_label.csv`
+* 10 for `machine_label_v2.csv`.
+
+
+
+## no need to change
+
+* 1 unit of the stage postion == ? um
+  * always 0.05
+* 1 pixel of the video == ? um
+  * 4.2087 for 4x
+  * 1.6830 for 10x
+* ? frame == 1 s
+  * 60-66
 
 
 
@@ -84,4 +103,4 @@ It is recommended to have a human-double-check, and here are some tips:
 
 # $\Omega$ turn vs shallow turn
 
-This algorithm will label all $\Omega$ turn and some shallow turn as turn.
+This algorithm will label **all** $\Omega$ turn and **some** shallow turn as turn.

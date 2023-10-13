@@ -1,4 +1,7 @@
-% Convert multiple .yaml to mcd.mat at 1 time
+% Convert multiple .yaml to mcd.mat at one time
+%
+% 2023-10-13, Yixuan Li
+%
 
 clear;clc;close all;
 

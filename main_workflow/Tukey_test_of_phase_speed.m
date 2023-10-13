@@ -49,6 +49,7 @@ histogram(dphase_abs_sum_all);
 xlabel(sprintf('$\\Delta \\theta$ (deg per %d frames)',frame_window), 'Interpreter', 'latex');
 ylabel('counts');
 title('$f(\Delta \theta)$', 'Interpreter', 'latex');
+subtitle('Here, $\Delta \theta$ means phase angle difference', 'Interpreter', 'latex')
 
 % perform Tukey test
 IQR_index = 1.5; % super parameter % bigger, stricter
