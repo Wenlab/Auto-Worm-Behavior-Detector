@@ -94,8 +94,6 @@ if path ~= 0
     end
 end
 
-disp('Thanks for using!');
-disp('See you next time!');
 disp('<<<END>>>');
 
 function frames_stop_start = find_frames_of_stop_start(mcd)

@@ -1,6 +1,9 @@
-% Get the curvature, drop nan, beyond the edge, head touch body.
+% Get the curvature. 
+% 
+% Drop nan, beyond the edge, head touch body.
 %
-% We don't need time information.
+% No need to save time, because we don't need time information when 
+% performing PCA.
 % 
 % 2023-10-14, Yixuan Li
 %
@@ -31,9 +34,9 @@ if path ~= 0
             mcd = load_mcd(full_path_to_mcd);
             
             % delete nan
-            all_centerline = get_all_centerline(mcd);
-            lengths_of_centerlines = get_lengths(all_centerline);
-            n_frames = length(all_centerline);
+            all_centerlines = get_all_centerlines_in_absolute_frame(mcd);
+            lengths_of_centerlines = get_lengths(all_centerlines);
+            n_frames = length(all_centerlines);
             label = zeros(n_frames,1);
             label = process_nan(label,lengths_of_centerlines);
             
@@ -47,30 +50,30 @@ if path ~= 0
             label_rearranged = rearrange_label(label);
             
             % get the curvature of the unlabelled
-            curvature_of_centerline = [];
+            curvature_of_centerline_all = [];
             label_idx = [];
             for i = 1:size(label_rearranged,1)
                 if ~label_rearranged(i,3)
                     start_frame = label_rearranged(i,1);
                     end_frame = label_rearranged(i,2);
                     [curvature_of_centerline_new, ~] = get_the_curvature_of_a_period(mcd,start_frame,end_frame);
-                    curvature_of_centerline = vertcat(curvature_of_centerline,curvature_of_centerline_new);
+                    curvature_of_centerline_all = vertcat(curvature_of_centerline_all,curvature_of_centerline_new);
                     label_idx = vertcat(label_idx,(start_frame:end_frame)');
                 end
             end
             
             % save
             save_folder = fileparts(full_path_to_mcd);
-            save_as_mat(save_folder, curvature_of_centerline);
+            save_as_mat(save_folder, curvature_of_centerline_all);
             save_as_mat(save_folder, label_idx);
             
             % load eigen_basis
             load('eigen_basis_with_turn.mat');
             
             % calculate a_3
-            a_3 = curvature_of_centerline * EigenWorms(:,3);
+            a_3 = curvature_of_centerline_all * EigenWorms(:,3);
             
-            %    outliers
+            % outliers
             fprintf('Number of Outliers: %d\n', sum(abs(a_3) > 1)); % fprintf is better than disp!
             a_3(abs(a_3) > 1) = 0;
             

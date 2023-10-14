@@ -6,9 +6,9 @@
 function head_tail_human_flip(mcd)
 
 % handle outliers: label NaN as outliers
-all_centerline = get_all_centerline(mcd);
-lengths_of_centerlines = get_lengths(all_centerline);
-n_frames = length(all_centerline);
+all_centerlines = get_all_centerlines_in_absolute_frame(mcd);
+lengths_of_centerlines = get_lengths(all_centerlines);
+n_frames = length(all_centerlines);
 label = zeros(n_frames,1);
 label = process_nan(label,lengths_of_centerlines);
 
@@ -17,7 +17,7 @@ global label_number_human_flip
 n_frames = numel(mcd);
 start_frame = 1;
 end_frame = n_frames;
-[centerline_all,~,~] = get_centerlines_v2(mcd,start_frame,end_frame);
+[centerline_all,~,~] = get_centerlines_in_relative_frame(mcd,start_frame,end_frame);
 
 mask = label == 0; % only label the unlabelled
 label_flip_temp = zeros(sum(mask),1);

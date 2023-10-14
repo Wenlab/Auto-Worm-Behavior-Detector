@@ -6,9 +6,9 @@
 function label_rearranged = machine_label(mcd)
 
 %% get centerlines
-all_centerline = get_all_centerline(mcd);
-lengths_of_centerlines = get_lengths(all_centerline);
-n_frames = length(all_centerline);
+all_centerlines = get_all_centerlines_in_absolute_frame(mcd);
+lengths_of_centerlines = get_lengths(all_centerlines);
+n_frames = length(all_centerlines);
 label = zeros(n_frames,1);
 
 %% handle outliers: label NaN as outliers
@@ -23,7 +23,7 @@ label = beyond_the_edge(mcd, label);
 label = Tukey_test_of_length_of_centerline(label,lengths_of_centerlines);
 
 % round 2, using Euclidean distance between head and tail
-label = Tukey_test_of_distance_between_head_and_tail(label,all_centerline);
+label = Tukey_test_of_distance_between_head_and_tail(label,all_centerlines);
 
 % round 3, using a_3
 label = Tukey_test_of_a_3(mcd,label);

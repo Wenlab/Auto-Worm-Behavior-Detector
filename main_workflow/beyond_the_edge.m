@@ -9,7 +9,7 @@ function label = beyond_the_edge(mcd,label)
 n_frames = numel(mcd);
 start_frame = 1;
 end_frame = n_frames;
-[centerline_all,~,~] = get_centerlines_v2(mcd,start_frame,end_frame);
+[centerline_all,~,~] = get_centerlines_in_relative_frame(mcd,start_frame,end_frame);
 
 % only label the unlabelled
 mask = label == 0;

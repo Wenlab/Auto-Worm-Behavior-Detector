@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function all_centerline = get_all_centerline(mcd)
+function all_centerline = get_all_centerlines_in_absolute_frame(mcd)
 
 n_frames = length(mcd);
 all_centerline = cell(n_frames,1);
