@@ -1,3 +1,10 @@
+% Perform PCA to the curvature.
+%
+% 2023-10-14, Yixuan Li
+%
+
+function perform_PCA(curvature_of_centerline_all)
+
 %% Prepare data
 
 % Create some example data (n_samples x n_features)
@@ -7,29 +14,20 @@ X = curvature_of_centerline_all;
 X_centerlized = X - mean(X);
 
 %% Perform PCA by build-in function
-[coeff, score, latent, tsquared, explained, mu] = pca(X_centerlized);
-
-% Display explained variance
-disp('Explained variance by each component:');
-disp(explained);
-
-% Cumulative explained variance
-cumulative_explained = cumsum(explained);
-disp('Cumulative explained variance:');
-disp(cumulative_explained);
-
-% plot first 4
-for i = 1:4
-    subplot(2, 2, i);
-    plot(coeff(:, i));
-    xlabel('segment');
-    ylabel(['a_' num2str(i)]);
-end
+% [coeff, score, latent, tsquared, explained, mu] = pca(X_centerlized);
+% 
+% % Display explained variance
+% disp('Explained variance by each component:');
+% disp(explained);
+% 
+% % Cumulative explained variance
+% cumulative_explained = cumsum(explained);
+% disp('Cumulative explained variance:');
+% disp(cumulative_explained);
 
 %% Perform PCA by hand
 X_covariance = X_centerlized' * X_centerlized;
 [V, D] = eig(X_covariance);
-% [V, D] = eig(EigenWorms);
 
 % Extract the eigenvalues from the diagonal matrix D
 eigenvalues = diag(D);
@@ -58,38 +56,10 @@ bar(cumulative_fraction_of_eigenvalue(1:10));
 xlabel('PC');
 ylabel('cumulative fraction of eigenvalue');
 
-% from Heng
-eigenvectors = EigenWorms;
-
 % plot first 4
-for i = 1:4
-    subplot(2, 2, i);
-    plot(eigenvectors(:, i));
-    xlabel('segment');
-    ylabel(['a_' num2str(i)]);
-end
-
-% plot first 4 in one figure
-figure;
-hold on;
-for i = 1:4
-    plot(eigenvectors(:, i));
-end
-xlabel('segment');
-ylabel(['a_' num2str(i)]);
-legend('1','2','3','4');
+plot_first_4_coeff(eigenvectors);
 
 % plot r
-figure;
-radius = sqrt(eigenvectors(:, 1).^2 + eigenvectors(:, 2).^2);
-plot(radius);
-xlabel('segment');
-ylabel('sqrt(a_1^2 + a_2^2)');
+plot_r(eigenvectors);
 
-%% distribution of a_3
-a_3 = curvature_of_centerline_all * eigenvectors(:, 3);
-figure;
-histogram(a_3,'Normalization','pdf');
-xlabel('a_3');
-ylabel('pdf');
-title('distribution of a_3');
+end

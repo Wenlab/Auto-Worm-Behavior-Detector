@@ -1,3 +1,11 @@
+% Plot the histogram on linear scale and semilogy scale and use Gauss to
+% fit
+%
+% input: N*1 numerical array
+%
+% 2023-10-14, Yixuan Li
+%
+
 function Gauss_fit(a_3)
 
 % Calculate histogram data

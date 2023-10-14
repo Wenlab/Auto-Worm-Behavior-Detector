@@ -1,3 +1,8 @@
+% Save an array to .mat, where the filename is the name of the var
+%
+% 2023-10-14, Yixuan Li
+%
+
 function save_as_mat(save_folder, var_value)
 
     % get var_name

@@ -8,6 +8,7 @@
 % 2023-10-14, Yixuan Li
 %
 
+% stop if error
 dbstop if error
 
 % clear
@@ -32,12 +33,16 @@ if path ~= 0
             % load
             full_path_to_mcd = list_mcd{ii};
             mcd = load_mcd(full_path_to_mcd);
-            
-            % delete nan
-            all_centerlines = get_all_centerlines_in_absolute_frame(mcd);
-            lengths_of_centerlines = get_lengths(all_centerlines);
-            n_frames = length(all_centerlines);
+
+            % init
+            n_frames = length(mcd);
             label = zeros(n_frames,1);
+            
+            % get centerlines
+            all_centerlines = get_all_centerlines_in_absolute_frame(mcd);
+            lengths_of_centerlines = get_lengths(all_centerlines); 
+
+            % delete NaN
             label = process_nan(label,lengths_of_centerlines);
             
             % delete beyond the edge
@@ -63,41 +68,15 @@ if path ~= 0
             end
             
             % save
-            save_folder = fileparts(full_path_to_mcd);
-            save_as_mat(save_folder, curvature_of_centerline_all);
-            save_as_mat(save_folder, label_idx);
+            save_folder_path = fileparts(full_path_to_mcd);
+            save_as_mat(save_folder_path, curvature_of_centerline_all);
+            save_as_mat(save_folder_path, label_idx);
             
-            % load eigen_basis
-            load('eigen_basis_with_turn.mat');
+            % test a_3
+            test_a_3(curvature_of_centerline_all);
             
-            % calculate a_3
-            a_3 = curvature_of_centerline_all * EigenWorms(:,3);
-            
-            % outliers
-            fprintf('Number of Outliers: %d\n', sum(abs(a_3) > 1)); % fprintf is better than disp!
-            a_3(abs(a_3) > 1) = 0;
-            
-            % Gauss fit
-            Gauss_fit(a_3);
-            
-            %% test Tukey
-            IQR_index_max = 10;
-            table = plot_number_of_outliers_vs_IQR_index(a_3, IQR_index_max);
-            
-            % Tukey
-            IQR_index = 1;
-            [number_of_up_outliers, number_of_down_outliers, mask_up, mask_down,...
-                up_limit, down_limit, upper_bound, lower_bound] =...
-                Tukey_test(a_3, IQR_index);
-            
-            % label
-            test = label_idx(mask_up | mask_down);
-            label(test) = 111;
-            label_rearranged_v2 = rearrange_label(label);
         end
     end
 end
 
-disp('Thanks for using!');
-disp('See you next time!');
 disp('<<<END>>>');

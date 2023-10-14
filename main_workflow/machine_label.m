@@ -5,11 +5,13 @@
 
 function label_rearranged = machine_label(mcd)
 
+%% init
+n_frames = length(mcd);
+label = zeros(n_frames,1);
+
 %% get centerlines
 all_centerlines = get_all_centerlines_in_absolute_frame(mcd);
 lengths_of_centerlines = get_lengths(all_centerlines);
-n_frames = length(all_centerlines);
-label = zeros(n_frames,1);
 
 %% handle outliers: label NaN as outliers
 label = process_nan(label,lengths_of_centerlines);
