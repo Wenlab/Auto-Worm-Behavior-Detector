@@ -5,9 +5,6 @@
 
 clear;clc;close all;
 
-% add path
-my_add_path
-
 % chose the folder to analyze
 path = uigetdir;
 

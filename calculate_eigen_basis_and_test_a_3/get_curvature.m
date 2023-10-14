@@ -1,10 +1,14 @@
+% Get the curvature, drop nan, beyond the edge, head touch body.
+%
+% We don't need time information.
+% 
+% 2023-10-14, Yixuan Li
+%
+
 dbstop if error
 
 % clear
 clc;clear;close all;
-
-% add path
-my_add_path;
 
 % chose the folder of files
 path = uigetdir;

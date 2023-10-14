@@ -8,9 +8,6 @@
 % clear
 clear;clc;close all;
 
-% add path
-my_add_path;
-
 % chose the folder of files
 path = uigetdir;
 
