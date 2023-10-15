@@ -46,7 +46,8 @@ if path ~= 0
             label = process_nan(label,lengths_of_centerlines);
             
             % delete beyond the edge
-            label = beyond_the_edge(mcd, label);
+            enable_output = false;
+            label = beyond_the_edge(mcd, label, false);
             
             % delete head touch body and too long
             label = Tukey_test_of_length_of_centerline(label,lengths_of_centerlines);

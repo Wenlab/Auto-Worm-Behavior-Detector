@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function label = beyond_the_edge(mcd,label)
+function label = beyond_the_edge(mcd,label,enable_output)
 
 %% get mask
 n_frames = numel(mcd);
@@ -32,6 +32,11 @@ label_beyond_edge = remain_rows(label_beyond_edge,label_number_beyond_edge);
 %% save
 global folder_of_saved_files
 file_name = 'beyond_the_edge.csv';
-output_label(label_beyond_edge, folder_of_saved_files, file_name, mcd)
+
+if nargin < 3
+    output_label(label_beyond_edge, folder_of_saved_files, file_name, mcd);
+elseif enable_output == true
+    output_label(label_beyond_edge, folder_of_saved_files, file_name, mcd);
+end
 
 end
