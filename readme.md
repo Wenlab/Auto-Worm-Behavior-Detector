@@ -1,7 +1,11 @@
+[![Youtube](https://img.shields.io/badge/YouTube-Demo-red)](https://www.youtube.com/watch?v=Y0aR_9A48vo)
+
+[![GitHub](https://img.shields.io/github/license/Wenlab/Machine_Label_of_Colbert)](https://github.com/Wenlab/Machine_Label_of_Colbert/blob/master/LICENSE)
+
 # Update Log
 
-* 2023-05-24: first release
-* 2023-07-16: now you can add labels to the video!
+* 2023-05-24: version 1.0.0, first release
+* 2023-07-16: Now you can add labels to the video!
 * 2023-09-16: version 1.1.0, add the use of $a_3$ when labelling turn.
 * 2023-09-18: version 1.2.0, add roaming.
 
@@ -82,7 +86,7 @@ It is recommended that
 
 ## no need to change
 
-* 1 unit of the stage postion == ? um
+* 1 unit of the stage position == ? um
   * always 0.05
 * 1 pixel of the video == ? um
   * 4.2087 for 4x
