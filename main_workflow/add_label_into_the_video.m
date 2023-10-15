@@ -1,9 +1,9 @@
-% Add label into the video
+% Add label into the video.
+%
+% 2023-10-13, Yixuan Li
+%
 
 clc;clear;close all;
-
-% add path
-my_add_path
 
 % chose the folder of files
 path = uigetdir;

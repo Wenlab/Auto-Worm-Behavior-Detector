@@ -1,3 +1,8 @@
+% Get the motion state of each frame window.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function state = get_motion_state(curvature_of_centerline_all, eigen_basis, frame_window, std2mean)
 
 if nargin < 3

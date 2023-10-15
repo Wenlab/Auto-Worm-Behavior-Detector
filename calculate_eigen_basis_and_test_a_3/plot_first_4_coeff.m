@@ -1,3 +1,8 @@
+% Plot the first 4 eigen-vectors.
+%
+% 2023-10-14, Yixuan Li
+%
+
 function plot_first_4_coeff(coeff)
 
 figure;

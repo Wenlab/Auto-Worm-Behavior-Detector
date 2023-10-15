@@ -1,6 +1,11 @@
+% Save all figures and then close them.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function output_figures(folder_of_saved_files, n_figs)
 
-% Loop through each figure and save it
+% Loop to save each figure
 for i = 1:n_figs
     
     % Generate a unique file name for each figure
@@ -14,8 +19,10 @@ for i = 1:n_figs
     
 end
 
+% disp
 disp('figures saved successfully.');
 
+% close
 close all;
 
 end

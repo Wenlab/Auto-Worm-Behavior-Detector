@@ -1,5 +1,5 @@
-% for unlabelled motion states which are shorter than t_threshold, make it be the
-% same as pre or post motion state
+% For unlabelled motion states which are shorter than the t threshold, make
+% it be the same as pre or post motion state
 %
 % 2023-09-16 Yixuan Li
 %

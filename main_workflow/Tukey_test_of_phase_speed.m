@@ -1,3 +1,8 @@
+% Tukey test of the phase speed in the 2D space of a_1 and a_2.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function Tukey_test_of_phase_speed(mcd,label)
 
 % read eigen basis
@@ -38,7 +43,7 @@ for i = 1:size(label_rearranged,1)
 end
 
 % let the outliers to be the median
-up_limit = 60;
+up_limit = 60; % deg
 dphase_abs_sum_all(dphase_abs_sum_all > up_limit) = median(dphase_abs_sum_all);
 
 %% plot
@@ -49,6 +54,7 @@ histogram(dphase_abs_sum_all);
 xlabel(sprintf('$\\Delta \\theta$ (deg per %d frames)',frame_window), 'Interpreter', 'latex');
 ylabel('counts');
 title('$f(\Delta \theta)$', 'Interpreter', 'latex');
+subtitle('Here, $\Delta \theta$ means phase angle difference', 'Interpreter', 'latex')
 
 % perform Tukey test
 IQR_index = 1.5; % super parameter % bigger, stricter

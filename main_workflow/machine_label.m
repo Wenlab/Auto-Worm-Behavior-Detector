@@ -1,10 +1,17 @@
+% Do machine label to a single mcd.mat
+%
+% 2023-10-13, Yixuan Li
+%
+
 function label_rearranged = machine_label(mcd)
 
-%% get centerlines
-all_centerline = get_all_centerline(mcd);
-lengths_of_centerlines = get_lengths(all_centerline);
-n_frames = length(all_centerline);
+%% init
+n_frames = length(mcd);
 label = zeros(n_frames,1);
+
+%% get centerlines
+all_centerlines = get_all_centerlines_in_absolute_frame(mcd);
+lengths_of_centerlines = get_lengths(all_centerlines);
 
 %% handle outliers: label NaN as outliers
 label = process_nan(label,lengths_of_centerlines);
@@ -18,16 +25,16 @@ label = beyond_the_edge(mcd, label);
 label = Tukey_test_of_length_of_centerline(label,lengths_of_centerlines);
 
 % round 2, using Euclidean distance between head and tail
-label = Tukey_test_of_distance_between_head_and_tail(label,all_centerline);
+label = Tukey_test_of_distance_between_head_and_tail(label,all_centerlines);
 
 % round 3, using a_3
-label = use_a_3_to_label_turn(mcd,label);
+label = Tukey_test_of_a_3(mcd,label);
 
-% end protection of beyond edge situation
+%% end the protection of beyond edge situation
 global label_number_beyond_edge
 label(label == label_number_beyond_edge) = 0;
 
-% new function: Tukey test of phase speed
+%% beta function: Tukey test of phase speed
 Tukey_test_of_phase_speed(mcd,label);
 
 %% label forward and reversal
@@ -35,17 +42,14 @@ global frame_window
 label = use_phase_trajectory_to_label_forward_and_reversal(mcd,label,frame_window);
 label_rearranged = rearrange_label(label);
 
-%% smooth the under frame window motion states
+%% smooth motion states shorter than a frame window 
 label_rearranged = smooth_under_frame_window(label_rearranged);
 
-%% process the unlabelled
+%% process the unlabelled shorter than a time window
 label_rearranged = process_the_unlabelled(label_rearranged);
 
-%% smooth forward
-% label_rearranged = smooth_forward(label_rearranged);
-
 %% label roaming
-label_rearranged = add_roaming(mcd,label_rearranged);
+label_rearranged = label_roaming(mcd,label_rearranged);
 
 %% output figs for human-double-check
 global folder_of_saved_files

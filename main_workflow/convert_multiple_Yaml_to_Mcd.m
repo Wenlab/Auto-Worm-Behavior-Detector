@@ -1,9 +1,9 @@
-% Convert multiple .yaml to mcd.mat at 1 time
+% Convert multiple .yaml to mcd.mat at one time
+%
+% 2023-10-13, Yixuan Li
+%
 
 clear;clc;close all;
-
-% add path
-my_add_path
 
 % chose the folder to analyze
 path = uigetdir;

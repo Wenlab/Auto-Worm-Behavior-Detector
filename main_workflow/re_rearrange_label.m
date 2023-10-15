@@ -1,7 +1,9 @@
-function result = re_rearrange_label(label_rearranged)
+% Merge neighbors with the same motion state in label_rearranged.
+%
+% 2023-10-13, Yixuan Li
+%
 
-    % I always write this kind of code when learning C, but I forget these
-    % skills now.
+function result = re_rearrange_label(label_rearranged)
 
     % init
     result = [];

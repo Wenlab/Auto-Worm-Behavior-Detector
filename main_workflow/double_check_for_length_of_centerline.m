@@ -4,6 +4,7 @@
 % than 2s, then pass.
 %
 % 2023-09-15 Yixuan Li
+%
 
 function is_passed = double_check_for_length_of_centerline(...
     length_of_centerline,...

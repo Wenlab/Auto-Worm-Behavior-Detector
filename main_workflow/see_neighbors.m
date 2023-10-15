@@ -1,4 +1,4 @@
-% if a neighbor is label_number_outlier or 1 or 3, let it be the same as it.
+% If a neighbor is label_number_outlier or 1 or 3, let it be the same as it.
 % Priority: label_number_outlier > 1 > 3 > 2
 % In China, we call this as "近朱者赤，近墨者黑".
 %

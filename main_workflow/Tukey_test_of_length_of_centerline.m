@@ -1,4 +1,11 @@
+% Tukey test of the length of centerline.
+%
+% 2023-10-13, Yixuan Li
+%
+
 function label = Tukey_test_of_length_of_centerline(label,length_of_centerline)
+
+global label_number_outlier
 
 %% Tukey test
 
@@ -42,7 +49,6 @@ is_passed_2 = double_check_for_length_of_centerline(...
 if is_passed_2
 
     % if pass, label up as outlier and down as turn
-    global label_number_outlier
     label(mask) = mask_down + mask_up * label_number_outlier;
 
 else

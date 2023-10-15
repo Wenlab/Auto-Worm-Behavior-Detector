@@ -1,3 +1,8 @@
+% Integrate reversal, turn and roaming into reorientation
+%
+% 2023-10-13, Yixuan Li
+%
+
 function integrate_into_reorientation_and_eliminate_short_run(label_rearranged, mcd)
 
 %% integrate turn and reversal into reorientation

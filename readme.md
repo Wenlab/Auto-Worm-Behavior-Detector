@@ -1,7 +1,11 @@
+[![Youtube](https://img.shields.io/badge/YouTube-Demo-red)](https://www.youtube.com/watch?v=Y0aR_9A48vo)
+
+[![GitHub](https://img.shields.io/github/license/Wenlab/Machine_Label_of_Colbert)](https://github.com/Wenlab/Machine_Label_of_Colbert/blob/master/LICENSE)
+
 # Update Log
 
-* 2023-05-24: first release
-* 2023-07-16: now you can add labels to the video!
+* 2023-05-24: version 1.0.0, first release
+* 2023-07-16: Now you can add labels to the video!
 * 2023-09-16: version 1.1.0, add the use of $a_3$ when labelling turn.
 * 2023-09-18: version 1.2.0, add roaming.
 
@@ -9,7 +13,7 @@
 
 ![Demo GIF](/markdown_figs/demo.gif)
 
-This GIF is from N2-Ctl20230317-W1, an experiment done by Runhui Li, my partner. Thanks her very much.
+This GIF is from N2-Ctl20230317-W1, an experiment done by Runhui Li, my partner.
 
 See [full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experiment on YouTube!
 
@@ -65,11 +69,30 @@ The structure of the data folder should be organized as below:
 
 # Super Parameters
 
+## need to change
+
 The only super parameter that you need to change is `frame window`.
 
 The meaning of `frame window`: if the frame window is $x$, then the temporal resolution is $x$ frames.
 
-It is recommended that 30 for `machine_label.csv` and 10 for `machine_label_v2.csv`.
+In simple term: smaller, more accurate.
+
+It is recommended that
+
+* 30 for `machine_label.csv`
+* 10 for `machine_label_v2.csv`.
+
+
+
+## no need to change
+
+* 1 unit of the stage position == ? um
+  * always 0.05
+* 1 pixel of the video == ? um
+  * 4.2087 for 4x
+  * 1.6830 for 10x
+* ? frame == 1 s
+  * 60-66
 
 
 
@@ -84,4 +107,4 @@ It is recommended to have a human-double-check, and here are some tips:
 
 # $\Omega$ turn vs shallow turn
 
-This algorithm will label all $\Omega$ turn and some shallow turn as turn.
+This algorithm will label **all** $\Omega$ turn and **some** shallow turn as turn.
