@@ -27,11 +27,11 @@ points_of_forward_reversal = get_points_for_certain_motion_state(mcd, label_rear
 %% label
 
 % set super-parameter
-t_threshold = 1; % s
-speed_threshold = 0.10; % mm/s
+t_window = 1; % s
+speed_threshold = 0.05; % mm/s
 
 % s2frame
-frame_threshold = t_threshold * s2frame;
+frame_window = t_window * s2frame;
 
 % init
 path_length_sum_all = [];
@@ -40,18 +40,18 @@ path_length_sum_all = [];
 for i = 1:size(points_of_forward_reversal,1)
     start_frame = label_rearranged(indices(i),1);
     points = points_of_forward_reversal{i,1};
-    if size(points,2) > frame_threshold
-        for j = 1:size(points,2) - frame_threshold
+    if size(points,2) > frame_window
+        for j = 1:size(points,2) - frame_window
 
             % calculate the path length
-            points_within_frame_window = points(:,j:j + frame_threshold);
+            points_within_frame_window = points(:,j:j + frame_window);
             path_length_sum = calculate_path_length(points_within_frame_window);
             path_length_sum_all(end+1) = path_length_sum;
 
             % label roaming
             if path_length_sum < speed_threshold
                 frame_now = j + start_frame - 1;
-                label(frame_now:frame_now+frame_threshold) = 4;
+                label(frame_now:frame_now + frame_window) = 4;
             end
 
         end
@@ -62,6 +62,6 @@ end
 label_rearranged = rearrange_label(label);
 
 %% show Tukey test
-Tukey_test_of_speed(path_length_sum_all, t_threshold, speed_threshold);
+Tukey_test_of_speed(path_length_sum_all, t_window, speed_threshold);
 
 end
