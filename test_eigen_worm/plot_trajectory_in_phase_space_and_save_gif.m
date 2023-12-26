@@ -1,4 +1,4 @@
-function plot_trajectory_in_phase_space_v3(curvature_of_centerline_all, eigen_basis, gifFilename)
+function plot_trajectory_in_phase_space_and_save_gif(curvature_of_centerline_all, eigen_basis, gifFilename)
 figure;
 scatterPlot = scatter(0, 0);
 xlabel('a_1');

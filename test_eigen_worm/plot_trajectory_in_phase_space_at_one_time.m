@@ -1,4 +1,4 @@
-function plot_trajectory_in_phase_space(curvature_of_centerline_all, eigen_basis)
+function plot_trajectory_in_phase_space_at_one_time(curvature_of_centerline_all, eigen_basis)
 
 figure;
 trajectory = curvature_of_centerline_all * eigen_basis(:, 1:2);
