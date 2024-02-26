@@ -24,6 +24,7 @@ result_3_cate(4,3) = sum(result_3_cate(1:3,3));
 
 result_3_cate(4,4) = sum(result_3_cate(4,1:3));
 
+% calculate
 precision_of_turn = result_3_cate(1,1) / result_3_cate(4,1);
 recall_of_turn = result_3_cate(1,1) / result_3_cate(1,4);
 
@@ -33,10 +34,18 @@ recall_of_forward = result_3_cate(2,2) / result_3_cate(2,4);
 precision_of_reversal = result_3_cate(3,3) / result_3_cate(4,3);
 recall_of_reversal = result_3_cate(3,3) / result_3_cate(3,4);
 
+accuracy = (result_3_cate(1,1) + result_3_cate(2,2) + result_3_cate(3,3)) / result_3_cate(4,4);
+error = 1 - accuracy;
+
 % Assuming precision and recall are calculated without multiplying by 100
-fprintf("\n");
+disp("---------------------------------------------------------")
 
 disp("In 3 categories:")
+
+fprintf('Accuracy: %.2f%%\n', accuracy * 100);
+fprintf('Error: %.2f%%\n', error * 100);
+
+disp("---------------")
 
 fprintf('Precision of Turn: %.2f%%\n', precision_of_turn * 100);
 fprintf('Recall of Turn: %.2f%%\n', recall_of_turn * 100);
@@ -47,6 +56,6 @@ fprintf('Recall of Forward: %.2f%%\n', recall_of_forward * 100);
 fprintf('Precision of Reversal: %.2f%%\n', precision_of_reversal * 100);
 fprintf('Recall of Reversal: %.2f%%\n', recall_of_reversal * 100);
 
-fprintf("\n");
+disp("---------------------------------------------------------")
 
 end
