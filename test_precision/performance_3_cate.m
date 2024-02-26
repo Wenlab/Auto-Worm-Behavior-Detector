@@ -1,4 +1,4 @@
-function performance_3_cate(human_label,machine_label)
+function result_3_cate = performance_3_cate(human_label,machine_label)
 
 result_3_cate = nan(4,4);
 

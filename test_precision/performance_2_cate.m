@@ -1,4 +1,4 @@
-function performance_2_cate(human_label,machine_label)
+function result_2_cate = performance_2_cate(human_label,machine_label)
 
 human_label(human_label == 1) = 200;
 human_label(human_label == 3) = 200;

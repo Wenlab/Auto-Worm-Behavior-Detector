@@ -1,7 +1,9 @@
 clear;clc;close all;
+dbstop if error;
+my_add_path();
 
 %% parameter
-n_frame = 8000;
+n_frame = 23569;
 
 %% load human label
 human_label = load_human_label(n_frame);
@@ -10,7 +12,7 @@ human_label = load_human_label(n_frame);
 machine_label = load_machine_label(n_frame);
 
 %% result for 3 categories
-performance_3_cate(human_label,machine_label);
+result_3_cate = performance_3_cate(human_label,machine_label);
 
 %% result for 2 categories
-performance_2_cate(human_label,machine_label);
+result_2_cate = performance_2_cate(human_label,machine_label);
