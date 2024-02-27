@@ -34,8 +34,11 @@ if root_path ~= 0
             human_label_all(:,count) = label_now(1:n_frame);
         end
 
-        % visualize
-        % hamming_distances = calculate_hamming_distance(human_label_all);
+        % visualize by hamming
+        calculate_hamming_distance(human_label_all);
+
+        % visualize by tSNE
+        visualize_by_tSNE(human_label_all);
 
         % vote
         human_label = create_human_label_unanimous_vote(human_label_all);

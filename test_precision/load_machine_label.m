@@ -15,13 +15,13 @@ if root_path ~= 0
             add_1 = false;
             machine_label = xlsx_to_label(data,add_1);
         end
+
+        % cut
+        machine_label = machine_label(1:n_frame);
+
+        % label roaming as forward
+        machine_label(machine_label == 4) = 2;
+
     end
 end
-
-% cut
-machine_label = machine_label(1:n_frame);
-
-% label roaming as forward
-machine_label(machine_label == 4) = 2;
-
 end
