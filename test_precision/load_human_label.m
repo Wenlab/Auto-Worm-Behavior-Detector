@@ -16,7 +16,7 @@ if root_path ~= 0
     % if at least 1 file is choosed
     if tf==1
         n_xlsx = length(indx);
-        label_all = nan(n_frame,n_xlsx);
+        human_label_all = nan(n_frame,n_xlsx);
         count = 0;
         for i = indx
 
@@ -31,10 +31,14 @@ if root_path ~= 0
             label_now = xlsx_to_label(data,add_1);
 
             % cut
-            label_all(:,count) = label_now(1:n_frame);
+            human_label_all(:,count) = label_now(1:n_frame);
         end
 
-        human_label = create_human_label(label_all);
+        % visualize
+        % hamming_distances = calculate_hamming_distance(human_label_all);
+
+        % vote
+        human_label = create_human_label_unanimous_vote(human_label_all);
     end
 end
 
