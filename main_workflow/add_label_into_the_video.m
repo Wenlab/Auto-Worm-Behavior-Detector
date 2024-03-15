@@ -29,7 +29,10 @@ if path ~= 0
             root_folder = fileparts(fileparts(full_path_to_csv));
 
             % read
-            files = dir(fullfile(root_folder, '*HUDS.avi'));
+            [folder_path,file_name] = fileparts(full_path_to_csv);
+            [father_folder_path,folder_name] = fileparts(folder_path);
+            prefix = strrep(folder_name,"_machine_label","");
+            files = dir(fullfile(root_folder, strcat(prefix,'_HUDS.avi')));
             if length(files) ~= 1
                 error("More than 1 HUDS.avi file or no HUDS.avi file in this folder!");
             end
