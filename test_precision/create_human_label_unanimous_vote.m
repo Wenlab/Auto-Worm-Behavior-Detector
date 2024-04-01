@@ -21,6 +21,6 @@ end
 nan_percentage = sum(isnan(human_label)) / length(human_label) * 100;
 
 % Display the results
-fprintf('Percentage of NaN values in human label: %.2f%%\n', nan_percentage);
+fprintf('Proportion of frames lacking unanimous consensus among human experts: %.2f%%\n', nan_percentage);
 
 end

@@ -49,7 +49,7 @@ See [full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experiment
 
 
 
-# The Structure of the Data Folder
+## The Structure of the Data Folder
 
 The structure of the data folder should be organized as below:
 
@@ -67,9 +67,9 @@ The structure of the data folder should be organized as below:
 
 
 
-# Super Parameters
+## Super Parameters
 
-## need to change
+### need to change
 
 The only super parameter that you need to change is `frame window`.
 
@@ -84,7 +84,7 @@ It is recommended that
 
 
 
-## no need to change
+### no need to change
 
 * 1 unit of the stage position == ? um
   * always 0.05
@@ -96,7 +96,7 @@ It is recommended that
 
 
 
-# Tips for Human Double Check
+## Tips for Human Double Check
 
 It is recommended to have a human-double-check, and here are some tips:
 
@@ -105,6 +105,67 @@ It is recommended to have a human-double-check, and here are some tips:
 
 
 
-# $\Omega$ turn vs shallow turn
+# Performance
 
-This algorithm will label **all** $\Omega$ turn and **some** shallow turn as turn.
+Of course, this project can be seen as a machine learning problem. The label is the behavior and the sample is the frame. I use a unsupervised method to get labels.
+
+Then, when I want to evaluate my algorithm, I meet a hard problem: human experts will have different opinions on certain frames. To figure this out, I use the total-agreement-method. That is, I found 5 human experts and asked them to label a video of 20000 frames. Then, I only used the frame which they totally agree to be certain behavior.
+
+## In 3 categories
+
+```
+In 3 categories:
+Accuracy: 93.06%
+Error: 6.94%
+---------------
+Precision of Turn: 100.00%
+Recall of Turn: 42.07%
+Precision of Forward: 94.78%
+Recall of Forward: 98.51%
+Precision of Reversal: 82.98%
+Recall of Reversal: 99.67%
+```
+
+##  In 2 categories
+
+```
+In 2 categories:
+Accuracy: 94.71%
+Error: 5.29%
+---------------
+Precision of Forward: 94.78%
+Recall of Forward: 98.51%
+Precision of Reorientation: 94.47%
+Recall of Reorientation: 82.37%
+```
+
+
+
+# Details
+
+* process nan: mark `nan` as outliers
+* detect head tail human flip.
+* detect beyond the edge.
+* label turn
+  * round 1: use Tukey test of the length of the centerline.
+    * double check for Tukey test: I need frames below median*0.75 > 132 (2s). This is used to handle videos without the head-tail-touch turn.
+  * round 2: use Tukey test of the Euclidean distance between the head and tail.
+  * round 3: use Tukey test of $a_3$
+* label Forward and Reversal, using phase trajectory.
+  * smooth: if the motion state of a window' pre and post are the same, then let it be that motion state.
+
+* smooth
+  * <= frame_window, same as last.
+  * for the unlabelled < t_threshold (5 s), if 2 neighbours are the same, let it be the same as its neighbor
+  * for the unlabelled < t_threshold (5 s), if a neighbor is 1 or 3, let it be the same as it. PS: 1's priority is higher than 3's.
+* label roaming
+  * use a absolute value, now is 0.05 mm/s
+
+
+
+# Why This Algorithm Succeeds?
+
+Shortly speaking, the success of this algorithm lies on 2 things
+
+* Tukey test is a **simple, universal** method for detecting **outliers**. It combines both relative value and absolute value.
+* Eigen worm is a **simple, universal** method for detecting **the behavior state** of C.elegans.
