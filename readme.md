@@ -163,7 +163,7 @@ Recall of Reorientation: 82.37%
 
 
 
-# Why This Algorithm Succeeds?
+# Why Does This Algorithm Succeed?
 
 Shortly speaking, the success of this algorithm lies on 2 things
 
