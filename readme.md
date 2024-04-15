@@ -19,6 +19,8 @@ See [full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experiment
 
 # User Guide
 
+## General Guide
+
 * Purpose: this repository is an algorithm to label the behaviours of C.elegans under [the CoLBeRT system](https://github.com/samuellab/mindcontrol).
 
 * Input and output
@@ -53,16 +55,22 @@ See [full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experiment
 
 The structure of the data folder should be organized as below:
 
-    Your data folder
-    ├───w1
-    		*.avi
-    		*.yaml
-    		*_HUDS.avi
-    ├───w2
-    		*.avi
-    		*.yaml
-    		*_HUDS.avi
-    ├───w3
+    Data
+    │
+    ├── w1
+    │   ├── *.avi
+    │   ├── *.yaml
+    │   └── *_HUDS.avi
+    │
+    ├── w2
+    │   ├── *.avi
+    │   ├── *.yaml
+    │   └── *_HUDS.avi
+    │
+    ├── w3
+    │   ├── *.avi
+    │   ├── *.yaml
+    │   └── *_HUDS.avi
     ...
 
 
@@ -115,6 +123,7 @@ Then, when I want to evaluate my algorithm, I meet a hard problem: human experts
 
 ```
 In 3 categories:
+---------------
 Accuracy: 93.06%
 Error: 6.94%
 ---------------
@@ -130,6 +139,7 @@ Recall of Reversal: 99.67%
 
 ```
 In 2 categories:
+---------------
 Accuracy: 94.71%
 Error: 5.29%
 ---------------
@@ -141,7 +151,7 @@ Recall of Reorientation: 82.37%
 
 
 
-# Details
+# Principle
 
 * process nan: mark `nan` as outliers
 * detect head tail human flip.
