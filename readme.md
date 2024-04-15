@@ -15,7 +15,7 @@
 
 This GIF is from N2-Ctl20230317-W1, an experiment done by Runhui Li, my partner.
 
-See [full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experiment on YouTube!
+See [the full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experiment on YouTube!
 
 # User Guide
 
