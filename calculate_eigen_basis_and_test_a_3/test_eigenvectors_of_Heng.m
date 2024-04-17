@@ -4,8 +4,12 @@
 load('eigen_basis_with_turn.mat');
 eigenvectors = EigenWorms;
 
-% from Yixuan
-eigenvectors = load_data_from_csv('eigen_basis_without_turn.csv');
+% % from Yixuan
+% eigenvectors = load_data_from_csv('eigen_basis_without_turn.csv');
+% 
+% % from Tosif
+% load('eigen_basis_Tosif.mat');
+% eigenvectors = EigenWorms;
 
 %% plot
 

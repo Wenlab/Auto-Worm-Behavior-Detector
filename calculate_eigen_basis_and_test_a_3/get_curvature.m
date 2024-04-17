@@ -8,20 +8,20 @@
 % 2023-10-14, Yixuan Li
 %
 
-% stop if error
+%% stop if error
 dbstop if error
 
-% clear
+%% clear
 clc;clear;close all;
 
-% chose the folder of files
-path = uigetdir;
+%% chose the folder of files
+root_path = uigetdir;
 
-% if at least 1 file is choosed
-if path ~= 0
+%% if at least 1 file is choosed
+if root_path ~= 0
     
     % get full paths of files
-    list_mcd = get_all_files_of_a_certain_type_in_a_rootpath(path,'*mcd_corr*.mat');
+    list_mcd = get_all_files_of_a_certain_type_in_a_rootpath(root_path,'*mcd_corr*.mat');
     
     % choose files
     [indx,tf] = listdlg('ListString',list_mcd,'ListSize',[800,600],'Name','Chose files to convert');

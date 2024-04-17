@@ -22,8 +22,6 @@ Gauss_fit(a_3);
 
 % Tukey
 IQR_index = 2;
-[number_of_up_outliers, number_of_down_outliers, mask_up, mask_down,...
-    up_limit, down_limit, upper_bound, lower_bound] =...
-    Tukey_test(a_3, IQR_index);
+Tukey_test(a_3, IQR_index);
 
 end
