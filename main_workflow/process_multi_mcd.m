@@ -49,6 +49,9 @@ if path ~= 0
 
             % for taxis
             integrate_into_reorientation_and_eliminate_short_run(label_rearranged, mcd);
+            
+            % generate Is_Swapped.csv
+            
     
             % disp
             disp('Machine Label Finished!');
