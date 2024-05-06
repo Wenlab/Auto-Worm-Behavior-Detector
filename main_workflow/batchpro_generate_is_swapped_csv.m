@@ -17,7 +17,7 @@ if path ~= 0
     list_mcd = get_all_files_of_a_certain_type_in_a_rootpath(path,'*mcd_corr*.mat');
 
     % choose files
-    [indx,tf] = listdlg('ListString',list_mcd,'ListSize',[800,600],'Name','Chose files to convert');
+    [indx,tf] = listdlg('ListString',list_mcd,'ListSize',[800,600],'Name','Choose files to convert');
 
     % if at least 1 file is choosed
     if tf==1
