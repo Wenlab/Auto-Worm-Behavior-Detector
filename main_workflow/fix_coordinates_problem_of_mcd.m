@@ -40,11 +40,12 @@ if path ~= 0
                 mcd(j).Tail(2)=-mcd(j).Tail(2);
                 mcd(j).BoundaryA(2:2:200)=-mcd(j).BoundaryA(2:2:200);
                 mcd(j).BoundaryB(2:2:200)=-mcd(j).BoundaryB(2:2:200);
+                mcd(j).SegmentedCenterline(2:2:200)=-mcd(j).SegmentedCenterline(2:2:200);
                 mcd(j).StageFeedbackTarget(2)=-mcd(j).StageFeedbackTarget(2);
                 mcd(j).StagePosition(1)=-mcd(j).StagePosition(1);
 
                 % correct the centerline
-                mcd(j).SegmentedCenterline = 0.5 * (mcd(j).BoundaryA + mcd(j).BoundaryB);
+                % mcd(j).SegmentedCenterline = 0.5 * (mcd(j).BoundaryA + mcd(j).BoundaryB);
             end
     
             % save
