@@ -5,7 +5,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function [curvature_of_centerline_all,time] = get_the_curvature_of_a_period(mcd,start_frame,end_frame,which_to_use)
+function [curvature_of_centerline_all,time] = get_the_curvature_of_a_period(mcd,start_frame,end_frame,flag_method)
 
 % number of frames
 n_frames = end_frame - start_frame + 1;
@@ -30,9 +30,9 @@ for j = 1:n_frames
     if nargin == 3
         centerline_now = reshape(mcd(i).SegmentedCenterline,2,[]);
     elseif nargin == 4
-        if which_to_use == "online"
+        if flag_method == "online"
             centerline_now = reshape(mcd(i).SegmentedCenterline,2,[]);
-        elseif which_to_use == "offline"
+        elseif flag_method == "offline"
             centerline_now = 0.5*(mcd(i).BoundaryA + mcd(i).BoundaryB);
             centerline_now = reshape(centerline_now,2,[]);
         end
