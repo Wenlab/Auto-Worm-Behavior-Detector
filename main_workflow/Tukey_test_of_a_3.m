@@ -23,7 +23,7 @@ for i = 1:size(label_rearranged,1)
         start_frame = label_rearranged(i,1);
         end_frame = label_rearranged(i,2);
         [curvature_of_centerline_new, ~] = get_the_curvature_of_a_period(mcd,...
-            start_frame,end_frame);
+            start_frame,end_frame,"offline");
         
         % vertcat
         curvature_of_centerline_all = vertcat(curvature_of_centerline_all,curvature_of_centerline_new);
