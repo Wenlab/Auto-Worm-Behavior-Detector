@@ -12,10 +12,10 @@ path = uigetdir;
 if path ~= 0
 
     % get full paths of files
-    list = get_all_files_of_a_certain_type_in_a_rootpath(path,'machine_label_frame_window_10.csv');
+    list = get_all_files_of_a_certain_type_in_a_rootpath(path,'machine_label_frame_window_10*.csv');
 
     % choose files
-    [indx,tf] = listdlg('ListString',list,'ListSize',[800,600],'Name','Chose files');
+    [indx,tf] = listdlg('ListString',list,'ListSize',[800,600],'Name','Choose files');
 
     % if at least 1 file is choosed
     if tf==1
@@ -31,7 +31,13 @@ if path ~= 0
             % read
             [folder_path,file_name] = fileparts(full_path_to_csv);
             [father_folder_path,folder_name] = fileparts(folder_path);
-            prefix = strrep(folder_name,"_machine_label","");
+
+            if contains(folder_name,"flipped")
+                prefix = strrep(folder_name,"_flipped_machine_label","");
+            else
+                prefix = strrep(folder_name,"_machine_label","");
+            end
+
             files = dir(fullfile(root_folder, strcat(prefix,'_HUDS.avi')));
             if length(files) ~= 1
                 error("More than 1 HUDS.avi file or no HUDS.avi file in this folder!");
@@ -42,7 +48,13 @@ if path ~= 0
             % write
             [~,file_name_of_HUDS,~] = fileparts(full_path_to_HUDS);
             [~,file_name_of_csv,~] = fileparts(full_path_to_csv);
-            file_name_of_labelled_video = [file_name_of_HUDS '_labelled_by_' file_name_of_csv '.avi'];
+
+            if contains(folder_name,"flipped")
+                file_name_of_labelled_video = [file_name_of_HUDS '_labelled_by_flipped_' file_name_of_csv '.avi'];
+            else
+                file_name_of_labelled_video = [file_name_of_HUDS '_labelled_by_' file_name_of_csv '.avi'];
+            end
+
             full_path_to_labelled_video = fullfile(root_folder,file_name_of_labelled_video);
             vw = VideoWriter(full_path_to_labelled_video);
             open(vw);
@@ -68,7 +80,7 @@ if path ~= 0
 
                 % Write the frame into the new video file
                 writeVideo(vw, frame);
-                
+
                 % disp
                 if ~mod(n_frame_now,10000)
                     disp([num2str(n_frame_now) ' frames has been processed!']);

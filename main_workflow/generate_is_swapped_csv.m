@@ -10,7 +10,11 @@ function generate_is_swapped_csv(mcd, full_path_to_mcd)
 [folder_path_to_mcd, file_name_of_mcd] = fileparts(full_path_to_mcd);
 
 % name
-file_name_of_csv = strrep(file_name_of_mcd,"_mcd_corrected","_Are_the_Head_and_the_Tail_Swapped.csv");
+if contains(file_name_of_mcd,"flipped")
+    file_name_of_csv = strrep(file_name_of_mcd,"_mcd_corrected_flipped","_Are_the_Head_and_the_Tail_Swapped.csv");
+else
+    file_name_of_csv = strrep(file_name_of_mcd,"_mcd_corrected","_Are_the_Head_and_the_Tail_Swapped.csv");
+end
 full_path_to_csv = fullfile(folder_path_to_mcd, file_name_of_csv);
 
 % save
