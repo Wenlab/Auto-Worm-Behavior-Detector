@@ -17,7 +17,8 @@ label_rearranged = re_rearrange_label(label_rearranged);
 
 % label as reorientation
 t_threshold_run = 5; % s
-for i = 2:length(label_rearranged) - 1
+n_behavior_state = size(label_rearranged,1);
+for i = 2:n_behavior_state - 1
     if label_rearranged(i,3) == 2 &&...
             label_rearranged(i,2) - label_rearranged(i,1) <= t_threshold_run*s2frame
         label_rearranged(i,3) = 200;
@@ -25,7 +26,7 @@ for i = 2:length(label_rearranged) - 1
 end
 
 % for the first and the last, label as unlabelled
-for i = [1,length(label_rearranged)]
+for i = [1, n_behavior_state]
     if label_rearranged(i,3) == 2 &&...
             label_rearranged(i,2) - label_rearranged(i,1) <= t_threshold_run*s2frame
         label_rearranged(i,3) = 0;
