@@ -18,7 +18,7 @@ if path ~= 0
     list_mcd = get_all_files_of_a_certain_type_in_a_rootpath(path,'*mcd_corr*.mat');
 
     % choose files
-    [indx,tf] = listdlg('ListString',list_mcd,'ListSize',[800,600],'Name','Chose files');
+    [indx,tf] = listdlg('ListString',list_mcd,'ListSize',[800,600],'Name','Choose files');
 
     % if at least 1 file is choosed
     if tf==1
@@ -47,7 +47,7 @@ if path ~= 0
             end
 
             % choose files
-            [indx,tf] = listdlg('ListString',list_csv,'ListSize',[800,600],'Name','Chose csv files to change');
+            [indx,tf] = listdlg('ListString',list_csv,'ListSize',[800,600],'Name','Choose csv files to change');
 
             % if at least 1 file is choosed
             if tf==1

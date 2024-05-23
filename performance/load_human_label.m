@@ -1,4 +1,4 @@
-function human_label = load_human_label(n_frame)
+function human_label = load_human_label(n_frame, consensus_type)
 
 % chose the folder to analyze
 root_path = uigetdir;
@@ -41,7 +41,7 @@ if root_path ~= 0
         visualize_by_tSNE(human_label_all);
 
         % vote
-        human_label = create_human_label_unanimous_vote(human_label_all);
+        human_label = create_human_label(human_label_all, consensus_type);
     end
 end
 

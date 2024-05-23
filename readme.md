@@ -11,6 +11,7 @@
 * 2024-05-14: version 1.3.0
   * use (boundary_A+boundary_B)/2 to correct the online centerline recorded by Colbert.
   * use my own codes to calculate the curvature of a centerline.
+* 2024-05-23: version 1.3.1, add head-tail-swapped.
 
 # Demo
 
@@ -122,34 +123,36 @@ Of course, this project can be seen as a machine learning problem. The label is 
 
 Then, when I want to evaluate my algorithm, I meet a hard problem: human experts will have different opinions on certain frames. To figure this out, I use the total-agreement-method. That is, I found 5 human experts and asked them to label a video of 20000 frames. Then, I only used the frame which they totally agree to be certain behavior.
 
-## In 3 categories
+## Unanimous Consensus
 
 ```
-In 3 categories:
----------------
-Accuracy: 93.06%
-Error: 6.94%
+Proportion of frames lacking unanimous consensus among human experts: 15.84%
+```
+
+### In 3 categories
+
+```
+Accuracy: 91.36%
+Error: 8.64%
 ---------------
 Precision of Turn: 100.00%
-Recall of Turn: 42.07%
-Precision of Forward: 94.78%
-Recall of Forward: 98.51%
-Precision of Reversal: 82.98%
-Recall of Reversal: 99.67%
+Recall of Turn: 44.60%
+Precision of Forward: 95.82%
+Recall of Forward: 95.68%
+Precision of Reversal: 71.33%
+Recall of Reversal: 99.70%
 ```
 
-##  In 2 categories
+###  In 2 categories
 
 ```
-In 2 categories:
+Accuracy: 93.47%
+Error: 6.53%
 ---------------
-Accuracy: 94.71%
-Error: 5.29%
----------------
-Precision of Forward: 94.78%
-Recall of Forward: 98.51%
-Precision of Reorientation: 94.47%
-Recall of Reorientation: 82.37%
+Precision of Forward: 95.82%
+Recall of Forward: 95.68%
+Precision of Reorientation: 85.70%
+Recall of Reorientation: 86.11%
 ```
 
 

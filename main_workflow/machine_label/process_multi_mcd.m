@@ -48,7 +48,7 @@ if path ~= 0
             output_label(label_rearranged, folder_of_saved_files, file_name, mcd);
 
             % for taxis
-            integrate_into_reorientation_and_eliminate_short_run(label_rearranged, mcd);
+            integrate_into_reorientation_and_eliminate_short_run_and_save(label_rearranged, mcd);
             
             % generate Is_Swapped.csv
             generate_is_swapped_csv(mcd, full_path_to_mcd);
