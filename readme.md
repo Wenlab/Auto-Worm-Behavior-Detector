@@ -9,8 +9,9 @@
 * 2023-09-16: version 1.1.0, add the use of $a_3$ when labelling turn.
 * 2023-09-18: version 1.2.0, add roaming.
 * 2024-05-14: version 1.3.0
-  - use (boundary_A+boundary_B)/2 to correct the online centerline recorded by Colbert.
-  - use my own codes to calculate the curvature of a centerline.
+  * use (boundary_A+boundary_B)/2 to correct the online centerline recorded by Colbert.
+  * use my own codes to calculate the curvature of a centerline.
+* 2024-05-23: version 1.3.1, add head-tail-swapped.
 
 # Demo
 
