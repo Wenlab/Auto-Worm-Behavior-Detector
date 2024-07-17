@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function Tukey_test_of_phase_speed(mcd,label)
+function Tukey_test_of_phase_speed(centerlines_camera,label)
 
 % read eigen basis
 eigen_basis = readmatrix('eigen_basis.csv');
@@ -19,8 +19,7 @@ for i = 1:size(label_rearranged,1)
         % get curvature
         start_frame = label_rearranged(i,1);
         end_frame = label_rearranged(i,2);
-        [curvature_of_centerline_all, ~] = get_the_curvature_of_a_period(mcd,...
-            start_frame,end_frame,"offline");
+        curvature_of_centerline_all = calculate_curvatures_of_centerlines(centerlines_camera,start_frame,end_frame);
         
         % calculate the time series of a_1 and a_2
         eigenworm = curvature_of_centerline_all * eigen_basis(:, 1:2);
