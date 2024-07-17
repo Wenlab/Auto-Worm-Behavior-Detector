@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function label_rearranged = add_time_column(label_rearranged, mcd)
+function label_rearranged = add_time_column_test(label_rearranged, timestamps)
 
 %% change label str from number to nature language
 
@@ -26,7 +26,7 @@ label_rearranged(:, 3) = [];
 %% add a new column to calculate the time
 label_rearranged{1,4} = 'time_s';
 for i = 2:size(label_rearranged,1)
-    label_rearranged{i,4} = round((mcd(label_rearranged{i,2}).TimeElapsed - mcd(label_rearranged{i,1}).TimeElapsed),2);
+    label_rearranged{i,4} = round(timestamps(label_rearranged{i,2}) - timestamps(label_rearranged{i,1}),2);
 end
 
 end

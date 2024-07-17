@@ -12,7 +12,7 @@ header = {'start_frame', 'end_frame', 'label'};
 label_rearranged = [header; num2cell(label_rearranged)];
 
 % add an explanation column for each number of label
-label_rearranged = add_time_column(label_rearranged, timestamps);
+label_rearranged = add_time_column_test(label_rearranged, timestamps);
 
 % Save the output to a CSV file
 full_path = fullfile(folder_of_saved_files,file_name);

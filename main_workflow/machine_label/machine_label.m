@@ -35,7 +35,7 @@ global label_number_beyond_edge
 label(label == label_number_beyond_edge) = 0;
 
 %% beta function: Tukey test of phase speed
-Tukey_test_of_phase_speed(mcd,label);
+% Tukey_test_of_phase_speed(mcd,label);
 
 %% label forward and reversal
 global frame_window
