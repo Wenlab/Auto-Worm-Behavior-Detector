@@ -2,8 +2,8 @@ function label = label_turn(label, centerlines_camera, centerlines_lab, idx_beyo
 
 % start protection
 global label_number_beyond_edge
-mask = label == 0;
-label(mask) = idx_beyond_edge * label_number_beyond_edge;
+mask = label == 0 & idx_beyond_edge;
+label(mask) = label_number_beyond_edge;
 
 % round 1, using length of the centerline
 lengths_of_centerlines = get_lengths(centerlines_lab);
@@ -19,6 +19,6 @@ label = Tukey_test_of_a_3(label, centerlines_camera);
 % label = Tukey_test_of_phase_speed(label, centerlines_camera);
 
 % end protection
-label(label == label_number_beyond_edge) = 0;
+label(mask) = 0;
 
 end

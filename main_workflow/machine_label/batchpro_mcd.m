@@ -6,6 +6,9 @@
 % clear
 clear;clc;close all;
 
+%
+dbstop if error
+
 % chose the folder of files
 path = uigetdir;
 
