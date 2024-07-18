@@ -19,6 +19,6 @@ label = Tukey_test_of_a_3_test(label, centerlines_camera);
 % label = Tukey_test_of_phase_speed(label, centerlines_camera);
 
 % end protection
-label(mask) = 0;
+label(label == label_number_beyond_edge) = 0;
 
 end

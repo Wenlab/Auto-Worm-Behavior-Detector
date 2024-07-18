@@ -43,7 +43,7 @@ if path ~= 0
             head_tail_human_flip_test(centerlines_camera, timestamps);
 
             % machine label
-            label_rearranged = machine_label_test(centerlines_camera, centerlines_lab, timestamps, idx_beyond_edge);
+            label_rearranged = machine_label_test(centerlines_camera, centerlines_lab, idx_beyond_edge);
 
             % output
             global frame_window
