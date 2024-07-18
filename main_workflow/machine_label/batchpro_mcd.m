@@ -13,7 +13,7 @@ path = uigetdir;
 if path ~= 0
 
     % get full paths of files
-    list_mcd = get_all_files_of_a_certain_type_in_a_rootpath(path,'*mcd_corrected*.mat');
+    list_mcd = get_all_files_of_a_certain_type_in_a_rootpath(path,'*mcd_corrected.mat');
 
     % choose files
     [indx,tf] = listdlg('ListString',list_mcd,'ListSize',[800,600],'Name','Chose files to convert');

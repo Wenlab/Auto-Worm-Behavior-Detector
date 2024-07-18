@@ -42,7 +42,7 @@ label_rearranged = label_roaming(label_rearranged, centerlines_lab);
 
 %% output figs for human-double-check
 global folder_of_saved_files
-n_figs = 5;
+n_figs = 4;
 output_figures(folder_of_saved_files, n_figs);
 
 end
