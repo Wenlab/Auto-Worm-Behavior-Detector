@@ -42,6 +42,14 @@ if path ~= 0
             % extract useful data
             [centerlines_camera, centerlines_lab, timestamps, idx_beyond_edge] = extract_useful_data(mcd);
 
+            % save useful data
+            save_folder_path = fullfile(fileparts(folder_of_saved_files),"useful_data");
+            create_folder(save_folder_path);
+            save_as_mat(save_folder_path, centerlines_camera);
+            save_as_mat(save_folder_path, centerlines_lab);
+            save_as_mat(save_folder_path, timestamps);
+            save_as_mat(save_folder_path, idx_beyond_edge);
+
             % label head-tail-human-flip
             head_tail_human_flip(centerlines_camera, timestamps);
 

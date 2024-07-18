@@ -32,7 +32,7 @@ if path ~= 0
             % save folder
             global folder_of_saved_files
             [folder_of_saved_files,~,~] = fileparts(folder_path);
-            folder_of_saved_files = fullfile(folder_of_saved_files, "result");
+            folder_of_saved_files = fullfile(folder_of_saved_files, "machine_label_via_centerlines");
             if ~isfolder(folder_of_saved_files)
                 mkdir(folder_of_saved_files);
             end
