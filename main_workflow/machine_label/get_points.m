@@ -11,7 +11,7 @@
 % 2023-09-17, Yixuan Li
 %
 
-function points = get_points_test(centerlines_lab,start_frame,end_frame)
+function points = get_points(centerlines_lab,start_frame,end_frame)
 
 % consider the Euclidean geometry center of start_segment:end_segment as the center of mass
 start_segment = 40;

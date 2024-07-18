@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function label_rearranged = label_roaming(mcd,label_rearranged)
+function label_rearranged = label_roaming(label_rearranged, centerlines_lab)
 
 global s2frame
 global label_number_forward_reversal
@@ -22,7 +22,7 @@ mask = label_rearranged(:,3) == label_number_forward_reversal;
 indices = find(mask);
 
 %% calculate path lengths
-points_of_forward_reversal = get_points_for_certain_motion_state(mcd, label_rearranged, label_number_forward_reversal);
+points_of_forward_reversal = get_points_for_certain_motion_state(centerlines_lab, label_rearranged, label_number_forward_reversal);
 
 %% label
 

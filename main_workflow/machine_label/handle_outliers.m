@@ -5,7 +5,7 @@
 % 2024-07-17, Yixuan Li
 %
 
-function label = handle_outliers(label,centerlines_lab)
+function label = handle_outliers(label, centerlines_lab)
 
 global label_number_outlier
 lengths_of_centerlines = get_lengths(centerlines_lab);
