@@ -4,7 +4,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function label = use_phase_trajectory_to_label_forward_and_reversal_test(centerlines_camera,label,frame_window)
+function label = label_forward_and_reversal(label,centerlines_camera,frame_window)
 
 % read eigen basis
 eigen_basis = readmatrix('eigen_basis.csv');

@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function label_rearranged = label_roaming_test(centerlines_lab,label_rearranged)
+function label_rearranged = label_roaming_test(label_rearranged, centerlines_lab)
 
 global s2frame
 global label_number_forward_reversal

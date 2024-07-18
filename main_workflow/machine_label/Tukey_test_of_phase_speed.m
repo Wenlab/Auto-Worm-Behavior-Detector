@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function Tukey_test_of_phase_speed(centerlines_camera,label)
+function label = Tukey_test_of_phase_speed(label, centerlines_camera)
 
 % read eigen basis
 eigen_basis = readmatrix('eigen_basis.csv');
