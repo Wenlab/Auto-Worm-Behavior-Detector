@@ -6,7 +6,7 @@ my_add_path();
 n_frame = 23569;
 
 %% load human label
-consensus_type = 'unanimous'; % 'unanimous', 'majority', 'plurality'
+consensus_type = 'plurality'; % 'unanimous', 'majority', 'plurality'
 human_label = load_human_label(n_frame, consensus_type);
 
 %% load machine label

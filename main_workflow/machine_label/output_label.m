@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function output_label(label_rearranged, folder_of_saved_files, file_name, mcd)
+function output_label(label_rearranged, folder_of_saved_files, file_name, timestamps)
 
 % Define the header row
 header = {'start_frame', 'end_frame', 'label'};
@@ -12,7 +12,7 @@ header = {'start_frame', 'end_frame', 'label'};
 label_rearranged = [header; num2cell(label_rearranged)];
 
 % add an explanation column for each number of label
-label_rearranged = add_time_column(label_rearranged, mcd);
+label_rearranged = add_time_column(label_rearranged, timestamps);
 
 % Save the output to a CSV file
 full_path = fullfile(folder_of_saved_files,file_name);
