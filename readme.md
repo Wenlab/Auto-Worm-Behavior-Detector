@@ -12,6 +12,7 @@
   * use (boundary_A+boundary_B)/2 to correct the online centerline recorded by Colbert.
   * use my own codes to calculate the curvature of a centerline.
 * 2024-05-23: version 1.3.1, add head-tail-swapped.
+* 2024-07-19: version 1.4.0, now this software can be used to process centerlines recorded by any platforms!
 
 # Demo
 
