@@ -109,7 +109,7 @@ Recall of Reorientation: 86.11%
 # Other Guides
 
 * For finely tuning super parameters, check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/Super_Parameters.md).
-* For guidance of [the CoLBeRT system](https://github.com/samuellab/mindcontrol), check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/Super_Parameters.md).
+* For guidance of [the CoLBeRT system](https://github.com/samuellab/mindcontrol), check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/README_for_Colbert.md).
 * For log of fixing bugs, check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/log_of_fixing_bug).
 
 
