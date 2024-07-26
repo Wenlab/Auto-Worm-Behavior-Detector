@@ -24,9 +24,11 @@ end
 label_rearranged(:, 3) = [];
 
 %% add a new column to calculate the time
-label_rearranged{1,4} = 'time_s';
-for i = 2:size(label_rearranged,1)
-    label_rearranged{i,4} = round(timestamps(label_rearranged{i,2}) - timestamps(label_rearranged{i,1}),2);
+if timestamps(1) ~= -1
+    label_rearranged{1,4} = 'time_s';
+    for i = 2:size(label_rearranged,1)
+        label_rearranged{i,4} = round(timestamps(label_rearranged{i,2}) - timestamps(label_rearranged{i,1}),2);
+    end
 end
 
 end

@@ -15,7 +15,7 @@ label_rearranged = [header; num2cell(label_rearranged)];
 label_rearranged = add_time_column(label_rearranged, timestamps);
 
 % Save the output to a CSV file
-full_path = fullfile(folder_of_saved_files,file_name);
+full_path = fullfile(folder_of_saved_files, file_name);
 writecell(label_rearranged, full_path, 'Delimiter', ',');
 
 % disp

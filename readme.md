@@ -4,11 +4,11 @@
 
 # Update Log
 
-* 2023-05-24: version 1.0.0, first release.
-* 2023-09-16: version 1.1.0, add the use of $a_3$ when labelling turn.
-* 2023-09-18: version 1.2.0, add roaming.
-* 2024-05-14: version 1.3.0, use $\frac{boundary_A + boundary_B}{2}$ to correct the online centerline recorded by [the CoLBeRT system](https://github.com/samuellab/mindcontrol).
-* 2024-07-19: version 1.4.0, now this software can be used to process centerlines recorded by any platforms!
+* `2023-05-24`: `version 1.0.0`, first release.
+* `2023-09-16`: `version 1.1.0`, add the use of $a_3$ when labelling turn.
+* `2023-09-18`: `version 1.2.0`, add roaming.
+* `2024-05-14`: `version 1.3.0`, use $\frac{boundary_A + boundary_B}{2}$ to correct the online centerline recorded by [the CoLBeRT system](https://github.com/samuellab/mindcontrol).
+* `2024-07-19`: `version 1.4.0`, now this software can be used to process centerlines recorded by any platforms!
 
 # Demo
 
@@ -60,20 +60,19 @@ Here, `centerlines_camera.mat` and `centerlines_lab.mat` are essential, while `t
 
 
 
-## Super Parameters
+## Workflow
 
-The only super parameter that you need to change is `frame window`. The meaning of `frame window`: if the frame window is $x$, then the temporal resolution is $x$ frames. In simple term: smaller, more accurate.
+![Workflow_en](markdown_figs/Workflow_en.png)
 
-By a rule of thumb, it is recommended that
+## Other Guides
 
-* 30 for `machine_label.csv`
-* 10 for `machine_label_v2.csv`.
-
-
+* For finely tuning super parameters, check here.
+* For guidance of [the CoLBeRT system](https://github.com/samuellab/mindcontrol), check here.
+* For log of fixing bugs, check here.
 
 # Performance
 
-I found 5 human experts and asked them to label a video of about 20000 frames. Then, I only used the frames which they totally agree to be certain behavior.
+I found 5 human experts and asked them to label a video of about 20000 frames. Then, I only used the frames which they totally agree to be certain behavior. You can check the video, human labels, and related codes [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/performance).
 
 ```
 Proportion of frames lacking unanimous consensus among human experts: 15.84%
@@ -104,3 +103,9 @@ Recall of Forward: 95.68%
 Precision of Reorientation: 85.70%
 Recall of Reorientation: 86.11%
 ```
+
+
+
+# Contact
+
+- [Yixuan Li](https://github.com/Physics-Lee) (`yixuanli@mail.ustc.edu.cn`)

@@ -26,8 +26,20 @@ if path ~= 0
             folder_path = list{i};
             centerlines_camera = load_data_from_mat(fullfile(folder_path,"centerlines_camera.mat"));
             centerlines_lab = load_data_from_mat(fullfile(folder_path,"centerlines_lab.mat"));
-            timestamps = load_data_from_mat(fullfile(folder_path,"timestamps.mat"));
-            idx_beyond_edge = load_data_from_mat(fullfile(folder_path,"idx_beyond_edge.mat"));
+
+            try
+                timestamps = load_data_from_mat(fullfile(folder_path,"timestamps.mat"));
+            catch
+                disp("No timestamps.mat.");
+                timestamps = -1;
+            end
+
+            try
+                idx_beyond_edge = load_data_from_mat(fullfile(folder_path,"idx_beyond_edge.mat"));
+            catch
+                disp("No idx_beyond_edge.mat.");
+                idx_beyond_edge = false;
+            end
             
             % save folder
             global folder_of_saved_files
