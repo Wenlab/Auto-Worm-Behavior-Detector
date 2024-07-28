@@ -26,4 +26,4 @@ The structure of the data folder should be organized as below:
 
 ## Workflow 
 
-<img src = "markdown_figs/workflow.png" width=90% align="center">
+<img src = "../markdown_figs/workflow.png" width=90% align="center">
