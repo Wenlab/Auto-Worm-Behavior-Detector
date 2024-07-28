@@ -22,9 +22,24 @@ if path ~= 0
     if tf==1
         for i = indx
 
-            % load
+            % data folder
             folder_path = list{i};
-            centerlines_camera = load_data_from_mat(fullfile(folder_path,"centerlines_camera.mat"));
+
+            % result folder
+            global folder_of_saved_files
+            [folder_of_saved_files,~,~] = fileparts(folder_path);
+            folder_of_saved_files = fullfile(folder_of_saved_files, "machine_label_via_centerlines");
+            if ~isfolder(folder_of_saved_files)
+                mkdir(folder_of_saved_files);
+            end
+
+            % load
+            try
+                centerlines_camera = load_data_from_mat(fullfile(folder_path,"centerlines_camera.mat"));
+            catch
+                centerlines_camera = [];
+            end
+
             centerlines_lab = load_data_from_mat(fullfile(folder_path,"centerlines_lab.mat"));
 
             try
@@ -40,17 +55,11 @@ if path ~= 0
                 disp("No idx_beyond_edge.mat.");
                 idx_beyond_edge = false;
             end
-            
-            % save folder
-            global folder_of_saved_files
-            [folder_of_saved_files,~,~] = fileparts(folder_path);
-            folder_of_saved_files = fullfile(folder_of_saved_files, "machine_label_via_centerlines");
-            if ~isfolder(folder_of_saved_files)
-                mkdir(folder_of_saved_files);
-            end
 
-            % label head-tail-human-flip
-            head_tail_human_flip(centerlines_camera, timestamps);
+            % generate fake camera coordinates
+            if isempty(centerlines_camera)
+                centerlines_camera = generate_fake_camera_coordinates(centerlines_lab);
+            end            
 
             % machine label
             label_rearranged = machine_label(centerlines_camera, centerlines_lab, idx_beyond_edge);

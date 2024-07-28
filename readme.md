@@ -28,7 +28,7 @@ See [the full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experi
 
 ## Inputs
 
-* `centerlines_camera.mat`: centerlines in the camera coordinates. (essential)
+* `centerlines_camera.mat`: centerlines in the camera coordinates. (optional)
 * `centerlines_lab.mat`: centerlines in the lab coordinates. (essential)
 * `timestamps.mat`: time stamps for frames. (optional)
 * `idx_beyond_edge.mat`: index of tail-beyond-edge-situation. (optional)
@@ -37,7 +37,7 @@ See [the full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experi
 
 ### Data Structure of Inputs
 
-Denote `N_frame` as the number of frames. You need to take 100 points uniformly on the centerline of a worm. You also need to convert the unit of the lab coordinates to millimeter.
+Denote `N_frame` as the number of frames. **You need to take 100 points uniformly on the centerline of a worm.** You also need to convert the unit of the lab coordinates to millimeter.
 
 * `centerlines_camera.mat`: `N_frame*1` cell array
   * Each element is `2*100` numerical array, where 1st row stands for x coordinates and 2nd row stands for y coordinates.
