@@ -37,6 +37,7 @@ if path ~= 0
             try
                 centerlines_camera = load_data_from_mat(fullfile(folder_path,"centerlines_camera.mat"));
             catch
+                disp("No centerlines_camera.mat.");
                 centerlines_camera = [];
             end
 
