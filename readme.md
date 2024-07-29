@@ -47,6 +47,7 @@ Denote `N_frame` as the number of frames. **You need to take 100 points uniforml
   * **unit: mm.**
 * `timestamps.mat`: `N_frame*1` numerical array
   * Each element is the correspoinding time stamp of that frame.
+  * **unit: s.**
 * `idx_beyond_edge.mat`: `N_frame*1` Boolean array
   * Each element is the correspoinding true-or-false indicator of that frame.
 
