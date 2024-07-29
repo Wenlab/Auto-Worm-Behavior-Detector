@@ -1,6 +1,6 @@
 # Bug
 
-If there is no $\Omega$ turn (head touch body) in a video, the histogram will look like below, where Tukey test will give wrong result.
+If there is no head-touching-body-turn in a video, the histogram will look like below, where Tukey test will give wrong results.
 
 <img src = "../../markdown_figs/no_omega_turn_in_a_video.png" width=80% align="center">
 
