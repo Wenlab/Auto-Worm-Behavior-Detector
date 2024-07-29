@@ -60,23 +60,23 @@ The structure of the data folder should be organized as below:
     │
     ├── w1
     │   ├── useful_data
-    │   │	├── centerlines_camera.mat
-    │   │	├── centerlines_lab.mat
-    │	│   ├── timestamps.mat
+    │   │	  ├── centerlines_camera.mat
+    │   │	  ├── centerlines_lab.mat
+    │	  │   ├── timestamps.mat
     │   │   ├── idx_beyond_edge.mat
     │	
     ├── w2
     │   ├── useful_data
-    │   │	├── centerlines_camera.mat
-    │   │	├── centerlines_lab.mat
-    │	│   ├── timestamps.mat
+    │   │	  ├── centerlines_camera.mat
+    │   │	  ├── centerlines_lab.mat
+    │	  │   ├── timestamps.mat
     │   │   ├── idx_beyond_edge.mat
     │
     ├── w3
     │   ├── useful_data
-    │   │	├── centerlines_camera.mat
-    │   │	├── centerlines_lab.mat
-    │	│   ├── timestamps.mat
+    │   │	  ├── centerlines_camera.mat
+    │   │	  ├── centerlines_lab.mat
+    │	  │   ├── timestamps.mat
     │   │   ├── idx_beyond_edge.mat
     │
     ...
