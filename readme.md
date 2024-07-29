@@ -18,9 +18,7 @@
 
 ![Demo GIF](/markdown_figs/demo.gif)
 
-This experiment is recorded by [the CoLBeRT system](https://github.com/samuellab/mindcontrol).
-
-See [the full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experiment on YouTube!
+This experiment is recorded by [the CoLBeRT system](https://github.com/samuellab/mindcontrol). Machine labels are showed in the top right corner of the video. Check the full video of this experiment with machine labels [here](https://www.youtube.com/watch?v=Y0aR_9A48vo) !
 
 
 
@@ -29,7 +27,7 @@ See [the full video](https://www.youtube.com/watch?v=Y0aR_9A48vo) of this experi
 ## Inputs
 
 * `centerlines_camera.mat`: centerlines in the camera coordinates. (optional)
-* `centerlines_lab.mat`: centerlines in the lab coordinates. (essential)
+* `centerlines_lab.mat`: centerlines in the lab coordinates. **(essential)**
 * `timestamps.mat`: time stamps for frames. (optional)
 * `idx_beyond_edge.mat`: index of tail-beyond-edge-situation. (optional)
 
@@ -96,15 +94,11 @@ The structure of the data folder should be organized as below:
 
 # Performance
 
-I found 5 human experts and asked them to label a video of about 20000 frames. Then, I only used the frames which they totally agree to be certain behavior. You can check the video, human labels, and related codes [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/performance).
+I found 5 human experts and asked them to label a video of about 20000 frames. Then, I only used the frames which they totally agree to be certain behavior. You can check the video, human labels, machine labels, and related codes [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/performance).
 
 ```
 Proportion of frames lacking unanimous consensus among human experts: 15.84%
-```
-
-## Performance Under Three Categories
-
-```
+---------------
 Accuracy: 91.36%
 Error: 8.64%
 ---------------
@@ -116,24 +110,10 @@ Precision of Turn: 100.00%
 Recall of Turn: 44.60%
 ```
 
-##  Performance Under Two Categories
-
-```
-Accuracy: 93.47%
-Error: 6.53%
----------------
-Precision of Forward: 95.82%
-Recall of Forward: 95.68%
-Precision of Reorientation: 85.70%
-Recall of Reorientation: 86.11%
-```
-
-
-
 # Other Guides
 
 * For finely tuning super parameters, check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/Super_Parameters.md).
-* For guidance of [the CoLBeRT system](https://github.com/samuellab/mindcontrol), check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/README_for_Colbert.md).
+* For the guidance of [the CoLBeRT system](https://github.com/samuellab/mindcontrol), check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/README_for_Colbert.md).
 * For log of fixing bugs, check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/log_of_fixing_bug).
 
 
