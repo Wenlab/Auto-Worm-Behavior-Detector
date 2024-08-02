@@ -27,7 +27,7 @@ This experiment is recorded by [the CoLBeRT system](https://github.com/samuellab
 * [Quick Start](https://www.youtube.com/watch?v=HINiEp6AwUg).
 * [The User Guide](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/User_Guide.md).
 * [The Performance](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/Performance.md).
-* [Fine-tune super parameters](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/Super_Parameters.md).
+* [Fine Tune Super Parameters](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/Super_Parameters.md).
 
 
 
