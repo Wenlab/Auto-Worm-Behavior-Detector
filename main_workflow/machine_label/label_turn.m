@@ -13,7 +13,7 @@ label = Tukey_test_of_length_of_centerline(label, lengths_of_centerlines);
 label = Tukey_test_of_distance_between_head_and_tail(label, centerlines_lab);
 
 % round 3, using a_3
-label = Tukey_test_of_a_3(label, centerlines_camera);
+% label = Tukey_test_of_a_3(label, centerlines_camera);
 
 % round 4, using phase speed;
 % label = Tukey_test_of_phase_speed(label, centerlines_camera);
