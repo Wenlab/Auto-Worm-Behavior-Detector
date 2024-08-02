@@ -27,14 +27,14 @@ This experiment is recorded by [the CoLBeRT system](https://github.com/samuellab
 * [Quick Start](https://www.youtube.com/watch?v=HINiEp6AwUg).
 * [The User Guide](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/User_Guide.md).
 * [The Performance](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/Performance.md).
-* For finely tuning super parameters, check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/Super_Parameters.md).
+* [Fine-tune super parameters](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/Super_Parameters.md).
 
 
 
 # Other Wizards
 
-* Quick Start for the data from the CoLBeRT system.
-* For the guidance of applying Auto-Worm-Behavior-Detector to [the CoLBeRT system](https://github.com/samuellab/mindcontrol), check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/README_for_Colbert.md).
+* [Quick Start for the data from the CoLBeRT system.](https://www.youtube.com/watch?v=KmCBx9QJ0AM&t=11s)
+* For the User Guide of applying Auto-Worm-Behavior-Detector to [the CoLBeRT system](https://github.com/samuellab/mindcontrol) check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/README_for_Colbert.md).
 * For log of fixing bugs, check [here](https://github.com/Wenlab/Auto-Worm-Behavior-Detector/tree/master/docs/log_of_fixing_bug).
 
 
