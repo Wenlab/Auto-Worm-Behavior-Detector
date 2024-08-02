@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function label = Tukey_test_of_length_of_centerline(label,length_of_centerline)
+function label = Tukey_test_of_length_of_centerline(label,length_of_centerline,IQR_index)
 
 global label_number_outlier
 
@@ -23,7 +23,10 @@ ylabel('number of frames');
 title('f(Length of the centerline)');
 
 % perform Tukey test
-IQR_index = 3; % super parameter % bigger, stricter
+if nargin == 2
+    IQR_index = 3; % super parameter % bigger, stricter
+end
+
 [~, ~, mask_up, mask_down,...
     up_limit, down_limit, upper_bound, lower_bound] = ...
     Tukey_test(length_of_centerline, IQR_index);
