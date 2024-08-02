@@ -17,7 +17,7 @@ set(gcf, 'WindowState', 'maximized');
 % for the double check of length of centerline.
 if nargin == 5
     xline(median_of_data,'green--', 'Label', 'median', 'LineWidth', 2);
-    xline(median_of_data*0.75,'green--', 'Label', 'median*0.75', 'LineWidth', 2);
+    xline(median_of_data * 0.75,'green--', 'Label', 'median * 0.75', 'LineWidth', 2);
 end
 
 end
