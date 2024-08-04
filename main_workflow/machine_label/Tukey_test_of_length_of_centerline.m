@@ -23,7 +23,7 @@ ylabel('number of frames');
 title('f(Length of the centerline)');
 
 % perform Tukey test
-if nargin == 2
+if nargin <= 2
     IQR_index = 3; % super parameter % bigger, stricter
 end
 

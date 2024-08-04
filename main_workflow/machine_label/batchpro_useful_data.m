@@ -71,7 +71,7 @@ if path ~= 0
             output_label(label_rearranged, folder_of_saved_files, file_name, timestamps);
 
             % for the taxis project
-            integrate_into_reorientation(label_rearranged, timestamps);
+            % integrate_into_reorientation(label_rearranged, timestamps);
 
             % disp
             disp('Machine Label Finished!');

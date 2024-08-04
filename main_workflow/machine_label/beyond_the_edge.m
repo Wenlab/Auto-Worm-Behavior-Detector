@@ -3,7 +3,7 @@
 % 2023-10-13, Yixuan Li
 %
 
-function label = beyond_the_edge(mcd,label,enable_output)
+function label = beyond_the_edge(mcd, label, enable_output)
 
 %% get mask
 n_frames = numel(mcd);
