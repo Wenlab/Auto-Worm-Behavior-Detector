@@ -16,7 +16,7 @@ mask = label == 0;
 centerline_all = centerline_all(mask);
 
 %% if the tail is near edges
-pixel_threshold = 10; % super-parameter
+pixel_threshold = 20; % super-parameter
 [x_max,x_min,y_max,y_min] = detect_edge(centerline_all);
 [x_tail,y_tail] = get_tail_coord(centerline_all);
 mask_x = abs(x_tail - x_max) < pixel_threshold | abs(x_tail - x_min) < pixel_threshold;

@@ -25,7 +25,7 @@ function [x_max,x_min,y_max,y_min] = detect_edge(centerline_all)
 
     % x_max = 1024;
     % x_min = 0;
-    % y_max = 768;
-    % y_min = 0;
+    % y_max = -0;
+    % y_min = -768;
     
 end
